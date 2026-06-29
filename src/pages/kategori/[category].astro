@@ -18,6 +18,7 @@ export async function getStaticPaths() {
 }
 
 const { name, posts } = Astro.props;
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title={`${name} — Zararsız Yaşam`}>
@@ -29,10 +30,10 @@ const { name, posts } = Astro.props;
   <ul class="postlist">
     {posts.map((p) => (
       <li>
-        <h2><a href={`/blog/${p.slug}/`}>{p.data.title}</a></h2>
+        <h2><a href={`${base}blog/${p.slug}/`}>{p.data.title}</a></h2>
         <time>{new Date(p.data.date).toLocaleDateString("tr-TR", { year: "numeric", month: "long", day: "numeric" })}</time>
       </li>
     ))}
   </ul>
-  <p style="max-width:var(--max);margin:0 auto;padding:0 28px 60px"><a class="txtlink" href="/blog/">← Tüm Yazılar</a></p>
+  <p style="max-width:var(--max);margin:0 auto;padding:0 28px 60px"><a class="txtlink" href={`${base}blog/`}>← Tüm Yazılar</a></p>
 </BaseLayout>

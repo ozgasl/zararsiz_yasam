@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 const { title = "Zararsız Yaşam — Melis Zararsız", description = "Mindfulness temelli koçluk, yin yoga ve meditasyon ekseninde bilinçli bir yaşam için çalışmalar, yazılar ve buluşmalar." } = Astro.props;
+const base = import.meta.env.BASE_URL;
 ---
 <!DOCTYPE html>
 <html lang="tr">
@@ -17,17 +18,17 @@ const { title = "Zararsız Yaşam — Melis Zararsız", description = "Mindfulne
 <body>
 <header>
   <div class="wrap nav">
-    <a class="brand" href="/" aria-label="Zararsız Yaşam">
-      <img class="brand-logo" src="assets/img/logo.jpeg" alt="Zararsız Yaşam">
+    <a class="brand" href={base} aria-label="Zararsız Yaşam">
+      <img class="brand-logo" src={`${base}assets/img/logo.jpeg`} alt="Zararsız Yaşam">
     </a>
     <nav>
       <ul class="menu" id="menu">
-        <li><a href="/hakkimda/">Hakkımda</a></li>
-        <li><a href="/birlikte-calisalim/">Birlikte Çalışalım</a></li>
-        <li><a href="/bulusmalar/">Buluşmalar</a></li>
-        <li><a href="/blog/">Blog Yazıları</a></li>
-        <li><a href="/kitap/">Kitap</a></li>
-        <li><a href="/iletisim/">İletişim</a></li>
+        <li><a href={`${base}hakkimda/`}>Hakkımda</a></li>
+        <li><a href={`${base}birlikte-calisalim/`}>Birlikte Çalışalım</a></li>
+        <li><a href={`${base}bulusmalar/`}>Buluşmalar</a></li>
+        <li><a href={`${base}blog/`}>Blog Yazıları</a></li>
+        <li><a href={`${base}kitap/`}>Kitap</a></li>
+        <li><a href={`${base}iletisim/`}>İletişim</a></li>
       </ul>
     </nav>
     <button class="burger" id="burger" aria-label="Menü"><span></span><span></span><span></span></button>
@@ -51,8 +52,8 @@ const { title = "Zararsız Yaşam — Melis Zararsız", description = "Mindfulne
   </div>
   <div class="wrap foot">
     <div>
-      <a class="brand logo-chip" href="/" aria-label="Zararsız Yaşam">
-        <img class="brand-logo" src="assets/img/logo.jpeg" alt="Zararsız Yaşam">
+      <a class="brand logo-chip" href={base} aria-label="Zararsız Yaşam">
+        <img class="brand-logo" src={`${base}assets/img/logo.jpeg`} alt="Zararsız Yaşam">
       </a>
       <p style="color:#D8C2B4;margin-top:14px;max-width:26em">Mindfulness, meditasyon ve yin yoga ekseninde bilinçli bir yaşam için.</p>
       <p class="tagline">Kendine yaklaştıkça, hayat da sana yaklaşır.</p>
@@ -60,11 +61,11 @@ const { title = "Zararsız Yaşam — Melis Zararsız", description = "Mindfulne
     <div class="foot-col">
       <h4>Hızlı Erişim</h4>
       <ul>
-        <li><a href="/hakkimda/">Hakkımda</a></li>
-        <li><a href="/birlikte-calisalim/">Birlikte Çalışalım</a></li>
-        <li><a href="/bulusmalar/">Buluşmalar</a></li>
-        <li><a href="/blog/">Blog Yazıları</a></li>
-        <li><a href="/kitap/">Kitap</a></li>
+        <li><a href={`${base}hakkimda/`}>Hakkımda</a></li>
+        <li><a href={`${base}birlikte-calisalim/`}>Birlikte Çalışalım</a></li>
+        <li><a href={`${base}bulusmalar/`}>Buluşmalar</a></li>
+        <li><a href={`${base}blog/`}>Blog Yazıları</a></li>
+        <li><a href={`${base}kitap/`}>Kitap</a></li>
       </ul>
     </div>
     <div class="foot-col">
