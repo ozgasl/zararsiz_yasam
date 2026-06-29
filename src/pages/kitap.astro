@@ -1,11 +1,99 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+const base = import.meta.env.BASE_URL;
 ---
-<BaseLayout title="Kabuk — Bir Dönüşüm Hikayesi — Zararsız Yaşam">
-  <div class="page-head">
-    <p class="eyebrow">Kitap — Kabuk</p>
-    <h1>Kabuk — Bir Dönüşüm Hikayesi</h1>
-    <p>Geçmişinin yüklerinin altında kaldığını hisseden, kabuğunu yerinden oynatmaya cesaret eden bir kadının şeffaf ve dönüşmeye devam eden yolculuğu. Kitap yakında satışta olacak.</p>
-    <p style="margin-top:18px"><span class="badge-soon">Yakında</span></p>
+<BaseLayout title="Kabuk — Bir Dönüşüm Hikâyesi — Zararsız Yaşam">
+
+<section class="book" style="padding-top:60px">
+  <div class="wrap">
+    <div class="book-panel reveal">
+      <div class="book-cover">
+        <div class="book-badge">Kitap</div>
+        <img src={`${base}assets/img/kabuk-kapak.jpg`} alt="Kabuk kitabı kapağı">
+      </div>
+      <div class="book-body">
+        <p class="eyebrow">Bir Dönüşüm Hikâyesi</p>
+        <h1 class="kitap-h1">Kabuk</h1>
+        <p>Geçmişinin yüklerinin altında kaldığını hisseden, kabuğunu yerinden oynatmaya cesaret eden bir kadının şeffaf ve dönüşmeye devam eden yolculuğu.</p>
+        <div class="book-actions">
+          <span class="badge-soon">Yakında</span>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
+
+<section class="kitap-sec">
+  <div class="wrap kitap-wrap">
+    <p class="eyebrow reveal">Arka Plan</p>
+    <h2 class="reveal">Kabuk Neden Yazıldı?</h2>
+    <div class="reveal bio-body">
+      <p>Kabuk uzun yıllara yayılan bir içsel yolculuğun sonucu. Çocukluk, aile, ilişkiler, kayıplar, korkular, dönüşüm, mindfulness, yoga ve yeniden başlama cesareti üzerine kişisel bir anlatı.</p>
+      <p>Bu kitap bir insanın kendini anlamaya çalışırken tuttuğu samimi bir kayıt. Paylaşmak ve belki bir ışık yakar umuduyla…</p>
+    </div>
+  </div>
+</section>
+
+<section class="kitap-sec" style="background:var(--cream2)">
+  <div class="wrap kitap-wrap">
+    <p class="eyebrow reveal">Kitap Hakkında</p>
+    <h2 class="reveal">Kabuk</h2>
+    <div class="reveal bio-body">
+      <p>Kabuk, insanın kendini korumak için zamanla oluşturduğu katmanları fark etme ve yavaş yavaş onları bırakma yolculuğunu anlatan bir içsel keşif hikâyesi.</p>
+      <p>Meditasyon, mindfulness ve yin yoga pratikleriyle şekillenen bu anlatı; geçmişin yükleri, ilişkiler, korkular ve kontrol ihtiyacıyla örülmüş kabukların nasıl da çatladığını, yerini daha yumuşak, daha gerçek bir varoluşa nasıl da bırakabildiğini samimi, şeffaf ve gerçek bir yaşam deneyimiyle ele alıyor.</p>
+      <p>Kendi yaşadıklarımdan yola çıkarak okuru da kendi kabuğunu fark etmeye ve dönüşümüne alan açmaya davet ediyorum.</p>
+    </div>
+  </div>
+</section>
+
+<section class="kitap-sec">
+  <div class="wrap kitap-wrap">
+    <p class="eyebrow reveal">Kimin İçin?</p>
+    <h2 class="reveal">Bu kitabı yazdım;</h2>
+    <div class="reveal">
+      <ul class="kitap-list">
+        <li>Dönüşüm süreçlerinden geçenler için</li>
+        <li>Kişisel gelişim kitaplarından çok gerçek hikâyeleri sevenler için</li>
+        <li>Farkındalıkla ilgilenenler için</li>
+        <li>Yalnız olmadığını hissetmek isteyenler için</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section style="padding:0 0 60px">
+  <div class="wrap" style="max-width:720px">
+    <div class="testi reveal">
+      <p class="eyebrow">Söyleşiler ve Etkinlikler</p>
+      <span class="q">&ldquo;</span>
+      <blockquote>Yaklaşan söyleşiler, imza günleri ve kitap kulübü buluşmaları için duyurular yakında.</blockquote>
+      <a class="txtlink" href={`${base}bulusmalar/`} style="color:#F1EAD9;margin-top:16px;display:inline-flex">Buluşmalar →</a>
+    </div>
+  </div>
+</section>
+
+<section style="padding:0 0 80px">
+  <div class="wrap" style="text-align:center">
+    <div class="reveal" style="background:var(--sand);border-radius:28px;padding:50px 30px;max-width:640px;margin:0 auto">
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;margin-bottom:16px">Haberdar Ol</h2>
+      <p style="color:var(--muted);max-width:34em;margin:0 auto 28px;font-size:1.1rem">Satış tarihi, söyleşiler ve imza günleri için bültene katıl.</p>
+      <a class="btn btn-outline" href="mailto:ben@meliszararsiz.com">İletişime geç</a>
+    </div>
+  </div>
+</section>
+
 </BaseLayout>
+
+<style>
+.kitap-h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2.4rem,4vw,3.4rem); margin-bottom: 16px; }
+.kitap-sec { padding: 60px 0; }
+.kitap-wrap { max-width: 720px; }
+.kitap-wrap .eyebrow { margin-bottom: 10px; }
+.kitap-wrap h2 { font-family: "Cormorant Garamond", serif; font-size: 2.2rem; margin-bottom: 28px; }
+.bio-body { color: var(--muted); font-size: 1.1rem; line-height: 1.75; }
+.bio-body p { margin-bottom: 1.2em; }
+.bio-body p:last-child { margin-bottom: 0; }
+.kitap-list { list-style: none; padding: 0; }
+.kitap-list li { padding: 14px 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 1.1rem; padding-left: 1.2em; position: relative; }
+.kitap-list li::before { content: "—"; position: absolute; left: 0; color: var(--wine); }
+</style>

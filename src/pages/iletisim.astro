@@ -1,11 +1,99 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+const base = import.meta.env.BASE_URL;
 ---
 <BaseLayout title="İletişim — Zararsız Yaşam">
-  <div class="page-head">
-    <p class="eyebrow">İletişim</p>
-    <h1>İletişim</h1>
-    <p>Bana ben@meliszararsiz.com üzerinden ya da Instagram'dan (@zararsiz_yasam) ulaşabilirsin.</p>
-    
+
+<section class="ilet-hero">
+  <div class="wrap ilet-wrap">
+    <p class="eyebrow reveal">İletişim</p>
+    <h1 class="reveal">Yollarımız Kesişebilir</h1>
+    <p class="lead reveal">Birlikte çalışmak, bir etkinlik hakkında bilgi almak ya da sadece merhaba demek için bana ulaşabilirsin.</p>
   </div>
+</section>
+
+<section style="padding:20px 0 60px">
+  <div class="wrap">
+    <div class="ilet-grid reveal">
+      <a class="ilet-card" href="mailto:ben@meliszararsiz.com">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+        <h3>E-posta</h3>
+        <p>ben@meliszararsiz.com</p>
+        <span class="txtlink" style="margin-top:auto">Yaz →</span>
+      </a>
+      <div class="ilet-card">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></div>
+        <h3>Instagram</h3>
+        <p>@zararsiz_yasam</p>
+      </div>
+      <div class="ilet-card">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M7.5 10c3-1 6-.6 8.5.8M8 13c2.3-.7 4.7-.4 6.7.7M8.5 16c1.7-.5 3.5-.3 5 .5"/></svg></div>
+        <h3>Podcast</h3>
+        <p>Zararsız Yaşam · Spotify</p>
+      </div>
+      <div class="ilet-card">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M11 9.5l4 2.5-4 2.5z" fill="currentColor" stroke="none"/></svg></div>
+        <h3>YouTube</h3>
+        <p>Zararsız Yaşam · YouTube</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-sec-ilet">
+  <div class="wrap faq-wrap">
+    <p class="eyebrow reveal">Merak Edilenler</p>
+    <h2 class="reveal">Sık Sorulanlar</h2>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <p class="faq-q">Yüz yüze görüşmeler nerede gerçekleşiyor?</p>
+        <p class="faq-a">Büyükada ve dönemsel olarak İstanbul Anadolu Yakası.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Online görüşme yapıyor musunuz?</p>
+        <p class="faq-a">Koçluk için evet.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Etkinliklerden nasıl haberdar olabilirim?</p>
+        <p class="faq-a">Zararsız Yaşam bültenine katılarak ya da Instagram'dan takip ederek.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Ne zaman cevap alırım?</p>
+        <p class="faq-a">Genellikle birkaç iş günü içinde geri dönerim.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:60px 0 80px">
+  <div class="wrap" style="max-width:640px;text-align:center">
+    <div class="reveal">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:3rem;line-height:.3;display:block;height:26px;opacity:.6;color:var(--wine)">&ldquo;</span>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.7rem;line-height:1.3;margin-top:12px;margin-bottom:20px">Bazen bir e-posta, bazen bir kitap, bazen de bir sohbet yeni bir yolculuğun başlangıcı olabilir.</p>
+      <p style="color:var(--muted)">Yolunuz buraya düştüyse, merhaba.</p>
+    </div>
+  </div>
+</section>
+
 </BaseLayout>
+
+<style>
+.ilet-hero { padding: 80px 0 50px; }
+.ilet-wrap { max-width: 800px; }
+.ilet-hero h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2.4rem, 5vw, 3.8rem); margin: 14px 0 22px; }
+.ilet-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.ilet-card { background: var(--cream2); border-radius: 20px; padding: 28px 24px; display: flex; flex-direction: column; text-decoration: none; transition: transform .2s; }
+.ilet-card:hover { transform: translateY(-2px); }
+.ilet-card .svc-ico { margin-bottom: 16px; }
+.ilet-card h3 { font-family: "Cormorant Garamond", serif; font-size: 1.45rem; margin-bottom: 8px; }
+.ilet-card p { color: var(--muted); font-size: .98rem; }
+.faq-sec-ilet { padding: 60px 0; background: var(--cream2); }
+.faq-wrap { max-width: 720px; }
+.faq-wrap .eyebrow { margin-bottom: 10px; }
+.faq-wrap h2 { font-family: "Cormorant Garamond", serif; font-size: 2.2rem; margin-bottom: 36px; }
+.faq-item { padding: 20px 0; border-bottom: 1px solid var(--line); }
+.faq-q { font-family: "Cormorant Garamond", serif; font-size: 1.35rem; font-weight: 500; margin-bottom: 8px; }
+.faq-a { color: var(--muted); }
+@media (max-width: 900px) { .ilet-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .ilet-grid { grid-template-columns: 1fr; } }
+</style>

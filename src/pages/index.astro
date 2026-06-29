@@ -16,8 +16,8 @@ const base = import.meta.env.BASE_URL;
       <h1>Farkındalıkla kendine dönüş yolculuğuna hoş geldin</h1>
       <p class="lead">Mindfulness, meditasyon ve yin yoga ekseninde bilinçli bir yaşam için profesyonel çalışmalar, makaleler ve buluşmalar.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#">Birlikte Çalışalım →</a>
-        <a class="btn btn-outline" href="#">Kabuk'u Keşfet →</a>
+        <a class="btn btn-primary" href={`${base}birlikte-calisalim/`}>Birlikte Çalışalım →</a>
+        <a class="btn btn-outline" href={`${base}kitap/`}>Kabuk'u Keşfet →</a>
       </div>
     </div>
     <div class="hero-media reveal">
@@ -44,8 +44,8 @@ const base = import.meta.env.BASE_URL;
         <p>Geçmişinin yüklerinin altında kaldığını hisseden, kabuğunu yerinden oynatmaya cesaret eden bir kadının şeffaf ve dönüşmeye devam eden yolculuğu.</p>
         <div class="book-actions">
           <span class="badge-soon">Yakında</span>
-          <a class="txtlink" href="#">Kitap Hakkında →</a>
-          <a class="txtlink" href="#">Söyleşiler →</a>
+          <a class="txtlink" href={`${base}kitap/`}>Kitap Hakkında →</a>
+          <a class="txtlink" href={`${base}bulusmalar/`}>Söyleşiler →</a>
         </div>
       </div>
     </div>
@@ -62,19 +62,19 @@ const base = import.meta.env.BASE_URL;
         <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 8c3 0 5 2 7 4M19 8c-3 0-5 2-7 4"/></svg></div>
         <h3>Mindfulness Temelli Koçluk</h3>
         <p>Profesyonel koçluk seanslarında birebir çalışmalar ile hayatının tüm alanlarına daha bilinçli bir yaklaşımla bakmak isteyenler için açılan bir alan.</p>
-        <a class="txtlink" href="#">Detaylar →</a>
+        <a class="txtlink" href={`${base}birlikte-calisalim/`}>Detaylar →</a>
       </div>
       <div class="service reveal">
         <div class="svc-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/></svg></div>
         <h3>Yin Yoga</h3>
         <p>Profesyonel yin yoga derslerinde birebir ya da grup halinde bağ dokularımız üzerine çalışmalar; yavaşlamak, beden, zihin ve ruhu yeniden hizalamak için.</p>
-        <a class="txtlink" href="#">Detaylar →</a>
+        <a class="txtlink" href={`${base}birlikte-calisalim/`}>Detaylar →</a>
       </div>
       <div class="service reveal">
         <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M12 4c4 3 4 9 0 16C8 13 8 7 12 4Z"/><path d="M12 12h0"/></svg></div>
         <h3>Meditasyon</h3>
         <p>Düzenli pratikler, grup ve bireysel seanslar, yönlendirmeler. Zihni sakinleştirmek ve ana dönmek için sürdürülebilir bir alan.</p>
-        <a class="txtlink" href="#">Detaylar →</a>
+        <a class="txtlink" href={`${base}birlikte-calisalim/`}>Detaylar →</a>
       </div>
     </div>
   </div>
@@ -92,7 +92,7 @@ const base = import.meta.env.BASE_URL;
     <div class="meet reveal">
       <div class="meet-head">
         <h2>Buluşmalar</h2>
-        <a class="txtlink" href="#">Tüm Buluşmalar →</a>
+        <a class="txtlink" href={`${base}bulusmalar/`}>Tüm Buluşmalar →</a>
       </div>
       <div class="meet-grid">
         <div class="meet-card"><div class="ph"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM4 9h16"/></svg></div><div class="label">Kitap Kulübü</div></div>
@@ -112,7 +112,7 @@ const base = import.meta.env.BASE_URL;
     <div class="reveal">
       <div class="blog-head">
         <h2>Blog Yazıları</h2>
-        <a class="txtlink" href="/blog/">Tüm Yazılar →</a>
+        <a class="txtlink" href={`${base}blog/`}>Tüm Yazılar →</a>
       </div>
       
 <div class="posts">
@@ -125,17 +125,12 @@ const base = import.meta.env.BASE_URL;
           </article>
         ))}
       </div>
-<span class="cat">Farkındalık</span><h3>Farkındalığın günlük hali</h3><p class="ex">Sıradan anların içinde uyanık kalmak üzerine küçük notlar.</p><a class="txtlink" href="#">Devamı →</a></article>
-        <article class="post"><div class="ph alt"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/></svg></div><span class="cat">Yin Yoga</span><h3>Bekleyişin içinde yumuşamak</h3><p class="ex">Bağ dokuları, sabır ve uzun duruşların öğrettikleri.</p><a class="txtlink" href="#">Devamı →</a></article>
-        <article class="post"><div class="ph"><svg viewBox="0 0 24 24"><path d="M6 4h9l3 3v13H6zM9 11h6M9 15h4"/></svg></div><span class="cat">Yaşam Notları</span><h3>Büyükada'da yavaşlamak</h3><p class="ex">Bir adanın ritmiyle hizalanan günlerden satırlar.</p><a class="txtlink" href="#">Devamı →</a></article>
-        <article class="post"><div class="ph alt"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM4 9h16M9 5v14"/></svg></div><span class="cat">Çeviri Defteri</span><h3>Bir paragrafın peşinde</h3><p class="ex">Çeviri yaparken kelimelerle kurulan sessiz sohbetler.</p><a class="txtlink" href="#">Devamı →</a></article>
-      </div>
     </div>
     <aside class="about reveal">
       <div class="portrait"><img src={`${base}assets/img/meditasyon.jpg`} alt="Melis Zararsız meditasyon"></div>
       <h2>Merhaba, ben Melis.</h2>
       <p>Mindfulness temelli koçluk, yin yoga ve meditasyon eğitmenliği yapıyorum. Ayrıca çeviri ve metin yazarlığıyla ilgileniyorum.</p>
-      <a class="txtlink" href="#">Hikayemi oku →</a>
+      <a class="txtlink" href={`${base}hakkimda/`}>Hikayemi oku →</a>
     </aside>
   </div>
 </section>

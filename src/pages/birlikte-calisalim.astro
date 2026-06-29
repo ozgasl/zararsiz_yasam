@@ -1,11 +1,98 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+const base = import.meta.env.BASE_URL;
 ---
 <BaseLayout title="Birlikte Çalışalım — Zararsız Yaşam">
-  <div class="page-head">
-    <p class="eyebrow">Birlikte Çalışalım</p>
-    <h1>Birlikte Çalışalım</h1>
-    <p>Mindfulness temelli koçluk, yin yoga ve meditasyon çalışmaları. Paket ve seans detayları yakında.</p>
-    <p style="margin-top:18px"><span class="badge-soon">Yakında</span></p>
+
+<section class="svc-hero">
+  <div class="wrap svc-hero-wrap">
+    <p class="eyebrow reveal">Birlikte Çalışalım</p>
+    <h1 class="reveal">Yavaşla</h1>
+    <p class="lead reveal">Mindfulness temelli koçluk, yin yoga ve meditasyon çalışmalarıyla seni hayatın içinde biraz daha yavaşlamaya, fark etmeye ve kendine alan açmaya davet ediyorum.</p>
+    <p class="reveal svc-intro">Çalışmalarımın merkezinde farkındalık yer alıyor. Yin yoga, meditasyon ve mindfulness temelli koçluk farklı disiplinler gibi görünse de hepsi aynı yere çıkıyor: insanın bedenen, ruhen ve zihnen kendisiyle daha sağlıklı, daha şefkatli ve daha bilinçli bir ilişki kurabilmesine.</p>
   </div>
+</section>
+
+<section class="why" style="padding:60px 0 70px;background:var(--cream2)">
+  <div class="wrap">
+    <div class="services">
+      <div class="service reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 8c3 0 5 2 7 4M19 8c-3 0-5 2-7 4"/></svg></div>
+        <h3>Mindfulness Temelli Koçluk</h3>
+        <p>Bazen hayatın içinde sıkışmış hissedebilir, aynı döngüleri tekrar tekrar yaşadığınızı fark edebilirsiniz. Mindfulness temelli koçluk çalışmalarında amaç tavsiye vermek ya da sizin yerinize karar almak değil; ihtiyaçlarınızı fark edebilmeniz ve kendi cevaplarınıza yaklaşabilmeniz için alan açmaktır.</p>
+        <p class="svc-tags">Yaşam geçişleri · Karar verme · İlişkiler · Öz şefkat · Stres yönetimi</p>
+        <a class="txtlink" href="mailto:ben@meliszararsiz.com">İletişime geç →</a>
+      </div>
+      <div class="service reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/></svg></div>
+        <h3>Yin Yoga</h3>
+        <p>Yin Yoga kasları güçlendirmeyi değil, bedeni yavaşlatmayı ve derin bağ dokularla çalışmayı hedefleyen sakin ve meditatif bir yoga pratiğidir. En az 3 dakika içinde kalınan pozlar sayesinde bedenin yanı sıra zihnin hareketlerini de gözlemleme fırsatı doğar. Derslerde performans hedeflenmez.</p>
+        <p class="svc-tags">Yoğun çalışanlar · Eklem rahatlaması · Bedensel gerginlik · Meditasyona geçiş</p>
+        <a class="txtlink" href="mailto:ben@meliszararsiz.com">İletişime geç →</a>
+      </div>
+      <div class="service reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M12 4c4 3 4 9 0 16C8 13 8 7 12 4Z"/></svg></div>
+        <h3>Meditasyon</h3>
+        <p>Meditasyon zihni susturmaya çalışmak değil, olan biteni daha net görebilmeyi öğrenmektir. Çalışmalarda nefes, beden farkındalığı ve dikkat pratiklerinden yararlanıyoruz. Daha önce hiç meditasyon yapmamış kişiler de rahatlıkla katılabilir.</p>
+        <p class="svc-tags">Birebir ve grup seansları · Başlangıç seviyesi · Düzenli pratik</p>
+        <a class="txtlink" href="mailto:ben@meliszararsiz.com">İletişime geç →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-sec">
+  <div class="wrap faq-wrap">
+    <p class="eyebrow reveal">Merak Edilenler</p>
+    <h2 class="reveal">Sık Sorulan Sorular</h2>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <p class="faq-q">Daha önce yoga yapmadım, katılabilir miyim?</p>
+        <p class="faq-a">Evet. Yin Yoga her seviyeye uygundur.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Daha önce meditasyon yapmadım, katılabilir miyim?</p>
+        <p class="faq-a">Evet. Çalışmalar başlangıç seviyesine uygundur.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Çalışmalar online mı?</p>
+        <p class="faq-a">Koçluk seansları daha çok online devam etmektedir. Yüz yüze seçenekler dönemsel olarak açılmaktadır. Yin yoga dersleri birebir yüz yüze yapılmaktadır; birebir ders ya da grup dersleri için iletişime geçiniz.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Nasıl kayıt olabilirim?</p>
+        <p class="faq-a">E-posta yoluyla iletişime geçebilirsiniz.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Ücretler nasıl belirleniyor?</p>
+        <p class="faq-a">Ücret ve rezervasyon bilgisi için doğrudan iletişime geçiniz.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:0 0 80px">
+  <div class="wrap" style="text-align:center">
+    <div class="reveal" style="background:var(--sand);border-radius:28px;padding:50px 30px;max-width:640px;margin:0 auto">
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;margin-bottom:16px">Birlikte başlayalım</h2>
+      <p style="color:var(--muted);max-width:34em;margin:0 auto 28px;font-size:1.1rem">Soru sormak veya rezervasyon için bana doğrudan yazabilirsin.</p>
+      <a class="btn btn-primary" href="mailto:ben@meliszararsiz.com">ben@meliszararsiz.com</a>
+    </div>
+  </div>
+</section>
+
 </BaseLayout>
+
+<style>
+.svc-hero { padding: 80px 0 60px; }
+.svc-hero-wrap { max-width: 800px; }
+.svc-hero h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2.8rem, 5vw, 4.2rem); margin: 14px 0 22px; }
+.svc-intro { color: var(--ink); font-size: 1.1rem; max-width: 36em; line-height: 1.7; margin-top: 10px; }
+.svc-tags { color: var(--muted); font-size: .94rem; margin-bottom: 16px; }
+.faq-sec { padding: 70px 0; }
+.faq-wrap { max-width: 720px; }
+.faq-wrap .eyebrow { margin-bottom: 10px; }
+.faq-wrap h2 { font-family: "Cormorant Garamond", serif; font-size: 2.2rem; margin-bottom: 36px; }
+.faq-item { padding: 20px 0; border-bottom: 1px solid var(--line); }
+.faq-q { font-family: "Cormorant Garamond", serif; font-size: 1.35rem; font-weight: 500; margin-bottom: 8px; }
+.faq-a { color: var(--muted); }
+</style>

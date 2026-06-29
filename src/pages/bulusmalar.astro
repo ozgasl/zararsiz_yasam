@@ -1,11 +1,94 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+const base = import.meta.env.BASE_URL;
 ---
 <BaseLayout title="Buluşmalar — Zararsız Yaşam">
-  <div class="page-head">
-    <p class="eyebrow">Buluşmalar</p>
-    <h1>Buluşmalar</h1>
-    <p>Kitap kulübü, yazı ve meditasyon, mindfulness sohbetleri, Büyükada buluşmaları ve daha fazlası. Takvim yakında.</p>
-    <p style="margin-top:18px"><span class="badge-soon">Yakında</span></p>
+
+<section class="bls-hero">
+  <div class="wrap bls-hero-wrap">
+    <p class="eyebrow reveal">Buluşmalar</p>
+    <h1 class="reveal">Birlikte Düşünmek, Hissetmek ve Paylaşmak İçin</h1>
+    <p class="lead reveal">Bazen bir kitap, bazen bir film, bazen bir soru etrafında bir araya geliyoruz. Yavaşlamak, düşünmek, paylaşmak ve ilham almak için.</p>
   </div>
+</section>
+
+<section class="bls-origin">
+  <div class="wrap bio-wrap">
+    <h2 class="reveal">Buluşmalar Nasıl Doğdu?</h2>
+    <div class="reveal bio-body">
+      <p>Uzun yıllardır sinema, psikoloji, kültür sanat, mindfulness ve iyi yaşam alanlarında üretiyor, öğreniyor ve paylaşıyorum.</p>
+      <p>Bir süre sonra bunların yalnızca okumakla ya da anlatmakla kalmayıp birlikte deneyimlendiğinde daha anlamlı olduğunu fark ettim.</p>
+      <p>Amacım merak eden, düşünen, hisseden insanların bir araya gelebileceği samimi alanlar yaratmak.</p>
+    </div>
+  </div>
+</section>
+
+<section class="why" style="padding:60px 0 60px">
+  <div class="wrap">
+    <p class="eyebrow reveal" style="text-align:center">Etkinlikler</p>
+    <h2 class="reveal">Neler Yapıyoruz?</h2>
+    <div class="services">
+      <div class="service reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM4 9h16"/></svg></div>
+        <h3>Kitap Kulübü</h3>
+        <p>Seçtiğimiz bir kitabı birlikte okuyup üzerine konuşuyoruz. Bazen edebiyat, bazen psikoloji, bazen yaşam üzerine farklı pencereler açıyoruz.</p>
+      </div>
+      <div class="service reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M6 4h9l3 3v13H6zM9 12h6M9 16h4"/></svg></div>
+        <h3>Yazı ve Meditasyon Atölyeleri</h3>
+        <p>Kısa meditasyon pratiklerinin ardından rahatlatıcı yazı egzersizleri. Kelimelerin ve sessizliğin birbirine eşlik ettiği çalışmalar. Yazma kabiliyeti olması gerekmiyor.</p>
+      </div>
+      <div class="service reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 8c3 0 5 2 7 4M19 8c-3 0-5 2-7 4"/></svg></div>
+        <h3>Mindfulness Sohbetleri</h3>
+        <p>Günlük hayatın içindeki farkındalık pratiklerini konuşuyoruz. Stres, ilişkiler, alışkanlıklar, öz şefkat ve yaşamın farklı dönemleri üzerine paylaşımlar yapıyoruz.</p>
+      </div>
+      <div class="service reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M4 18l5-7 4 5 3-4 4 6zM4 5h16v13H4z"/></svg></div>
+        <h3>Sanat ve Kültür Buluşmaları</h3>
+        <p>Bir film, bir sergi, bir makale ya da bir sanat eseri üzerinden sohbet ediyoruz. Bazen bir konuğu ağırlıyor, bazen sadece birlikte düşünüyoruz.</p>
+      </div>
+      <div class="service reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M3 12h18M12 3a9 9 0 010 18M12 3c-2 2-3 5-3 9s1 7 3 9M12 3c2 2 3 5 3 9s-1 7-3 9"/></svg></div>
+        <h3>Büyükada Buluşmaları</h3>
+        <p>Yürüyüşler, kahvaltı buluşmaları, meditasyon çalışmaları ve küçük grup etkinlikleri. Büyükada'nın yavaş ritminden ilham alan buluşmalar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:0 0 70px">
+  <div class="wrap" style="max-width:720px">
+    <div class="testi reveal">
+      <p class="eyebrow">Kimler Katılabilir?</p>
+      <span class="q">&ldquo;</span>
+      <blockquote>Bu buluşmalar belirli bir bilgi seviyesine sahip kişiler için değil. Merak eden, paylaşmak isteyen ve yeni bakış açılarına açık herkes katılabilir.</blockquote>
+      <p style="color:#D8D3BE;font-size:1.05rem;margin-top:16px">Bazı etkinlikler ücretsiz, bazıları bağış usulü, bazıları ise ücretli olarak düzenlenebilir. Detaylar her etkinlik duyurusunda ayrıca paylaşılır.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding:0 0 80px">
+  <div class="wrap" style="text-align:center">
+    <div class="reveal" style="background:var(--sand);border-radius:28px;padding:50px 30px;max-width:640px;margin:0 auto">
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;margin-bottom:16px">Duyurulardan Haberdar Ol</h2>
+      <p style="color:var(--muted);max-width:34em;margin:0 auto 28px;font-size:1.1rem">Yeni buluşmalar için bültene katıl ya da doğrudan yaz.</p>
+      <a class="btn btn-primary" href="mailto:ben@meliszararsiz.com">İletişime geç →</a>
+    </div>
+  </div>
+</section>
+
 </BaseLayout>
+
+<style>
+.bls-hero { padding: 80px 0 60px; }
+.bls-hero-wrap { max-width: 800px; }
+.bls-hero h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2.2rem, 4vw, 3.2rem); margin: 14px 0 22px; }
+.bls-origin { padding: 40px 0 60px; background: var(--cream2); }
+.bio-wrap { max-width: 720px; }
+.bio-wrap h2 { font-family: "Cormorant Garamond", serif; font-size: clamp(1.8rem, 3vw, 2.4rem); margin-bottom: 24px; }
+.bio-body { color: var(--muted); font-size: 1.1rem; line-height: 1.75; }
+.bio-body p { margin-bottom: 1.2em; }
+.bio-body p:last-child { margin-bottom: 0; }
+.why h2 { font-family: "Cormorant Garamond", serif; font-size: clamp(1.8rem,3vw,2.4rem); text-align: center; margin-bottom: 40px; }
+</style>

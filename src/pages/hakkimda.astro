@@ -1,11 +1,90 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+const base = import.meta.env.BASE_URL;
 ---
 <BaseLayout title="Merhaba, ben Melis — Zararsız Yaşam">
-  <div class="page-head">
-    <p class="eyebrow">Hakkımda</p>
-    <h1>Merhaba, ben Melis</h1>
-    <p>Mindfulness temelli koçluk, yin yoga ve meditasyon eğitmeniyim; ayrıca çeviri ve metin yazarlığı yapıyorum. Bu sayfanın detaylı içeriği yakında eklenecek.</p>
-    
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <p class="eyebrow">Hakkımda</p>
+      <h1>Merhaba, ben Melis.</h1>
+      <p class="lead">Mindfulness temelli koçluk yapıyor, yin yoga ve meditasyon dersleri veriyorum. İnsanların kendileriyle, çevresiyle ve hayatla daha sahici ilişkiler kurabilmelerine alan açan çalışmalar yürütüyorum.</p>
+      <a class="btn btn-primary" href={`${base}birlikte-calisalim/`}>Birlikte Çalışalım →</a>
+    </div>
+    <div class="hero-media reveal">
+      <div class="hero-photo"><img src={`${base}assets/img/buyukada-melis.jpg`} alt="Melis Zararsız, Büyükada"></div>
+    </div>
   </div>
+</section>
+
+<section class="bio-sec">
+  <div class="wrap bio-wrap">
+    <h2 class="reveal">Benim Hikâyem</h2>
+    <div class="reveal bio-body">
+      <p>3 yaşımda okuma yazma öğrenmişim, 5 yaşımda ilkokula başlamışım. 6 yaşımda piyano çalmayı öğrenmiş ve kendimce besteler düzenleyip resitaller vermişim. Böyle hızlı bir başlangıca rağmen zor bir çocukluk geçirerek kendimi bulmakta zorlandım ve savruldum.</p>
+      <p>İki yüksek lisans yaptıktan sonra uzun yıllar kültür sanat alanında profesyonel olarak çalıştım. Sinema dünyasında gazetecilik yaptım, Cannes Film Festivali ve Türkiye'deki hemen hemen tüm film festivallerinde görev aldım. Altyazı çevirmeni ve metin çevirmeni olarak çalışmalarım sürüyor.</p>
+      <p>2010'lu yılların başlarında boşandım, istifa ettim ve Büyükada'ya taşındım. Yeni meslekler için eğitimlerimi aldım: yin yoga eğitmenliği, mindfulness temelli koçluk, meditasyon uygulayıcılığı. Pandemi dönemi itibariyle kitap yazmaya başladım ve bu sene kitabım <em>Kabuk</em> basıldı.</p>
+      <p>Bana iyi gelen disiplinleri iyice öğrenerek aynı yolun yolcularına alan tutmak için Zararsız Yaşam'ı kurdum. Yolculuk benim için de devam ediyor.</p>
+    </div>
+  </div>
+</section>
+
+<section class="neden-sec">
+  <div class="wrap bio-wrap">
+    <p class="eyebrow reveal">Zararsız Yaşam</p>
+    <h2 class="reveal">Neden Zararsız Yaşam?</h2>
+    <div class="reveal bio-body">
+      <p>Soyadım Zararsız ve bu soyadla çok barışık yıllar geçirdiğimi söyleyemem. Akran zorbalığına uğradığım yıllarda kararsız, yararsız, arsız gibi şakalarla cebelleştim; genç kızlığımda ise gerçekten "zararsız mısın" gibi saçma sorulara boğuldum.</p>
+      <p>Ne zaman ki iyi yaşam ilgimi çekmeye başladı — meditasyon, yoga, sağlıklı yaşam, esenlik — ve Budist metinlerde Ahimse erdemiyle karşılaştım, soyadımla barıştım.</p>
+      <p>Kendime ve başkalarına zarar vermeden, zarafetle, şefkatle yaşamak. İyi yaşamak. Zararsız Yaşam başlığı altında yin yoga, meditasyon, mindfulness, bilinçli beslenme ve hareketli yaşam konuşabiliyoruz.</p>
+    </div>
+  </div>
+</section>
+
+<section class="why" style="padding:50px 0 40px">
+  <div class="wrap">
+    <p class="eyebrow reveal" style="text-align:center">Uzmanlık</p>
+    <h2 class="reveal">Eğitimler ve Sertifikalar</h2>
+    <div class="services">
+      <div class="service reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 8c3 0 5 2 7 4M19 8c-3 0-5 2-7 4"/></svg></div>
+        <h3>Mindfulness Temelli Koçluk</h3>
+        <p>Sertifikalı mindfulness temelli koçluk uygulayıcısı.</p>
+      </div>
+      <div class="service reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/></svg></div>
+        <h3>Yin Yoga Eğitmenliği</h3>
+        <p>Sertifikalı yin yoga eğitmeni ve uygulayıcısı.</p>
+      </div>
+      <div class="service reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M12 4c4 3 4 9 0 16C8 13 8 7 12 4Z"/></svg></div>
+        <h3>Meditasyon Uygulayıcılığı</h3>
+        <p>Sertifikalı meditasyon eğitmeni. Herkes İçin Spor Yoga Eğitmenliği sertifikası da dahil olmak üzere çoklu sertifika sahibi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:30px 0 80px">
+  <div class="wrap" style="text-align:center">
+    <div class="reveal" style="background:var(--sand);border-radius:28px;padding:50px 30px;max-width:640px;margin:0 auto">
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;margin-bottom:16px">Birlikte Çalışalım</h2>
+      <p style="color:var(--muted);max-width:34em;margin:0 auto 28px;font-size:1.1rem">Eğer yollarımızın kesişmesinin bir nedeni olduğunu hissediyorsanız, birlikte çalışabileceğimiz alanları inceleyebilirsiniz.</p>
+      <a class="btn btn-primary" href={`${base}birlikte-calisalim/`}>Birlikte Çalışalım →</a>
+    </div>
+  </div>
+</section>
+
 </BaseLayout>
+
+<style>
+.bio-sec { padding: 64px 0 20px; }
+.neden-sec { padding: 40px 0 64px; background: var(--cream2); }
+.bio-wrap { max-width: 720px; }
+.bio-wrap h2 { font-family: "Cormorant Garamond", serif; font-size: clamp(1.8rem, 3vw, 2.4rem); margin-bottom: 24px; }
+.bio-wrap .eyebrow { margin-bottom: 10px; }
+.bio-body { color: var(--muted); font-size: 1.1rem; line-height: 1.75; }
+.bio-body p { margin-bottom: 1.2em; }
+.bio-body p:last-child { margin-bottom: 0; }
+</style>
