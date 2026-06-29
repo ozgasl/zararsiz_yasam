@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 const posts = (await getCollection("blog", ({ data }) => !data.draft))
   .sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
 const latest = posts.slice(0, 4);
+const base = import.meta.env.BASE_URL;
 ---
 <BaseLayout>
 
@@ -20,7 +21,7 @@ const latest = posts.slice(0, 4);
       </div>
     </div>
     <div class="hero-media reveal">
-      <div class="hero-photo"><img src="/assets/img/buyukada-melis.jpg" alt="Melis Zararsız, Büyükada"></div>
+      <div class="hero-photo"><img src={`${base}assets/img/buyukada-melis.jpg`} alt="Melis Zararsız, Büyükada"></div>
       <div class="pullquote">
         <span class="q">&ldquo;</span>
         <p>Yavaşlamak, esenlikli bir yaşam için insanın kendine vereceği en güzel hediye…</p>
@@ -35,7 +36,7 @@ const latest = posts.slice(0, 4);
     <div class="book-panel reveal">
       <div class="book-cover">
         <div class="book-badge">Kitap</div>
-        <img src="/assets/img/kabuk-kapak.jpg" alt="Kabuk kitabı kapağı">
+        <img src={`${base}assets/img/kabuk-kapak.jpg`} alt="Kabuk kitabı kapağı">
       </div>
       <div class="book-body">
         <p class="eyebrow">Bir Dönüşüm Hikayesi</p>
@@ -120,7 +121,7 @@ const latest = posts.slice(0, 4);
             <div class="ph"><svg viewBox="0 0 24 24"><path d="M4 16c4-2 5-7 5-10 3 2 6 6 6 10"/></svg></div>
             <span class="cat">{p.data.categories?.[0] ?? "Yazı"}</span>
             <h3>{p.data.title}</h3>
-            <a class="txtlink" href={`/blog/${p.slug}/`}>Devamı →</a>
+            <a class="txtlink" href={`${base}blog/${p.slug}/`}>Devamı →</a>
           </article>
         ))}
       </div>
@@ -131,7 +132,7 @@ const latest = posts.slice(0, 4);
       </div>
     </div>
     <aside class="about reveal">
-      <div class="portrait"><img src="/assets/img/meditasyon.jpg" alt="Melis Zararsız meditasyon"></div>
+      <div class="portrait"><img src={`${base}assets/img/meditasyon.jpg`} alt="Melis Zararsız meditasyon"></div>
       <h2>Merhaba, ben Melis.</h2>
       <p>Mindfulness temelli koçluk, yin yoga ve meditasyon eğitmenliği yapıyorum. Ayrıca çeviri ve metin yazarlığıyla ilgileniyorum.</p>
       <a class="txtlink" href="#">Hikayemi oku →</a>

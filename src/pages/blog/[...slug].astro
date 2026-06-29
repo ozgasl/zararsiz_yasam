@@ -11,6 +11,7 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 const d = new Date(post.data.date);
 const dateStr = d.toLocaleDateString("tr-TR", { year: "numeric", month: "long", day: "numeric" });
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title={`${post.data.title} — Zararsız Yaşam`}>
@@ -19,6 +20,6 @@ const dateStr = d.toLocaleDateString("tr-TR", { year: "numeric", month: "long", 
     <h1>{post.data.title}</h1>
     <p class="post-meta">{dateStr}</p>
     <Content />
-    <p style="margin-top:40px"><a class="txtlink" href="/blog/">← Tüm Yazılar</a></p>
+    <p style="margin-top:40px"><a class="txtlink" href={`${base}blog/`}>← Tüm Yazılar</a></p>
   </article>
 </BaseLayout>
