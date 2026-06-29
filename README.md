@@ -16,6 +16,7 @@ yön — bej + bordo + zeytin paleti, kitapçı/yazı masası hissi, gerçek fot
 birebir takip edildi.
 
 - ✅ Ana Sayfa (prototip) — `index.html`
+- ✅ Blog içeriği kurtarıldı — 100 yazı `src/content/blog/` (bkz. `migration/`)
 - ⏳ Hakkımda
 - ⏳ Birlikte Çalışalım
 - ⏳ Buluşmalar
