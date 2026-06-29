@@ -1,58 +1,45 @@
 # Zararsız Yaşam — meliszararsiz.com
 
 Melis Zararsız'ın kişisel marka web sitesi: mindfulness temelli koçluk, yin yoga ve
-meditasyon çalışmalarını; kitap, yazılar ve buluşmaları bir araya getiren sade, modern
-ve uzun ömürlü bir dijital alan.
-
-> Personal brand website for Melis Zararsız (mindfulness-based coaching, yin yoga,
-> meditation), plus her book, writing and community meetups.
+meditasyon; kitap (*Kabuk*), yazılar ve buluşmalar. **Astro** ile statik site.
 
 ## Durum / Status
+🚧 Geliştirme aşaması
 
-🚧 **Geliştirme aşaması / In development**
+- ✅ Astro projesi kuruldu (build doğrulandı, 119 sayfa)
+- ✅ Ana sayfa — `src/pages/index.astro` (tasarım prototipinden taşındı; logo + "Yakında" Kabuk)
+- ✅ Blog — 100 yazı `src/content/blog/`, liste + yazı + kategori sayfaları
+- ⏳ Hakkımda / Birlikte Çalışalım / Buluşmalar / Kitap / İletişim — taslak sayfalar (içerik yakında)
+- ⏳ Görsel kurtarma (Wayback) ve canlı yayına geçiş (deploy)
 
-Şu an depoda ana sayfanın çalışan bir ilk taslağı (prototip) bulunuyor. Brief'lerdeki
-yön — bej + bordo + zeytin paleti, kitapçı/yazı masası hissi, gerçek fotoğraflar —
-birebir takip edildi.
-
-- ✅ Ana Sayfa (prototip) — `index.html`
-- ✅ Blog içeriği kurtarıldı — 100 yazı `src/content/blog/` (bkz. `migration/`)
-- ⏳ Hakkımda
-- ⏳ Birlikte Çalışalım
-- ⏳ Buluşmalar
-- ⏳ Blog Yazıları + arşiv/kategori sayfaları
-- ⏳ Kitap (Kabuk)
-- ⏳ İletişim
-
-## Önizleme / Preview
-
-`index.html` tek başına çalışan bir dosyadır — tarayıcıda açmanız yeterli.
-(`index.html` is fully self-contained; just open it in a browser.)
-
-Canlı bağlantı paylaşmak için **GitHub Pages**'i açabilirsiniz:
-`Settings → Pages → Source: Deploy from a branch → main / root`. Birkaç dakika içinde
-site şu adreste yayına girer:
-
-```
-https://ozgasl.github.io/zararsiz_yasam/
+## Geliştirme / Development
+```bash
+npm install
+npm run dev      # http://localhost:4321
+npm run build    # statik çıktı -> dist/
 ```
 
-## Notlar / Notes
+## Yapı / Structure
+```
+src/
+  pages/        index.astro, blog/, kategori/, hakkimda.astro, kitap.astro ...
+  layouts/      BaseLayout.astro  (başlık + logo + alt bilgi, tüm sayfalar)
+  content/blog/ 100 Markdown yazı
+  styles/       global.css  (krem + bordo + zeytin tasarım sistemi)
+public/
+  assets/img/   logo.jpeg (eklenecek), fotoğraflar
+  images/blog/  yazı görselleri (Wayback'ten kurtarılacak)
+migration/      301 yönlendirme haritası, görsel listesi, rapor
+docs/           prototype.html (ilk statik taslak, referans)
+```
 
-- **Logo:** Şimdilik başlıktaki logo, CSS/SVG ile yapılmış geçici bir kelime-marka.
-  Melis'in JPEG logosunun arka planı beyaz olduğu için doğrudan kullanılmadı;
-  şeffaf bir PNG geldiğinde değiştirilecek.
-- **Fotoğraflar:** Hero (Büyükada portresi), Kabuk kapağı ve "Merhaba ben Melis"
-  bölümündeki kareler Melis'in kendi görselleridir (`assets/img/`). Blog ve buluşma
-  kartlarındaki görseller şimdilik yer tutucudur — gerçek fotoğraflar beklenmektedir.
-  Brief gereği yapay zekâ ile üretilmiş insan görseli kullanılmamaktadır.
+## Logo
+`public/assets/img/logo.jpeg` gerekli — Google Drive `görseller/logo.jpeg` dosyasını
+buraya kopyala. Beyaz arka plan, krem başlıkta `mix-blend-mode` ile gizleniyor.
 
-## Sonraki adım / Next step
-
-Statik prototipin **Astro** tabanlı bir yapıya taşınması (blog koleksiyonları, içerik
-yönetimi için hafif bir CMS, diğer altı sayfa ve SEO/şema altyapısı). WordPress
-arşivinin aktarımı ve 301 yönlendirmeleri için mevcut sitenin yedeği gerekecek.
+## Yayın / Deploy
+Astro statik dosya üretir (`dist/`), Alastyr (cPanel) köküne yüklenebilir. Build adımı
+ve otomatik deploy bir sonraki adımda kurulacak (bkz. `migration/MIGRATION-REPORT.md`).
 
 ---
-
 Alan adı & hosting: Alastyr · İletişim: ben@meliszararsiz.com

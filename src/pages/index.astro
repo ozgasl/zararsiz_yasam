@@ -1,0 +1,144 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+const posts = (await getCollection("blog", ({ data }) => !data.draft))
+  .sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
+const latest = posts.slice(0, 4);
+---
+<BaseLayout>
+
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <h1>Farkındalıkla kendine dönüş yolculuğuna hoş geldin</h1>
+      <p class="lead">Mindfulness, meditasyon ve yin yoga ekseninde bilinçli bir yaşam için profesyonel çalışmalar, makaleler ve buluşmalar.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#">Birlikte Çalışalım →</a>
+        <a class="btn btn-outline" href="#">Kabuk'u Keşfet →</a>
+      </div>
+    </div>
+    <div class="hero-media reveal">
+      <div class="hero-photo"><img src="/assets/img/buyukada-melis.jpg" alt="Melis Zararsız, Büyükada"></div>
+      <div class="pullquote">
+        <span class="q">&ldquo;</span>
+        <p>Yavaşlamak, esenlikli bir yaşam için insanın kendine vereceği en güzel hediye…</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK -->
+<section class="book">
+  <div class="wrap">
+    <div class="book-panel reveal">
+      <div class="book-cover">
+        <div class="book-badge">Kitap</div>
+        <img src="/assets/img/kabuk-kapak.jpg" alt="Kabuk kitabı kapağı">
+      </div>
+      <div class="book-body">
+        <p class="eyebrow">Bir Dönüşüm Hikayesi</p>
+        <h2>Kabuk</h2>
+        <p>Geçmişinin yüklerinin altında kaldığını hisseden, kabuğunu yerinden oynatmaya cesaret eden bir kadının şeffaf ve dönüşmeye devam eden yolculuğu.</p>
+        <div class="book-actions">
+          <span class="badge-soon">Yakında</span>
+          <a class="txtlink" href="#">Kitap Hakkında →</a>
+          <a class="txtlink" href="#">Söyleşiler →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why">
+  <div class="wrap">
+    <h2 class="reveal">Neden Zararsız Yaşam?</h2>
+    <p class="intro reveal">Soyadım Zararsız ve yıllarca bu kelimeyle pek de barışık yaşadığım söylenemez. İyi yaşama dair merakım ve aldığım eğitimler arttıkça kadim bilgilerde bile bu kelimeyle karşılaştım. Kendimize ve çevremize zarar vermeden; bilinçle, farkındalıkla, zarafetle yaşamanın önemini anladım. Bu alanı açarak kendimizle ve hayatla sahici bir ilişki kurmak için bir araya geliyoruz.</p>
+    <div class="services">
+      <div class="service reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 8c3 0 5 2 7 4M19 8c-3 0-5 2-7 4"/></svg></div>
+        <h3>Mindfulness Temelli Koçluk</h3>
+        <p>Profesyonel koçluk seanslarında birebir çalışmalar ile hayatının tüm alanlarına daha bilinçli bir yaklaşımla bakmak isteyenler için açılan bir alan.</p>
+        <a class="txtlink" href="#">Detaylar →</a>
+      </div>
+      <div class="service reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/></svg></div>
+        <h3>Yin Yoga</h3>
+        <p>Profesyonel yin yoga derslerinde birebir ya da grup halinde bağ dokularımız üzerine çalışmalar; yavaşlamak, beden, zihin ve ruhu yeniden hizalamak için.</p>
+        <a class="txtlink" href="#">Detaylar →</a>
+      </div>
+      <div class="service reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M12 4c4 3 4 9 0 16C8 13 8 7 12 4Z"/><path d="M12 12h0"/></svg></div>
+        <h3>Meditasyon</h3>
+        <p>Düzenli pratikler, grup ve bireysel seanslar, yönlendirmeler. Zihni sakinleştirmek ve ana dönmek için sürdürülebilir bir alan.</p>
+        <a class="txtlink" href="#">Detaylar →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL + MEETUPS -->
+<section class="mid">
+  <div class="wrap mid-grid">
+    <div class="testi reveal">
+      <p class="eyebrow">Katılımcılardan Gelenler</p>
+      <span class="q">&ldquo;</span>
+      <blockquote>Büyükada'ya olan sevgim sayesinde yollarımız kesişti; kendi yolculuğumda bana ilham veren biri olarak yanımda.</blockquote>
+      <cite>— Yeliz</cite>
+    </div>
+    <div class="meet reveal">
+      <div class="meet-head">
+        <h2>Buluşmalar</h2>
+        <a class="txtlink" href="#">Tüm Buluşmalar →</a>
+      </div>
+      <div class="meet-grid">
+        <div class="meet-card"><div class="ph"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM4 9h16"/></svg></div><div class="label">Kitap Kulübü</div></div>
+        <div class="meet-card"><div class="ph alt"><svg viewBox="0 0 24 24"><path d="M5 19c3-6 11-6 14 0M9 8a3 3 0 106 0"/></svg></div><div class="label">Kahvaltı · Yürüyüş · Meditasyon</div></div>
+        <div class="meet-card"><div class="ph"><svg viewBox="0 0 24 24"><path d="M6 4h9l3 3v13H6zM9 12h6M9 16h4"/></svg></div><div class="label">Yazı ve Meditasyon</div></div>
+        <div class="meet-card"><div class="ph alt"><svg viewBox="0 0 24 24"><circle cx="8" cy="10" r="2.4"/><circle cx="16" cy="10" r="2.4"/><path d="M4 19c1-3 3-4 4-4M20 19c-1-3-3-4-4-4"/></svg></div><div class="label">Mindfulness Sohbetleri</div></div>
+        <div class="meet-card"><div class="ph"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M6 20c0-3 3-5 6-5s6 2 6 5"/></svg></div><div class="label">Konuk Konuşmacılar</div></div>
+        <div class="meet-card"><div class="ph alt"><svg viewBox="0 0 24 24"><path d="M4 18l5-7 4 5 3-4 4 6zM4 5h16v13H4z"/></svg></div><div class="label">Sanatsal Buluşmalar</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG + ABOUT -->
+<section class="lower">
+  <div class="wrap lower-grid">
+    <div class="reveal">
+      <div class="blog-head">
+        <h2>Blog Yazıları</h2>
+        <a class="txtlink" href="/blog/">Tüm Yazılar →</a>
+      </div>
+      
+<div class="posts">
+        {latest.map((p) => (
+          <article class="post">
+            <div class="ph"><svg viewBox="0 0 24 24"><path d="M4 16c4-2 5-7 5-10 3 2 6 6 6 10"/></svg></div>
+            <span class="cat">{p.data.categories?.[0] ?? "Yazı"}</span>
+            <h3>{p.data.title}</h3>
+            <a class="txtlink" href={`/blog/${p.slug}/`}>Devamı →</a>
+          </article>
+        ))}
+      </div>
+<span class="cat">Farkındalık</span><h3>Farkındalığın günlük hali</h3><p class="ex">Sıradan anların içinde uyanık kalmak üzerine küçük notlar.</p><a class="txtlink" href="#">Devamı →</a></article>
+        <article class="post"><div class="ph alt"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/></svg></div><span class="cat">Yin Yoga</span><h3>Bekleyişin içinde yumuşamak</h3><p class="ex">Bağ dokuları, sabır ve uzun duruşların öğrettikleri.</p><a class="txtlink" href="#">Devamı →</a></article>
+        <article class="post"><div class="ph"><svg viewBox="0 0 24 24"><path d="M6 4h9l3 3v13H6zM9 11h6M9 15h4"/></svg></div><span class="cat">Yaşam Notları</span><h3>Büyükada'da yavaşlamak</h3><p class="ex">Bir adanın ritmiyle hizalanan günlerden satırlar.</p><a class="txtlink" href="#">Devamı →</a></article>
+        <article class="post"><div class="ph alt"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM4 9h16M9 5v14"/></svg></div><span class="cat">Çeviri Defteri</span><h3>Bir paragrafın peşinde</h3><p class="ex">Çeviri yaparken kelimelerle kurulan sessiz sohbetler.</p><a class="txtlink" href="#">Devamı →</a></article>
+      </div>
+    </div>
+    <aside class="about reveal">
+      <div class="portrait"><img src="/assets/img/meditasyon.jpg" alt="Melis Zararsız meditasyon"></div>
+      <h2>Merhaba, ben Melis.</h2>
+      <p>Mindfulness temelli koçluk, yin yoga ve meditasyon eğitmenliği yapıyorum. Ayrıca çeviri ve metin yazarlığıyla ilgileniyorum.</p>
+      <a class="txtlink" href="#">Hikayemi oku →</a>
+    </aside>
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+</BaseLayout>

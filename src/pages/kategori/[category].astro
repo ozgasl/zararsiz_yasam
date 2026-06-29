@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { slugify } from "../../utils.js";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+  const cats = [...new Set(posts.flatMap((p) => p.data.categories ?? []))];
+  return cats.map((cat) => ({
+    params: { category: slugify(cat) },
+    props: {
+      name: cat,
+      posts: posts
+        .filter((p) => (p.data.categories ?? []).includes(cat))
+        .sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()),
+    },
+  }));
+}
+
+const { name, posts } = Astro.props;
+---
+
+<BaseLayout title={`${name} — Zararsız Yaşam`}>
+  <div class="page-head">
+    <p class="eyebrow">Kategori</p>
+    <h1>{name}</h1>
+    <p>{posts.length} yazı</p>
+  </div>
+  <ul class="postlist">
+    {posts.map((p) => (
+      <li>
+        <h2><a href={`/blog/${p.slug}/`}>{p.data.title}</a></h2>
+        <time>{new Date(p.data.date).toLocaleDateString("tr-TR", { year: "numeric", month: "long", day: "numeric" })}</time>
+      </li>
+    ))}
+  </ul>
+  <p style="max-width:var(--max);margin:0 auto;padding:0 28px 60px"><a class="txtlink" href="/blog/">← Tüm Yazılar</a></p>
+</BaseLayout>

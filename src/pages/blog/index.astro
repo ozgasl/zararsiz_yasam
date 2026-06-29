@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { slugify } from "../../utils.js";
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft))
+  .sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
+
+const cats = [...new Set(posts.flatMap((p) => p.data.categories ?? []))].sort();
+---
+
+<BaseLayout title="Blog Yazıları — Zararsız Yaşam">
+  <div class="page-head">
+    <p class="eyebrow">Blog Yazıları</p>
+    <h1>Yazılar</h1>
+    <p>Farkındalık, yin yoga, meditasyon, yaşam notları ve daha fazlası üzerine yazılar.</p>
+  </div>
+  <div class="cat-chips">
+    {cats.map((c) => <a href={`/kategori/${slugify(c)}/`}>{c}</a>)}
+  </div>
+  <ul class="postlist">
+    {posts.map((p) => (
+      <li>
+        {p.data.categories?.[0] && <span class="cat">{p.data.categories[0]}</span>}
+        <h2><a href={`/blog/${p.slug}/`}>{p.data.title}</a></h2>
+        <time>{new Date(p.data.date).toLocaleDateString("tr-TR", { year: "numeric", month: "long", day: "numeric" })}</time>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
