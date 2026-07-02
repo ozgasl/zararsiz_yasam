@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const base = import.meta.env.BASE_URL;
+---
+<BaseLayout title="Bonservisler — Zararsız Yaşam">
+
+<div class="page-head">
+  <p class="eyebrow">Bonservisler</p>
+  <h1>Katılımcılardan Gelenler</h1>
+  <p>Birlikte çalıştığım kişilerin kendi sözleriyle deneyimleri.</p>
+</div>
+
+<section class="bons-sec">
+  <div class="wrap bons-grid">
+    <div class="bons-card reveal">
+      <p class="eyebrow">Yeliz</p>
+      <blockquote>&ldquo;Büyükada'ya olan sevgim sayesinde yollarımız kesişti. Kendisini yıllar önce bir youtube videosunda dinlemiştim ve sosyal medyada takip etmeye başladım. Pandemi döneminde iletişime geçtim. 2024 yılında artık daha sık iletişim kuruyorduk ve eğitimler için her hafta Büyükada'ya gidip gelmeye başladım. Yol uzundu benim için ama bu hiçbir zaman sorun olmadı. Bazen online olarak da devam ettik. Kendisiyle kurduğum bağ benim için çok kıymetli. Sıcakkanlılığı, bilgileri, yaklaşımı ve insanı olduğu gibi kabul eden tavrı sayesinde hayatımda iz bırakan bir insan oldu. Kimi zaman yin yoga derslerinde buluştuk, kimi zaman meditasyon yaparak koçluk seanslarında biraraya geldik. Kendi gelişim yolculuğumda bana ilham veren, bakış açımı genişleten ve destekleyen biri olarak her zaman özel bir yere sahip olacak.&rdquo;</blockquote>
+      <cite>— Yeliz</cite>
+    </div>
+    <div class="bons-card reveal">
+      <p class="eyebrow">Özge Özcan · Online meditasyon, mindfulness temelli koçluk, yin yoga</p>
+      <blockquote>&ldquo;İlişkiler hakkında kafamın karışık olduğu bir dönemdeydim. Farklı alanlarda farklı kişilerle görüşmüştüm. İnsanlar ne derlerse desinler, etkilenmemeyi istiyordum. Meditasyon yapmayı, bunun yardımıyla kendi duygu ve düşüncelerimi kontrol edebilmeyi öğrenmek istiyordum. İnternette araştırma yaparken Melis Hanım ile karşılaştım. Online meditasyon yapmaya başladık. Tanıdıkça ve koçluk hizmeti de verdiğini öğrenince koçluk seansı deneyimlemek de istedim. Konuştuklarımızı unutmuyordu ve seans sonrasında da iletişimimizi sürdürüyorduk. Bir süreç içinde Melis Hanım'ın duygular hakkındaki bir benzetmesi kulağıma küpe oldu: 'Duygular yediğimiz yemeklerin tadına benzer. Bazı yemeklerin tadını daha çok severiz, bazılarını belki o kadar da çok sevmeyiz ama hayatta kalmak için yemek yemeye devam ederiz. Bütün tatlar geçicidir ama gereklidir de, aynı duygular gibi.' Nihayet kafa karışıklığını çözebilmiştim. Etrafımdaki insanlardan etkilenebileceğimi ama bunların geçici olduğunu anladım. Sonra Melis Hanım'ın yin yoga dersleri de verdiğini öğrendim. Daha önce yin yoga yapmamıştım. Meditatif bir yanı da olduğunu öğrenince denemeye karar verdim. Şimdi yin yoga derslerine devam ediyoruz ve çok memnunum.&rdquo;</blockquote>
+      <cite>— Özge Özcan</cite>
+    </div>
+  </div>
+  <p class="bons-cta reveal"><a class="txtlink" href={`${base}birlikte-calisalim/`}>Sen de birlikte çalışmak ister misin? →</a></p>
+</section>
+
+</BaseLayout>
+
+<style>
+.bons-sec { padding: 20px 0 80px; }
+.bons-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+.bons-card { background: var(--cream2); border-radius: 24px; padding: 34px 32px; }
+.bons-card .eyebrow { margin-bottom: 16px; display: block; }
+.bons-card blockquote { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 1.15rem; line-height: 1.55; color: var(--ink); margin-bottom: 16px; }
+.bons-card cite { font-style: normal; font-weight: 600; color: var(--wine); }
+.bons-cta { text-align: center; margin-top: 40px; }
+@media (max-width: 900px) {
+  .bons-grid { grid-template-columns: 1fr; }
+}
+</style>
