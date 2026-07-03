@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+const base = import.meta.env.BASE_URL;
+---
+<BaseLayout title="Mindfulness Temelli Koçluk — Zararsız Yaşam">
+
+<section class="svc-hero">
+  <div class="wrap svc-hero-wrap">
+    <a class="txtlink back-link reveal" href={`${base}birlikte-calisalim/`}>← Birlikte Çalışalım</a>
+    <p class="eyebrow reveal">Birlikte Çalışalım</p>
+    <h1 class="reveal">Mindfulness Temelli Koçluk</h1>
+    <p class="lead reveal">Bazen hayatın içinde sıkışmış hissedebilir, aynı döngüleri tekrar tekrar yaşadığınızı fark edebilirsiniz. Mindfulness temelli koçluk çalışmalarında amaç tavsiye vermek ya da sizin yerinize karar almak değil; ihtiyaçlarınızı fark edebilmeniz ve kendi cevaplarınıza yaklaşabilmeniz için alan açmaktır.</p>
+    <p class="svc-tags reveal">Yaşam geçişleri · Karar verme · İlişkiler · Öz şefkat · Stres yönetimi</p>
+  </div>
+</section>
+
+<section style="padding:0 0 80px">
+  <div class="wrap" style="text-align:center">
+    <div class="reveal" style="background:var(--sand);border-radius:28px;padding:50px 30px;max-width:640px;margin:0 auto">
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;margin-bottom:16px">Birlikte başlayalım</h2>
+      <p style="color:var(--muted);max-width:34em;margin:0 auto 28px;font-size:1.1rem">Soru sormak veya rezervasyon için bana doğrudan yazabilirsin.</p>
+      <a class="btn btn-primary" href="mailto:ben@meliszararsiz.com">ben@meliszararsiz.com</a>
+      <p style="margin-top:20px"><a class="txtlink" href={`${base}birlikte-calisalim/#faq`}>Sık Sorulan Sorular →</a></p>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>
+
+<style>
+.svc-hero { padding: 60px 0 60px; }
+.svc-hero-wrap { max-width: 800px; }
+.back-link { margin-bottom: 24px; display: inline-flex; }
+.svc-hero h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2.4rem, 5vw, 3.6rem); margin: 14px 0 22px; }
+.svc-hero .lead { font-size: 1.15rem; color: var(--muted); max-width: 36em; margin-bottom: 18px; }
+.svc-tags { color: var(--muted); font-size: .94rem; }
+</style>

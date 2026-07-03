@@ -21,27 +21,36 @@ const base = import.meta.env.BASE_URL;
         <h3>Mindfulness Temelli Koçluk</h3>
         <p>Bazen hayatın içinde sıkışmış hissedebilir, aynı döngüleri tekrar tekrar yaşadığınızı fark edebilirsiniz. Mindfulness temelli koçluk çalışmalarında amaç tavsiye vermek ya da sizin yerinize karar almak değil; ihtiyaçlarınızı fark edebilmeniz ve kendi cevaplarınıza yaklaşabilmeniz için alan açmaktır.</p>
         <p class="svc-tags">Yaşam geçişleri · Karar verme · İlişkiler · Öz şefkat · Stres yönetimi</p>
-        <a class="txtlink" href="mailto:ben@meliszararsiz.com">İletişime geç →</a>
+        <div class="svc-links">
+          <a class="txtlink" href={`${base}birlikte-calisalim/mindfulness-koclugu/`}>Detaylar →</a>
+          <a class="txtlink" href="mailto:ben@meliszararsiz.com">İletişime geç →</a>
+        </div>
       </div>
       <div class="service reveal" id="yin-yoga">
         <div class="svc-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/></svg></div>
         <h3>Yin Yoga</h3>
         <p>Yin Yoga kasları güçlendirmeyi değil, bedeni yavaşlatmayı ve derin bağ dokularla çalışmayı hedefleyen sakin ve meditatif bir yoga pratiğidir. En az 3 dakika içinde kalınan pozlar sayesinde bedenin yanı sıra zihnin hareketlerini de gözlemleme fırsatı doğar. Derslerde performans hedeflenmez.</p>
         <p class="svc-tags">Yoğun çalışanlar · Eklem rahatlaması · Bedensel gerginlik · Meditasyona geçiş</p>
-        <a class="txtlink" href="mailto:ben@meliszararsiz.com">İletişime geç →</a>
+        <div class="svc-links">
+          <a class="txtlink" href={`${base}birlikte-calisalim/yin-yoga/`}>Detaylar →</a>
+          <a class="txtlink" href="mailto:ben@meliszararsiz.com">İletişime geç →</a>
+        </div>
       </div>
       <div class="service reveal" id="meditasyon">
         <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M12 4c4 3 4 9 0 16C8 13 8 7 12 4Z"/></svg></div>
         <h3>Meditasyon</h3>
         <p>Meditasyon zihni susturmaya çalışmak değil, olan biteni daha net görebilmeyi öğrenmektir. Çalışmalarda nefes, beden farkındalığı ve dikkat pratiklerinden yararlanıyoruz. Daha önce hiç meditasyon yapmamış kişiler de rahatlıkla katılabilir.</p>
         <p class="svc-tags">Birebir ve grup seansları · Başlangıç seviyesi · Düzenli pratik</p>
-        <a class="txtlink" href="mailto:ben@meliszararsiz.com">İletişime geç →</a>
+        <div class="svc-links">
+          <a class="txtlink" href={`${base}birlikte-calisalim/meditasyon/`}>Detaylar →</a>
+          <a class="txtlink" href="mailto:ben@meliszararsiz.com">İletişime geç →</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="faq-sec">
+<section class="faq-sec" id="faq">
   <div class="wrap faq-wrap">
     <p class="eyebrow reveal">Merak Edilenler</p>
     <h2 class="reveal">Sık Sorulan Sorular</h2>
@@ -88,7 +97,9 @@ const base = import.meta.env.BASE_URL;
 .svc-hero h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2.8rem, 5vw, 4.2rem); margin: 14px 0 22px; }
 .svc-intro { color: var(--ink); font-size: 1.1rem; max-width: 36em; line-height: 1.7; margin-top: 10px; }
 .svc-tags { color: var(--muted); font-size: .94rem; margin-bottom: 16px; }
+.svc-links { display: flex; gap: 20px; flex-wrap: wrap; }
 .service { scroll-margin-top: 94px; }
+.faq-sec { scroll-margin-top: 94px; }
 .faq-sec { padding: 70px 0; }
 .faq-wrap { max-width: 720px; }
 .faq-wrap .eyebrow { margin-bottom: 10px; }

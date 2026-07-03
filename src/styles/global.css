@@ -39,12 +39,12 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-hei
 .txtlink:hover{gap:.7em}
 
 /* ---------- header ---------- */
-header{position:sticky;top:0;z-index:50;background:rgba(244,238,226,.86);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header{position:sticky;top:0;z-index:50;background:rgba(244,238,226,.86);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);overflow:visible}
 .nav{display:flex;align-items:center;justify-content:space-between;height:74px}
 .brand{display:flex;align-items:center;gap:11px}
 .brand .mark{width:38px;height:38px;flex:none}
 .brand-logo{height:58px;width:auto;display:block;mix-blend-mode:multiply}
-.home-logo{height:64px}
+.home-logo{height:116px}
 .logo-chip{background:#F4EEE2;padding:8px 14px;border-radius:14px;width:fit-content}
 .logo-chip .brand-logo{mix-blend-mode:normal;height:64px}
 .brand .name{font-family:"Cormorant Garamond",serif;font-size:1.5rem;font-weight:600;letter-spacing:.02em;line-height:.9}
@@ -194,7 +194,7 @@ footer{background:var(--wine);color:#E9D9CB}
 @media(max-width:560px){
   body{font-size:17px}
   .brand-logo{height:50px}
-  .home-logo{height:54px}
+  .home-logo{height:100px}
   .wrap{padding:0 20px}
   .meet-grid{grid-template-columns:repeat(2,1fr)}
   .posts{grid-template-columns:1fr}
