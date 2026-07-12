@@ -2,7 +2,6 @@
 import "../styles/global.css";
 const { title = "Zararsız Yaşam — Melis Zararsız", description = "Mindfulness temelli koçluk, yin yoga ve meditasyon ekseninde bilinçli bir yaşam için çalışmalar, yazılar ve buluşmalar." } = Astro.props;
 const base = import.meta.env.BASE_URL;
-const isHome = Astro.url.pathname === base;
 ---
 <!DOCTYPE html>
 <html lang="tr">
@@ -20,7 +19,7 @@ const isHome = Astro.url.pathname === base;
 <header>
   <div class="wrap nav">
     <a class="brand" href={base} aria-label="Zararsız Yaşam">
-      <img class={isHome ? "brand-logo home-logo" : "brand-logo"} src={`${base}assets/img/logo.jpeg`} alt="Zararsız Yaşam">
+      <img class="brand-logo" src={`${base}assets/img/logo.jpeg`} alt="Zararsız Yaşam">
     </a>
     <nav>
       <ul class="menu" id="menu">
@@ -43,13 +42,10 @@ const isHome = Astro.url.pathname === base;
   <div class="news">
     <div class="wrap news-grid">
       <div>
-        <h2>Haberlerde Buluşalım</h2>
-        <p>Yeni yazılar, buluşmalar ve gelişmelerden ilk sen haberdar ol.</p>
+        <h2>Birlikte Çalışalım</h2>
+        <p>Mindfulness temelli koçluk, yoga ya da meditasyon alanlarında ilerlemek isterseniz birlikte çalışabiliriz.</p>
       </div>
-      <form onsubmit="return false">
-        <input type="email" placeholder="E-posta adresiniz" aria-label="E-posta adresiniz">
-        <button class="btn btn-primary" type="submit">Kaydol</button>
-      </form>
+      <a class="btn btn-primary" href={`${base}birlikte-calisalim/`}>Birlikte Çalışalım →</a>
     </div>
   </div>
   <div class="wrap foot">

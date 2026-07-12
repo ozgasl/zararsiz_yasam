@@ -40,11 +40,10 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-hei
 
 /* ---------- header ---------- */
 header{position:sticky;top:0;z-index:50;background:rgba(244,238,226,.86);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);overflow:visible}
-.nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+.nav{display:flex;align-items:center;justify-content:space-between;height:132px}
 .brand{display:flex;align-items:center;gap:11px}
 .brand .mark{width:38px;height:38px;flex:none}
-.brand-logo{height:58px;width:auto;display:block;mix-blend-mode:multiply}
-.home-logo{height:116px}
+.brand-logo{height:116px;width:auto;display:block;mix-blend-mode:multiply}
 .logo-chip{background:#F4EEE2;padding:8px 14px;border-radius:14px;width:fit-content}
 .logo-chip .brand-logo{mix-blend-mode:normal;height:64px}
 .brand .name{font-family:"Cormorant Garamond",serif;font-size:1.5rem;font-weight:600;letter-spacing:.02em;line-height:.9}
@@ -108,8 +107,9 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,238,226,.86);backdro
 .mid-card.testi-teaser{background:var(--olive);color:#F1EAD9;flex:1}
 .mid-card.testi-teaser .eyebrow{color:#D8D3BE;margin-bottom:10px}
 .mid-card.testi-teaser p{color:#E6E1D0}
-.mid-card.banner-youtube{background:var(--cream2);border:1px solid var(--line);flex:1}
-.mid-card.banner-youtube h4{display:flex;align-items:center;gap:.5em}
+.mid-card.banner-youtube{background:var(--cream2);border:1px solid var(--line);flex:1;padding:0;overflow:hidden;justify-content:stretch}
+.mid-card.banner-youtube img{width:100%;height:100%;object-fit:cover;display:block;border-radius:20px;transition:transform .3s}
+.mid-card.banner-youtube:hover img{transform:scale(1.03)}
 .podcast-embed{border-radius:20px;overflow:hidden;flex:none;display:block}
 .meet .meet-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:24px}
 .meet h2{font-size:2rem}
@@ -145,10 +145,7 @@ footer{background:var(--wine);color:#E9D9CB}
 .news-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
 .news h2{color:#F4E7D9;font-size:2rem;margin-bottom:8px}
 .news p{color:#D8C2B4;font-size:1.02rem}
-.news form{display:flex;gap:10px}
-.news input{flex:1;padding:.8em 1.1em;border-radius:999px;border:1px solid rgba(233,217,203,.4);background:rgba(255,255,255,.06);color:#F4E7D9;font-family:inherit;font-size:1rem}
-.news input::placeholder{color:#C9B2A4}
-.news .btn-primary{background:#F4E7D9;color:var(--wine);white-space:nowrap}
+.news .btn-primary{background:#F4E7D9;color:var(--wine);white-space:nowrap;justify-self:start}
 .news .btn-primary:hover{background:#fff}
 .foot{padding:48px 0 30px;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
 .foot .brand .name,.foot .brand .name small{color:#F4E7D9}
@@ -193,12 +190,11 @@ footer{background:var(--wine);color:#E9D9CB}
 }
 @media(max-width:560px){
   body{font-size:17px}
-  .brand-logo{height:50px}
-  .home-logo{height:100px}
+  .brand-logo{height:84px}
+  .nav{height:100px}
   .wrap{padding:0 20px}
   .meet-grid{grid-template-columns:repeat(2,1fr)}
   .posts{grid-template-columns:1fr}
-  .news form{flex-direction:column}
   .news .btn-primary{width:100%;justify-content:center}
 }
 
