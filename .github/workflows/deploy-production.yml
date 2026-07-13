@@ -1,0 +1,62 @@
+name: Alastyr Canlı Yayın
+
+# Bu workflow, main dalına her merge/push olduğunda siteyi build edip
+# Alastyr cPanel üzerindeki public_html klasörüne otomatik yükler (FTPS ile,
+# şifrenin şifresiz gitmemesi için). Melis'in CMS üzerinden yazdığı taslaklar
+# önce ayrı bir dal + PR olarak gelir; bu workflow sadece Özgür PR'ı main'e
+# merge ettikten SONRA çalışır.
+#
+# GEREKLİ GITHUB SECRETS (Settings → Secrets and variables → Actions):
+#   FTP_SERVER    -> Alastyr FTP sunucu adresi (örn: ftp.meliszararsiz.com)
+#   FTP_USERNAME  -> Alastyr FTP kullanıcı adı
+#   FTP_PASSWORD  -> Alastyr FTP şifresi
+# Not: cPanel'de genel hesap yerine bu iş için ayrı, sadece public_html'e
+# yetkili bir FTP hesabı açmak daha güvenli olur.
+#
+# Eğer sunucu FTPS (explicit TLS) desteklemiyorsa ve deploy adımı bağlantı
+# hatasıyla başarısız olursa, aşağıdaki "protocol: ftps" satırını
+# "protocol: ftp" olarak değiştirmek gerekir (şifresiz bağlantıya döner).
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: alastyr-production-deploy
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      # ASTRO_BASE_PATH / ASTRO_SITE verilmiyor -> astro.config.mjs'deki
+      # varsayılanlar kullanılır: base "/" ve site meliszararsiz.com
+      # (Alastyr domain kökünde barındığı için bu doğru ayardır.)
+      - run: npm run build
+
+      - name: FTP ile Alastyr public_html'e yükle
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./dist/
+          server-dir: ./public_html/
+          # migration/redirects.htaccess içeriğini public_html/.htaccess'e
+          # eklemek hâlâ ayrı, manuel bir adım (bkz. CLAUDE.md pending #1).
+          exclude: |
+            **/.git*
+            **/.git*/**
