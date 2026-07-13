@@ -1,0 +1,60 @@
+backend:
+  name: github
+  repo: ozgasl/zararsiz_yasam
+  branch: main
+  # Editorial workflow: Melis'in yazıları doğrudan main'e değil, ayrı bir dala
+  # ve otomatik bir Pull Request'e gider. Özgür inceleyip onayladıktan
+  # (merge ettikten) sonra canlıya çıkar.
+  base_url: "https://zararsizyasam.ozgasl.workers.dev"
+
+publish_mode: editorial_workflow
+
+media_folder: "public/images/blog"
+public_folder: "/images/blog"
+
+collections:
+  - name: "blog"
+    label: "Blog Yazıları"
+    label_singular: "Blog Yazısı"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: title
+    summary: "{{title}} — {{date}}"
+    sortable_fields: ["date", "title"]
+    fields:
+      - { label: "Başlık", name: "title", widget: "string" }
+      - { label: "Tarih", name: "date", widget: "datetime" }
+      - {
+          label: "Slug (URL'de görünecek kısım)",
+          name: "slug",
+          widget: "string",
+          hint: "Sadece küçük harf, rakam ve tire kullanın. Örn: yeni-yazi-basligi",
+        }
+      - {
+          label: "Kategoriler",
+          name: "categories",
+          widget: "list",
+          default: [],
+          hint: "Örn: Sağlıklı Yaşam, Kişisel Gelişim, Yaşam Stili",
+        }
+      - {
+          label: "Etiketler",
+          name: "tags",
+          widget: "list",
+          default: [],
+          required: false,
+        }
+      - {
+          label: "Taslak (yayınlanmasın)",
+          name: "draft",
+          widget: "boolean",
+          default: true,
+          hint: "İşaretliyse yazı sitede görünmez, sadece siz görürsünüz.",
+        }
+      - {
+          label: "İçerik",
+          name: "body",
+          widget: "markdown",
+          hint: "Fotoğraf eklemek için araç çubuğundaki resim simgesine tıklayıp bilgisayarınızdan veya telefonunuzdan seçebilirsiniz.",
+        }
