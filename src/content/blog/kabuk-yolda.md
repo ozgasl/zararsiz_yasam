@@ -4,6 +4,7 @@ date: 2026-06-01T15:32:42
 slug: "kabuk-yolda"
 tags: ["kitap", "kabuk", "anlatı", "podcast", "spotify", "zararsız yaşam", "kişisel gelişim", "otobiyografi"]
 legacyUrl: "/kabuk-yolda/"
+cover: "/images/blog/covers/kabuk-yolda.png"
 draft: false
 ---
 

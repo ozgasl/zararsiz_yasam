@@ -3,6 +3,7 @@ title: "Acıdan Kaçmak"
 date: 2026-06-08T10:20:07
 slug: "acidan-kacmak"
 legacyUrl: "/acidan-kacmak/"
+cover: "/images/blog/covers/acidan-kacmak.png"
 draft: false
 ---
 

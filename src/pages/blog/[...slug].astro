@@ -16,6 +16,7 @@ const base = import.meta.env.BASE_URL;
 
 <BaseLayout title={`${post.data.title} — Zararsız Yaşam`}>
   <article class="prose">
+    {post.data.cover && <img class="post-cover" src={`${base}${post.data.cover.replace(/^\//, "")}`} alt={post.data.title}>}
     {post.data.categories?.[0] && <p class="eyebrow">{post.data.categories[0]}</p>}
     <h1>{post.data.title}</h1>
     <p class="post-meta">{dateStr}</p>

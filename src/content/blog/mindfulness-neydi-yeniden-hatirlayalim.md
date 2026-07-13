@@ -4,6 +4,7 @@ date: 2026-06-01T15:29:16
 slug: "mindfulness-neydi-yeniden-hatirlayalim"
 tags: ["mindfulness", "podcast", "zararsız yaşam"]
 legacyUrl: "/mindfulness-neydi-yeniden-hatirlayalim/"
+cover: "/images/blog/covers/mindfulness-neydi-yeniden-hatirlayalim.png"
 draft: false
 ---
 

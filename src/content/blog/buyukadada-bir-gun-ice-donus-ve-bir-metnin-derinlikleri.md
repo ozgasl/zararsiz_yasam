@@ -4,6 +4,7 @@ date: 2026-04-17T13:42:46
 slug: "buyukadada-bir-gun-ice-donus-ve-bir-metnin-derinlikleri"
 tags: ["etkinlik", "leyla erbil", "vapur", "prinkipoheritage", "mirasada", "adadabirgün", "iyi yaşam", "büyükada", "adalar", "edebiyat", "kişisel gelişim"]
 legacyUrl: "/buyukadada-bir-gun-ice-donus-ve-bir-metnin-derinlikleri/"
+cover: "/images/blog/covers/buyukadada-bir-gun-ice-donus-ve-bir-metnin-derinlikleri.png"
 draft: false
 ---
 

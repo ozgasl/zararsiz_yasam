@@ -89,10 +89,16 @@ const base = import.meta.env.BASE_URL;
         <p>&ldquo;Büyükada'ya olan sevgim sayesinde yollarımız kesişti... Kendi gelişim yolculuğumda bana ilham veren, bakış açımı genişleten ve destekleyen biri.&rdquo; — Yeliz</p>
         <a class="txtlink" href={`${base}bonservisler/`} style="color:#F4E7D9">Tüm Yorumlar →</a>
       </div>
-      <a class="mid-card banner-youtube" href="https://www.youtube.com/c/zararsizyasam" target="_blank" rel="noopener" aria-label="Zararsız Yaşam YouTube kanalı">
-        <img src={`${base}assets/img/youtube-banner.jpg`} alt="Zararsız Yaşam YouTube kanalı">
-      </a>
-      <iframe class="podcast-embed" src="https://open.spotify.com/embed/show/3nRY5vcYONoctjQOAs4J9J?utm_source=generator" width="100%" height="152" frameborder="0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="Zararsız Yaşam Podcast"></iframe>
+      <div class="mid-card banner-frame">
+        <p class="banner-title">Youtube Sayfam</p>
+        <a class="banner-media" href="https://www.youtube.com/c/zararsizyasam" target="_blank" rel="noopener" aria-label="Zararsız Yaşam YouTube kanalı">
+          <img src={`${base}assets/img/youtube-banner.jpg`} alt="Zararsız Yaşam YouTube kanalı">
+        </a>
+      </div>
+      <div class="mid-card banner-frame">
+        <p class="banner-title">Son Yayınım</p>
+        <iframe class="podcast-embed" src="https://open.spotify.com/embed/show/3nRY5vcYONoctjQOAs4J9J?utm_source=generator" width="100%" height="152" frameborder="0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="Zararsız Yaşam Podcast"></iframe>
+      </div>
     </div>
     <div class="meet reveal">
       <div class="meet-head">
@@ -100,12 +106,12 @@ const base = import.meta.env.BASE_URL;
         <a class="txtlink" href={`${base}bulusmalar/`}>Tüm Buluşmalar →</a>
       </div>
       <div class="meet-grid">
-        <div class="meet-card"><div class="ph"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM4 9h16"/></svg></div><div class="label">Kitap Kulübü</div></div>
-        <div class="meet-card"><div class="ph alt"><svg viewBox="0 0 24 24"><path d="M5 19c3-6 11-6 14 0M9 8a3 3 0 106 0"/></svg></div><div class="label">Kahvaltı · Yürüyüş · Meditasyon</div></div>
-        <div class="meet-card"><div class="ph"><svg viewBox="0 0 24 24"><path d="M6 4h9l3 3v13H6zM9 12h6M9 16h4"/></svg></div><div class="label">Yazı ve Meditasyon</div></div>
-        <div class="meet-card"><div class="ph alt"><svg viewBox="0 0 24 24"><circle cx="8" cy="10" r="2.4"/><circle cx="16" cy="10" r="2.4"/><path d="M4 19c1-3 3-4 4-4M20 19c-1-3-3-4-4-4"/></svg></div><div class="label">Mindfulness Sohbetleri</div></div>
-        <div class="meet-card"><div class="ph"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M6 20c0-3 3-5 6-5s6 2 6 5"/></svg></div><div class="label">Konuk Konuşmacılar</div></div>
-        <div class="meet-card"><div class="ph alt"><svg viewBox="0 0 24 24"><path d="M4 18l5-7 4 5 3-4 4 6zM4 5h16v13H4z"/></svg></div><div class="label">Sanatsal Buluşmalar</div></div>
+        <div class="meet-card"><div class="ph"><img src={`${base}assets/img/bulusmalar/kitap-kulubu.png`} alt="Kitap Kulübü" loading="lazy"></div><div class="label">Kitap Kulübü</div></div>
+        <div class="meet-card"><div class="ph alt"><img src={`${base}assets/img/bulusmalar/kahvalti-yuruyus.png`} alt="Kahvaltı · Yürüyüş · Meditasyon" loading="lazy"></div><div class="label">Kahvaltı · Yürüyüş · Meditasyon</div></div>
+        <div class="meet-card"><div class="ph"><img src={`${base}assets/img/bulusmalar/yazi-meditasyon.png`} alt="Yazı ve Meditasyon" loading="lazy"></div><div class="label">Yazı ve Meditasyon</div></div>
+        <div class="meet-card"><div class="ph alt"><img src={`${base}assets/img/bulusmalar/mindfulness-sohbetleri.png`} alt="Mindfulness Sohbetleri" loading="lazy"></div><div class="label">Mindfulness Sohbetleri</div></div>
+        <div class="meet-card"><div class="ph"><img src={`${base}assets/img/bulusmalar/konuk-konusmacilar.png`} alt="Konuk Konuşmacılar" loading="lazy"></div><div class="label">Konuk Konuşmacılar</div></div>
+        <div class="meet-card"><div class="ph alt"><img src={`${base}assets/img/bulusmalar/sanatsal-bulusmalar.png`} alt="Sanatsal Buluşmalar" loading="lazy"></div><div class="label">Sanatsal Buluşmalar</div></div>
       </div>
     </div>
   </div>
@@ -123,7 +129,7 @@ const base = import.meta.env.BASE_URL;
 <div class="posts">
         {latest.map((p) => (
           <article class="post">
-            <div class="ph"><svg viewBox="0 0 24 24"><path d="M4 16c4-2 5-7 5-10 3 2 6 6 6 10"/></svg></div>
+            <div class="ph">{p.data.cover ? <img src={`${base}${p.data.cover.replace(/^\//, "")}`} alt={p.data.title} loading="lazy"> : <svg viewBox="0 0 24 24"><path d="M4 16c4-2 5-7 5-10 3 2 6 6 6 10"/></svg>}</div>
             <span class="cat">{p.data.categories?.[0] ?? "Yazı"}</span>
             <h3>{p.data.title}</h3>
             <a class="txtlink" href={`${base}blog/${p.slug}/`}>Devamı →</a>
