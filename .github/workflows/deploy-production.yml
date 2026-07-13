@@ -54,7 +54,7 @@ jobs:
           protocol: ftps
           port: 21
           local-dir: ./dist/
-          server-dir: ./public_html/
+          server-dir: ./
           # migration/redirects.htaccess içeriğini public_html/.htaccess'e
           # eklemek hâlâ ayrı, manuel bir adım (bkz. CLAUDE.md pending #1).
           exclude: |
