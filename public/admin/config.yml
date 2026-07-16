@@ -2,12 +2,13 @@ backend:
   name: github
   repo: ozgasl/zararsiz_yasam
   branch: main
-  # Editorial workflow: Melis'in yazıları doğrudan main'e değil, ayrı bir dala
-  # ve otomatik bir Pull Request'e gider. Özgür inceleyip onayladıktan
-  # (merge ettikten) sonra canlıya çıkar.
+  # NOT: Sveltia CMS henüz "editorial workflow" (taslak -> PR -> onay) özelliğini
+  # desteklemiyor (bu özellik Sveltia'nın 1.0 sürümünden önce eklenecek).
+  # Şu an Melis'in kaydettiği her yazı doğrudan main'e commit olarak gidiyor
+  # ve Alastyr deploy pipeline'ı otomatik olarak canlıya alıyor - araya bir
+  # inceleme adımı girmiyor. Melis'in taslak olarak tutmak istediği yazılar
+  # için "Taslak (yayınlanmasın)" alanını işaretlemesi gerekiyor (bkz. aşağı).
   base_url: "https://zararsizyasam.ozgasl.workers.dev"
-
-publish_mode: editorial_workflow
 
 media_folder: "public/images/blog"
 public_folder: "/images/blog"

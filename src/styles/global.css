@@ -94,23 +94,22 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,238,226,.86);backdro
 
 /* ---------- testimonial + meetups ---------- */
 .mid{padding:60px 0}
-.mid-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:34px;align-items:stretch}
+.mid-row{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:24px;align-items:stretch;margin-bottom:48px}
 .testi{background:var(--olive);color:#F1EAD9;border-radius:26px;padding:40px 38px;display:flex;flex-direction:column;justify-content:center}
 .testi .eyebrow{color:#D8D3BE;margin-bottom:22px}
 .testi .q{font-family:"Cormorant Garamond",serif;font-size:3rem;line-height:.3;display:block;height:26px;opacity:.6}
 .testi blockquote{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.7rem;line-height:1.3;margin-bottom:20px}
 .testi cite{font-style:normal;font-weight:600;letter-spacing:.04em;font-size:.95rem}
-.mid-stack{display:flex;flex-direction:column;gap:18px;height:100%}
-.mid-card{border-radius:20px;padding:26px 28px;display:flex;flex-direction:column;justify-content:center}
+.mid-card{border-radius:20px;padding:26px 28px;display:flex;flex-direction:column;justify-content:center;height:100%;box-sizing:border-box}
 .mid-card h4{font-family:"Cormorant Garamond",serif;font-size:1.3rem;margin-bottom:6px}
 .mid-card p{font-size:.95rem;margin-bottom:10px}
-.mid-card.testi-teaser{background:var(--olive);color:#F1EAD9;flex:1}
+.mid-card.testi-teaser{background:var(--olive);color:#F1EAD9}
 .mid-card.testi-teaser .eyebrow{color:#D8D3BE;margin-bottom:10px}
 .mid-card.testi-teaser p{color:#E6E1D0}
-.mid-card.banner-frame{background:var(--cream2);border:1px solid var(--line);flex:none;padding:18px 20px;gap:12px}
+.mid-card.banner-frame{background:var(--cream2);border:1px solid var(--line);padding:18px 20px;gap:12px}
 .banner-title{font-family:"Cormorant Garamond",serif;font-size:1.15rem;color:var(--wine);font-weight:500;margin:0}
-.banner-media{display:block;border-radius:14px;overflow:hidden}
-.banner-media img{width:100%;height:152px;object-fit:cover;display:block;transition:transform .3s}
+.banner-media{display:block;border-radius:14px;overflow:hidden;flex:1;background:linear-gradient(135deg,var(--cream2),var(--sand))}
+.banner-media img{width:100%;height:100%;min-height:152px;object-fit:contain;display:block;transition:transform .3s}
 .banner-media:hover img{transform:scale(1.03)}
 .podcast-embed{border-radius:14px;overflow:hidden;flex:none;display:block}
 .meet .meet-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:24px}
@@ -184,8 +183,7 @@ footer{background:var(--wine);color:#E9D9CB}
   .book-cover{align-items:center}
   .book-actions{justify-content:center}
   .services{grid-template-columns:1fr;gap:30px}
-  .mid-grid{grid-template-columns:1fr}
-  .mid-stack{height:auto}
+  .mid-row{grid-template-columns:1fr;margin-bottom:32px}
   .lower-grid{grid-template-columns:1fr}
   .news-grid{grid-template-columns:1fr;gap:18px}
   .foot{grid-template-columns:1fr;gap:34px}
