@@ -2,6 +2,8 @@
 title: Acıdan Kaçmak
 date: 2026-06-08T10:20
 slug: acidan-kacmak
+tags:
+  - acıdan kaçmak, budizm, acı, buddha, michael jackson, matthew perry, friends
 draft: false
 cover: /images/blog/covers/acidan-kacmak.png
 legacyUrl: /acidan-kacmak/
