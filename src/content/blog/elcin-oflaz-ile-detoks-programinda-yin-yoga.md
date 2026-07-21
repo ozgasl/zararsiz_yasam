@@ -21,8 +21,6 @@ legacyUrl: /elcin-oflaz-ile-detoks-programinda-yin-yoga/
 
 ![](/images/blog/elcinoflaz.jpeg)
 
-Yin Yoga'nın son pozu Savasana
-
 İki yıl önce Büyükada'ya taşınmış olan sevgili Elçin Oflaz'ın detoks kamplarında katılımcılarla yin yoga ve meditasyon dersleri de yapıyoruz.
 
 Elçin Oflaz'ın detoks kamplarıyla ilgili bilgi almak için [buraya tıklayabilirsiniz.](https://www.elcinoflaz.com/)
