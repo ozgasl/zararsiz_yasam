@@ -1,14 +1,26 @@
 ---
-title: "Dünya Yoga Günü 2021"
-date: 2021-06-20T19:50:45
-slug: "dunya-yoga-gunu-2021"
-categories: ["Kişisel Gelişim", "Kitap Önerisi", "meditasyon", "Sağlıklı Yaşam", "Yaşam Stili", "yoga"]
-tags: ["dünya yoga günü", "büyükada", "yoga", "meditasyon", "sağlıklı yaşam", "tolerans penceresi"]
-legacyUrl: "/dunya-yoga-gunu-2021/"
+title: Dünya Yoga Günü 2021
+date: 2021-06-20T19:50
+slug: dunya-yoga-gunu-2021
+categories:
+  - Kişisel Gelişim
+  - Kitap Önerisi
+  - meditasyon
+  - Sağlıklı Yaşam
+  - Yaşam Stili
+  - yoga
+tags:
+  - dünya yoga günü
+  - büyükada
+  - yoga
+  - meditasyon
+  - sağlıklı yaşam
+  - tolerans penceresi
 draft: false
+legacyUrl: /dunya-yoga-gunu-2021/
 ---
 
-![](/images/blog/dunyayogagunu-725x1024.jpeg)
+![](/images/blog/Ekran%20Resmi%202026-07-21%2021.27.59.png)
 
 Merhaba!
 
