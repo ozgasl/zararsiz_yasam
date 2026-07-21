@@ -1,12 +1,12 @@
 ---
-title: "Kabuk - The Book"
-date: 2023-01-27T21:42:32
-slug: "kabuk-the-book"
-legacyUrl: "/kabuk-the-book/"
+title: Kabuk - The Book
+date: 2023-01-27T21:42
+slug: kabuk-the-book
 draft: false
+legacyUrl: /kabuk-the-book/
 ---
 
-![](/images/blog/9O6A7560-1024x683.jpg)
+![](/images/blog/kabukkapak.jpeg "chat gpt geçici kitap kapağı tasarımı")
 
 Merhaba sevgili okurum, takipçim.
 
