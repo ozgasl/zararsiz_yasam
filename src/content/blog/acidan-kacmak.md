@@ -9,7 +9,7 @@ cover: /images/blog/covers/acidan-kacmak.png
 legacyUrl: /acidan-kacmak/
 ---
 
-* ![](/images/blog/blog-1024x683.jpeg)
+![](/images/blog/covers/acidan-kacmak.png)
 
 Geçtiğimiz günlerde **Michael Jackson**'ın ölümüyle ilgili bir belgesel çıktı karşıma youtube'da. Olayın ayrıntılarını kabaca biliyordum ama belgeseli izledikten sonra müthiş şaşırdım ve sarsıldım. Aklıma **Matthew Perry** geldi derhal. Onun hayatı ve ölümüyle ilgili bir video aradım ve benzer bir belgesel buldum. Bir **Friends** hayranı olarak onun hikâyesini de yıllardır biliyordum; bağımlılık sorunlarını, bu konuda açık açık konuştuğunu, bağımlıların kurtulması için hamleler yaptığını, hatta konuyla ilgili kitap yazdığını da. Ama iki belgeseli peş peşe izleyince daha önce fark etmediğim bir ortak nokta dikkatimi çekti.
 
