@@ -1,5 +1,5 @@
 ---
-title: Türkiye Koçluk Günü'nde Instagram Canlı Yayın'dayım
+title: Türkiye Koçluk Günü'nde Instagram Canlı Yayın'daydım
 date: 2021-06-27T10:19
 slug: turkiye-kocluk-gununde-instagram-canli-yayindayim
 categories:
