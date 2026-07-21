@@ -1,12 +1,12 @@
 ---
-title: "Yoga Eğitmeni Olmak"
-date: 2024-02-03T11:59:13
-slug: "yoga-egitmeni-olmak"
-legacyUrl: "/yoga-egitmeni-olmak/"
+title: Yoga Eğitmeni Olmak
+date: 2024-02-03T11:59
+slug: yoga-egitmeni-olmak
 draft: false
+legacyUrl: /yoga-egitmeni-olmak/
 ---
 
-![](/images/blog/sertfkopyalanamaz.jpg)
+![](/images/blog/Ekran%20Resmi%202026-07-21%2017.32.47.png "herkes için spor federasyonu")
 
 Yoga disiplini uzun yıllardır ülkemizde uygulanıyor, dersler, kurslar, stüdyolar mevcut. Ancak içeriği hala tam olarak anlaşılmış olmayabiliyor ve işin eğitim kısmının doğru bir şekilde oturması her şeyde olduğu gibi zaman alabiliyor.
 
