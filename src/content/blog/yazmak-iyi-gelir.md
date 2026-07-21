@@ -1,14 +1,30 @@
 ---
-title: "Yazmak İyi Gelir"
-date: 2022-09-23T08:30:37
-slug: "yazmak-iyi-gelir"
-categories: ["Kişisel Gelişim", "Kitap Önerisi", "Sağlıklı Yaşam", "Yaşam Stili"]
-tags: ["yaşamak", "kişisel gelişim", "kabuk the book", "kabuk", "yazı", "sanal yazı evi", "oto kurgu", "deneme", "öykü", "kitap", "defter", "kalem"]
-legacyUrl: "/yazmak-iyi-gelir/"
+title: Yazmak İyi Gelir
+date: 2022-09-23T08:30
+slug: yazmak-iyi-gelir
+categories:
+  - Kişisel Gelişim
+  - Kitap Önerisi
+  - Sağlıklı Yaşam
+  - Yaşam Stili
+tags:
+  - yaşamak
+  - kişisel gelişim
+  - kabuk the book
+  - kabuk
+  - yazı
+  - sanal yazı evi
+  - oto kurgu
+  - deneme
+  - öykü
+  - kitap
+  - defter
+  - kalem
 draft: false
+legacyUrl: /yazmak-iyi-gelir/
 ---
 
-![](/images/blog/9O6A7604-1024x683.jpg)
+![](/images/blog/yazanmel.png)
 
 Üç yaşımda okuma yazma öğrenmişim. Beş yaşımda ilkokula başlatmışlar. 17 yaşımda liseden mezun oldum, sonra bir üniversite, iki yüksek lisans bitirdim. Edebiyat, sinema, dil okudum. Editör, yazar, çevirmen, gazeteci oldum. Yetmedi, 30'lu yaşlarımdan sonra yoga ve meditasyon kolaylaştırıcısı ve yaşam koçu oldum. Bunların hiçbirini olmadım aslında, bunları yaptım.
 
