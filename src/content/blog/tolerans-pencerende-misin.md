@@ -1,22 +1,33 @@
 ---
-title: "Tolerans Pencerende misin?"
-date: 2021-06-20T20:33:59
-slug: "tolerans-pencerende-misin"
-categories: ["Kişisel Gelişim", "Kitap Önerisi", "meditasyon", "Sağlıklı Yaşam", "Yaşam Stili"]
-tags: ["gabor mate", "window of tolerance", "the wisdom of trauma", "travma", "zeynep aksoy", "sarah halliday", "Dr Louise Hansen", "tolerans penceresi", "psikoloji", "mindfulness"]
-legacyUrl: "/tolerans-pencerende-misin/"
+title: Tolerans Pencerende misin?
+date: 2021-06-20T20:33
+slug: tolerans-pencerende-misin
+categories:
+  - Kişisel Gelişim
+  - Kitap Önerisi
+  - meditasyon
+  - Sağlıklı Yaşam
+  - Yaşam Stili
+tags:
+  - gabor mate
+  - window of tolerance
+  - the wisdom of trauma
+  - travma
+  - zeynep aksoy
+  - sarah halliday
+  - Dr Louise Hansen
+  - tolerans penceresi
+  - psikoloji
+  - mindfulness
 draft: false
+legacyUrl: /tolerans-pencerende-misin/
 ---
 
-![](/images/blog/4636633238.jpg)
-
-Dr. Sarah Halliday  
- Senior Consultant Clinical Psychologist  
- Halliday Quinn Limited
+![](/images/blog/tolerans.png)
 
 **Gabor Maté** ismini ilk kez **Zeynep Aksoy**'dan duymuştum, yin yoga eğitmenlik eğitimi alırken.
 
-1944 Budapeşte doğumlu Maté, travmatik bir çocukluğa sahip olan, yirmili yaşlarının sonlarında yerel bir lisede tarih öğretmeni olarak çalışırken, aniden tıp eğitimi almaya karar veren, doktorluk hayatı boyunca uyuşturucu bağımlıları, AIDS hastaları ve zihinsel engellilerle çalışmayı tercih eden bir doktor. Maté, bestseller listelerine giren ve yirmiden fazla dile çevrilen dört kitap yazmış. 2011'de Northern British Columbia Üniversitesi'nden onur doktorası almış. Yayımlanmış kitapları: *A New Look at the Origins and Healing of Attention Deficit Disorder (1999), Hold On to Your Kids: Why Parents Need to Matter More Than Peers (Gordon Neufeld ile birlikte, 2005), In The Realm of Hungry Ghosts: Close Encounters With Addiction (2009).*
+1944 Budapeşte doğumlu Maté, travmatik bir çocukluğa sahip olan, yirmili yaşlarının sonlarında yerel bir lisede tarih öğretmeni olarak çalışırken, aniden tıp eğitimi almaya karar veren, doktorluk hayatı boyunca uyuşturucu bağımlıları, AIDS hastaları ve zihinsel engellilerle çalışmayı tercih eden bir doktor. Maté, bestseller listelerine giren ve yirmiden fazla dile çevrilen dört kitap yazmış. 2011'de Northern British Columbia Üniversitesi'nden onur doktorası almış. Yayımlanmış kitapları: _A New Look at the Origins and Healing of Attention Deficit Disorder (1999), Hold On to Your Kids: Why Parents Need to Matter More Than Peers (Gordon Neufeld ile birlikte, 2005), In The Realm of Hungry Ghosts: Close Encounters With Addiction (2009)._
 
 Kendisinin yakın zamanda bir belgeseli yayınlandı. The Wisdom of Trauma - Travmanın Bilgeliği olarak çevirebiliriz herhalde, [buradan inceleyebilirsiniz.](https://drgabormate.com/the-wisdom-of-trauma/)
 
@@ -60,4 +71,4 @@ Not: Pek çok lider, açıklık (clarity) olmadan güven sahibi. Açıklık olma
 
 **İnsan Hakları Aktivisti**
 
-*Çeviri: Melis Zararsız*
+_Çeviri: Melis Zararsız_
