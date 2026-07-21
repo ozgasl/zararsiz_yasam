@@ -1,11 +1,24 @@
 ---
-title: "TRT Radyo 1 Gecenin İçinden Programına Konuk oldum"
-date: 2021-11-11T19:45:51
-slug: "trt-radyo-1-gecenin-icinden-programina-konuk-oldum"
-categories: ["Sağlıklı Yaşam", "Yaşam Stili", "yoga", "video"]
-tags: ["radyo programı", "gecenin içinden", "trt radyo 1", "melis zararsız", "gülay oktar", "sağlıklı yaşam", "koçluk", "meditasyon", "büyükada"]
-legacyUrl: "/trt-radyo-1-gecenin-icinden-programina-konuk-oldum/"
+title: TRT Radyo 1 Gecenin İçinden Programına Konuk oldum
+date: 2021-11-11T19:45
+slug: trt-radyo-1-gecenin-icinden-programina-konuk-oldum
+categories:
+  - Sağlıklı Yaşam
+  - Yaşam Stili
+  - yoga
+  - video
+tags:
+  - radyo programı
+  - gecenin içinden
+  - trt radyo 1
+  - melis zararsız
+  - gülay oktar
+  - sağlıklı yaşam
+  - koçluk
+  - meditasyon
+  - büyükada
 draft: false
+legacyUrl: /trt-radyo-1-gecenin-icinden-programina-konuk-oldum/
 ---
 
 ![](/images/blog/geceninicinden1-1024x512.jpg)
@@ -24,4 +37,4 @@ Gecenin İçinden, dolu dolu, harika bir radyo programı bu arada, mutlaka takip
 
 Sohbetimizi buradan dinleyebilirsiniz:
 
-https://youtu.be/AdF\_F4zi2dA
+<iframe width="560" height="315" src="https://www.youtube.com/embed/AdF_F4zi2dA?si=WA2shbjD2cqizfGg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
