@@ -1,16 +1,34 @@
 ---
-title: "Mindfulness Temelli Koçluk"
-date: 2022-09-27T20:13:48
-slug: "mindfulness-temelli-kocluk"
-categories: ["Kişisel Gelişim", "meditasyon", "Sağlıklı Yaşam", "Yaşam Stili", "yoga", "koçluk"]
-tags: ["koçluk", "meditasyon", "mindfulness koçluk", "breathing mind", "yaşam koçu", "yoga", "sağlıklı yaşam", "iyi yaşam", "wellbeing", "budizm", "david cornwell", "zeynep aksoy"]
-legacyUrl: "/mindfulness-temelli-kocluk/"
+title: Mindfulness Temelli Koçluk
+date: 2022-09-27T20:13
+slug: mindfulness-temelli-kocluk
+categories:
+  - Kişisel Gelişim
+  - meditasyon
+  - Sağlıklı Yaşam
+  - Yaşam Stili
+  - yoga
+  - koçluk
+tags:
+  - koçluk
+  - meditasyon
+  - mindfulness koçluk
+  - breathing mind
+  - yaşam koçu
+  - yoga
+  - sağlıklı yaşam
+  - iyi yaşam
+  - wellbeing
+  - budizm
+  - david cornwell
+  - zeynep aksoy
 draft: false
+legacyUrl: /mindfulness-temelli-kocluk/
 ---
 
 2017 yılında Klinik Psikolog **Erkan Çifte**'nin hazırlamış olduğu **NLP temelli Koçluk sertifika programı**na katılmıştım. 2020 yılının sonlarına doğru ise **David Cornwell & Banu Çeçen** eğitmenliğinde I**CF onaylı Mindfulness temelli Koçluk sertifika programı**na katıldım ve anca bitirdim.
 
-![](/images/blog/kocluksertifika-1-1024x722.png)
+![](/images/blog/kocluksertifika.png)
 
 Her şeyin birbiriyle içiçe geçişini hayranlıkla izliyorum. Koçluk ilk zamanlar aklımda daha çok **sağlıklı yaşama, beslenmeye, fit olmaya dair** koçluk gibi oluşuyordu. Ben sağlıklı olmayı kendi hayatıma uygulamak adına öğrenmiştim, profesyonel koçluk eğitimi alarak sağlıklı yaşamak isteyenlere destek olmak istiyordum. Bir yandan kendi bedenime **meditasyon**un ve **yoga**nın iyi geldiğini fark etmiştim. Bunlar o zaman kafamda birbirinden çok ayrı yerlerde duruyorlardı. Şüphesiz yoga ve meditasyon da sağlıklı yaşama, iyi yaşama dair disiplinlerdi ancak bunları bir potada düşünemiyordum o zamanlar.
 
@@ -26,7 +44,7 @@ Zeynep hoca eşinden de bahsediyordu, eşinin programlarından da. Zira eşi **D
 
 Mindfulness Temelli Koçluk sertifika programını bitirmek, sertifika almak da öyle kolay değil. Tüm gerekleri yerine getirene kadar göbeğim çatladı ama değdi. Adeta bir okuldan mezun oldum ve çok mutlu, çok donanımlı hissediyorum kendimi. 2018'den beri profesyonel olarak koçluk yapıyor, 2020den beri meditasyon dersleri veriyorum ama artık tüm bu disiplinlerde kendimi daha donanımlı hissediyorum ve bu harmanlanma harika oldu.
 
-![](/images/blog/9O6A7706-1024x683.jpg)
+![](/images/blog/kocmel.jpeg)
 
 **Mindfulness Temelli Koç Ne Yapar?**
 
