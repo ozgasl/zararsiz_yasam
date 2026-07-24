@@ -91,6 +91,21 @@ const base = import.meta.env.BASE_URL;
     els.forEach(function(el) { io.observe(el); });
   })();
   (function() {
+    // Bir bölüme link ile gelindiğinde (#kitap-kulubu gibi), o bölüm hemen
+    // görünür olsun ve görseller yüklenip sayfa yüksekliği değiştikten sonra
+    // doğru konuma tekrar kaydırılsın (scroll-behavior:smooth + gecikmeli
+    // görsel yüklemeleri ilk kaymayı bozabiliyor).
+    if (!location.hash) return;
+    var target;
+    try { target = document.querySelector(location.hash); } catch (e) { return; }
+    if (!target) return;
+    target.classList.add('in');
+    function jump() { target.scrollIntoView({ block: 'start' }); }
+    jump();
+    window.addEventListener('load', jump);
+    setTimeout(jump, 400);
+  })();
+  (function() {
     var burger = document.getElementById('burger');
     var menu = document.getElementById('menu');
     if (!burger || !menu) return;
