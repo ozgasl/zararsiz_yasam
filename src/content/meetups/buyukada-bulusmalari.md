@@ -6,3 +6,5 @@ draft: true
 ---
 
 ![](/images/blog/kitap_kulubu_duo.webp)
+
+Kitap kulubüne hoş geldiniz!
