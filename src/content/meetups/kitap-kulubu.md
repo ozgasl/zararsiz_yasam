@@ -1,8 +1,8 @@
 ---
-title: "Kitap Kulübü"
-icon: "kitap"
+title: kahvaltı vs
+icon: kitap
 order: 1
-draft: false
+draft: true
 ---
 
 Seçtiğimiz bir kitabı birlikte okuyup üzerine konuşuyoruz. Bazen edebiyat, bazen psikoloji, bazen yaşam üzerine farklı pencereler açıyoruz.
