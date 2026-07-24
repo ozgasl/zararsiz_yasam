@@ -1,9 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import EventTicker from "../components/EventTicker.astro";
 import { getCollection } from "astro:content";
 const posts = (await getCollection("blog", ({ data }) => !data.draft))
   .sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
-const latest = posts.slice(0, 4);
+const latest = posts.slice(0, 3);
 const base = import.meta.env.BASE_URL;
 ---
 <BaseLayout>
@@ -16,6 +17,7 @@ const base = import.meta.env.BASE_URL;
       <h1>Farkındalıkla kendine dönüş yolculuğuna hoş geldin</h1>
       <p class="lead">Mindfulness, meditasyon ve yin yoga ekseninde bilinçli bir yaşam için profesyonel çalışmalar, makaleler ve buluşmalar.</p>
       <div class="hero-actions">
+        <a class="btn btn-outline" href={`${base}hakkimda/`}>Hikayemi Oku →</a>
         <a class="btn btn-primary" href={`${base}birlikte-calisalim/`}>Birlikte Çalışalım →</a>
         <a class="btn btn-outline" href={`${base}kitap/`}>Kabuk'u Keşfet →</a>
       </div>
@@ -49,6 +51,17 @@ const base = import.meta.env.BASE_URL;
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- SÖYLEŞİLER ÖZET -->
+<section class="soylesi-ozet reveal">
+  <div class="wrap">
+    <div class="soylesi-head">
+      <p class="eyebrow">Söyleşiler ve İmza Günleri</p>
+      <a class="txtlink" href={`${base}kitap/`}>Tümünü Gör →</a>
+    </div>
+    <EventTicker variant="compact" limit={3} />
   </div>
 </section>
 
@@ -96,7 +109,7 @@ const base = import.meta.env.BASE_URL;
         </a>
       </div>
       <div class="mid-card banner-frame">
-        <p class="banner-title">Son Yayınım</p>
+        <p class="banner-title">Son Podcast Yayınım</p>
         <iframe class="podcast-embed" src="https://open.spotify.com/embed/show/3nRY5vcYONoctjQOAs4J9J?utm_source=generator" width="100%" height="152" frameborder="0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="Zararsız Yaşam Podcast"></iframe>
       </div>
     </div>
@@ -117,16 +130,16 @@ const base = import.meta.env.BASE_URL;
   </div>
 </section>
 
-<!-- BLOG + ABOUT -->
+<!-- BLOG -->
 <section class="lower">
-  <div class="wrap lower-grid">
+  <div class="wrap">
     <div class="reveal">
       <div class="blog-head">
         <h2>Blog Yazıları</h2>
         <a class="txtlink" href={`${base}blog/`}>Tüm Yazılar →</a>
       </div>
       
-<div class="posts">
+<div class="posts posts-3">
         {latest.map((p) => (
           <article class="post">
             <div class="ph">{p.data.cover ? <img src={`${base}${p.data.cover.replace(/^\//, "")}`} alt={p.data.title} loading="lazy"> : <svg viewBox="0 0 24 24"><path d="M4 16c4-2 5-7 5-10 3 2 6 6 6 10"/></svg>}</div>
@@ -137,12 +150,6 @@ const base = import.meta.env.BASE_URL;
         ))}
       </div>
     </div>
-    <aside class="about reveal">
-      <div class="portrait"><img src={`${base}assets/img/melisai6.jpg`} alt="Melis Zararsız"></div>
-      <h2>Merhaba, ben Melis.</h2>
-      <p>Mindfulness temelli koçluk, yin yoga ve meditasyon eğitmenliği yapıyorum. Yanısıra, çeviri ve metin yazarlığı yapıyorum.</p>
-      <a class="txtlink" href={`${base}hakkimda/`}>Hikayemi oku →</a>
-    </aside>
   </div>
 </section>
 

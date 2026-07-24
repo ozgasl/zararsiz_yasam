@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import EventTicker from "../components/EventTicker.astro";
 const base = import.meta.env.BASE_URL;
 ---
 <BaseLayout title="Kabuk — Bir Dönüşüm Hikâyesi — Zararsız Yaşam">
@@ -16,12 +17,46 @@ const base = import.meta.env.BASE_URL;
         <h1 class="kitap-h1">Kabuk</h1>
         <p>Geçmişinin yüklerinin altında kaldığını hisseden, kabuğunu yerinden oynatmaya cesaret eden bir kadının şeffaf ve dönüşmeye devam eden yolculuğu.</p>
         <div class="book-actions">
-          <span class="badge-soon">Yakında</span>
+          <button type="button" class="btn btn-primary" id="satin-al-btn" aria-haspopup="dialog" aria-controls="satin-al-modal">Satın Al</button>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- SATIN AL POPUP -->
+<div class="sa-overlay" id="satin-al-modal" role="dialog" aria-modal="true" aria-labelledby="sa-title" hidden>
+  <div class="sa-modal">
+    <button type="button" class="sa-close" id="satin-al-close" aria-label="Kapat">✕</button>
+    <p class="eyebrow" id="sa-title">Kabuk'u Nereden Alabilirim?</p>
+    <p class="sa-lead">Kabuk şu an satışta değil. Satışa çıktığında aşağıdaki kitapçılardan edinebileceksiniz.</p>
+    <div class="sa-stores">
+      <span class="sa-store" aria-disabled="true">
+        <span class="sa-store-name">DR</span>
+        <span class="sa-soon">Yakında</span>
+      </span>
+      <span class="sa-store" aria-disabled="true">
+        <span class="sa-store-name">idefix</span>
+        <span class="sa-soon">Yakında</span>
+      </span>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var openBtn = document.getElementById('satin-al-btn');
+    var closeBtn = document.getElementById('satin-al-close');
+    var modal = document.getElementById('satin-al-modal');
+    if (!openBtn || !modal) return;
+    function open() { modal.hidden = false; document.body.style.overflow = 'hidden'; }
+    function close() { modal.hidden = true; document.body.style.overflow = ''; }
+    openBtn.addEventListener('click', open);
+    closeBtn && closeBtn.addEventListener('click', close);
+    modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  })();
+</script>
 
 <section class="kitap-sec">
   <div class="wrap kitap-wrap">
@@ -62,12 +97,13 @@ const base = import.meta.env.BASE_URL;
 </section>
 
 <section style="padding:0 0 60px">
-  <div class="wrap" style="max-width:720px">
-    <div class="testi reveal">
-      <p class="eyebrow">Söyleşiler ve Etkinlikler</p>
-      <span class="q">&ldquo;</span>
-      <blockquote>Yaklaşan söyleşiler, imza günleri ve kitap kulübü buluşmaları için duyurular yakında.</blockquote>
-      <a class="txtlink" href={`${base}bulusmalar/`} style="color:#F1EAD9;margin-top:16px;display:inline-flex">Buluşmalar →</a>
+  <div class="wrap">
+    <p class="eyebrow reveal" style="text-align:center">Söyleşiler ve İmza Günleri</p>
+    <div class="reveal">
+      <EventTicker variant="full" />
+    </div>
+    <div style="text-align:center;margin-top:20px">
+      <a class="txtlink" href={`${base}bulusmalar/`}>Tüm Buluşmalar →</a>
     </div>
   </div>
 </section>

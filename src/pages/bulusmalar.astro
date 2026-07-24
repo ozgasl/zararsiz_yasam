@@ -1,6 +1,26 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
 const base = import.meta.env.BASE_URL;
+
+const ICONS: Record<string, string> = {
+  kitap: '<path d="M4 5h16v14H4zM4 9h16"/>',
+  yazi: '<path d="M6 4h9l3 3v13H6zM9 12h6M9 16h4"/>',
+  sohbet: '<path d="M12 3v18M5 8c3 0 5 2 7 4M19 8c-3 0-5 2-7 4"/>',
+  sanat: '<path d="M4 18l5-7 4 5 3-4 4 6zM4 5h16v13H4z"/>',
+  ada: '<path d="M3 12h18M12 3a9 9 0 010 18M12 3c-2 2-3 5-3 9s1 7 3 9M12 3c2 2 3 5 3 9s-1 7-3 9"/>',
+  mikrofon: '<path d="M12 3a3 3 0 00-3 3v6a3 3 0 006 0V6a3 3 0 00-3-3z"/><path d="M5 11a7 7 0 0014 0M12 18v3"/>',
+};
+
+const meetupEntries = (await getCollection("meetups", ({ data }) => !data.draft))
+  .sort((a, b) => a.data.order - b.data.order);
+
+const meetups = await Promise.all(
+  meetupEntries.map(async (m) => {
+    const { Content } = await m.render();
+    return { title: m.data.title, icon: ICONS[m.data.icon] ?? ICONS.kitap, Content };
+  })
+);
 ---
 <BaseLayout title="Buluşmalar — Zararsız Yaşam">
 
@@ -28,31 +48,13 @@ const base = import.meta.env.BASE_URL;
     <p class="eyebrow reveal" style="text-align:center">Etkinlikler</p>
     <h2 class="reveal">Neler Yapıyoruz?</h2>
     <div class="services">
-      <div class="service reveal">
-        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM4 9h16"/></svg></div>
-        <h3>Kitap Kulübü</h3>
-        <p>Seçtiğimiz bir kitabı birlikte okuyup üzerine konuşuyoruz. Bazen edebiyat, bazen psikoloji, bazen yaşam üzerine farklı pencereler açıyoruz.</p>
-      </div>
-      <div class="service reveal">
-        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M6 4h9l3 3v13H6zM9 12h6M9 16h4"/></svg></div>
-        <h3>Yazı ve Meditasyon Atölyeleri</h3>
-        <p>Kısa meditasyon pratiklerinin ardından rahatlatıcı yazı egzersizleri. Kelimelerin ve sessizliğin birbirine eşlik ettiği çalışmalar. Yazma kabiliyeti olması gerekmiyor.</p>
-      </div>
-      <div class="service reveal">
-        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 8c3 0 5 2 7 4M19 8c-3 0-5 2-7 4"/></svg></div>
-        <h3>Mindfulness Sohbetleri</h3>
-        <p>Günlük hayatın içindeki farkındalık pratiklerini konuşuyoruz. Stres, ilişkiler, alışkanlıklar, öz şefkat ve yaşamın farklı dönemleri üzerine paylaşımlar yapıyoruz.</p>
-      </div>
-      <div class="service reveal">
-        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M4 18l5-7 4 5 3-4 4 6zM4 5h16v13H4z"/></svg></div>
-        <h3>Sanat ve Kültür Buluşmaları</h3>
-        <p>Bir film, bir sergi, bir makale ya da bir sanat eseri üzerinden sohbet ediyoruz. Bazen bir konuğu ağırlıyor, bazen sadece birlikte düşünüyoruz.</p>
-      </div>
-      <div class="service reveal">
-        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M3 12h18M12 3a9 9 0 010 18M12 3c-2 2-3 5-3 9s1 7 3 9M12 3c2 2 3 5 3 9s-1 7-3 9"/></svg></div>
-        <h3>Büyükada Buluşmaları</h3>
-        <p>Yürüyüşler, kahvaltı buluşmaları, meditasyon çalışmaları ve küçük grup etkinlikleri. Büyükada'nın yavaş ritminden ilham alan buluşmalar.</p>
-      </div>
+      {meetups.map(({ title, icon, Content }) => (
+        <div class="service reveal">
+          <div class="svc-ico" set:html={`<svg viewBox="0 0 24 24">${icon}</svg>`} />
+          <h3>{title}</h3>
+          <div class="svc-text"><Content /></div>
+        </div>
+      ))}
     </div>
   </div>
 </section>
