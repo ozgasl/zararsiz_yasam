@@ -130,8 +130,11 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,238,226,.86);backdro
 .meet .meet-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:24px}
 .meet h2{font-size:2rem}
 .meet-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.meet-card .ph{aspect-ratio:1/1;border-radius:16px;margin-bottom:10px;position:relative;overflow:hidden}
-.meet-card .label{font-size:.98rem;color:var(--ink);line-height:1.25}
+.meet-card{display:block;color:inherit;text-decoration:none}
+.meet-card .ph{aspect-ratio:1/1;border-radius:16px;margin-bottom:10px;position:relative;overflow:hidden;transition:transform .25s}
+.meet-card:hover .ph{transform:translateY(-4px)}
+.meet-card:hover .label{color:var(--wine)}
+.meet-card .label{font-size:.98rem;color:var(--ink);line-height:1.25;transition:color .2s}
 
 /* photo placeholders */
 .ph{background:linear-gradient(135deg,var(--cream2),var(--sand));display:flex;align-items:center;justify-content:center}
