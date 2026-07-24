@@ -81,6 +81,17 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,238,226,.86);backdro
 .badge-soon{display:inline-flex;align-items:center;gap:.5em;padding:.6em 1.2em;border-radius:999px;border:1px solid var(--wine);color:var(--wine);font-family:"EB Garamond",serif;letter-spacing:.08em;text-transform:uppercase;font-size:.82rem}
 .badge-soon::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--wine);opacity:.6}
 
+/* Satın Al popup */
+.sa-overlay{position:fixed;inset:0;background:rgba(46,37,29,.55);display:flex;align-items:center;justify-content:center;padding:20px;z-index:1000}
+.sa-overlay[hidden]{display:none}
+.sa-modal{position:relative;background:var(--cream,#F4EEE2);border-radius:24px;padding:40px 36px;max-width:420px;width:100%;text-align:center;box-shadow:0 30px 60px -20px rgba(46,37,29,.5)}
+.sa-lead{color:var(--muted);font-size:1rem;margin:12px 0 26px}
+.sa-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:1.1rem;color:var(--muted);cursor:pointer;line-height:1;padding:6px}
+.sa-stores{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.sa-store{display:flex;flex-direction:column;align-items:center;gap:8px;padding:18px 24px;border:1px solid var(--line);border-radius:16px;opacity:.55;min-width:110px}
+.sa-store-name{font-family:"Cormorant Garamond",serif;font-size:1.3rem;font-weight:600;color:var(--wine)}
+.sa-soon{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
 /* ---------- why ---------- */
 .why{padding:64px 0 30px;text-align:center}
 .why h2{font-size:clamp(2.1rem,3.6vw,3rem);margin-bottom:20px}
@@ -93,6 +104,10 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,238,226,.86);backdro
 .service p{color:var(--muted);margin-bottom:16px;font-size:1.02rem}
 
 /* ---------- testimonial + meetups ---------- */
+.soylesi-ozet{background:var(--wine);color:#E9D9CB;padding:44px 0}
+.soylesi-ozet .eyebrow{color:#D8B9A4}
+.soylesi-ozet .txtlink{color:#F4E7D9}
+.soylesi-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:20px}
 .mid{padding:60px 0}
 .mid-row{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:24px;align-items:stretch;margin-bottom:48px}
 .testi{background:var(--olive);color:#F1EAD9;border-radius:26px;padding:40px 38px;display:flex;flex-direction:column;justify-content:center}
@@ -131,6 +146,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,238,226,.86);backdro
 .blog-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:24px}
 .blog-head h2{font-size:2rem}
 .posts{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.posts-3{grid-template-columns:repeat(3,1fr)}
 .post .ph{aspect-ratio:4/3;border-radius:14px;margin-bottom:12px}
 .post .cat{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600;display:block;margin-bottom:6px}
 .post h3{font-size:1.35rem;margin-bottom:8px;line-height:1.15}
@@ -185,6 +201,8 @@ footer{background:var(--wine);color:#E9D9CB}
   .services{grid-template-columns:1fr;gap:30px}
   .mid-row{grid-template-columns:1fr;margin-bottom:32px}
   .lower-grid{grid-template-columns:1fr}
+  .posts-3{grid-template-columns:repeat(2,1fr)}
+  .soylesi-head{flex-direction:column;align-items:flex-start;gap:8px}
   .news-grid{grid-template-columns:1fr;gap:18px}
   .foot{grid-template-columns:1fr;gap:34px}
 }

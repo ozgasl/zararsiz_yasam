@@ -59,3 +59,93 @@ collections:
           widget: "markdown",
           hint: "Fotoğraf eklemek için araç çubuğundaki resim simgesine tıklayıp bilgisayarınızdan veya telefonunuzdan seçebilirsiniz.",
         }
+
+  - name: "events"
+    label: "Söyleşiler / İmza Günleri"
+    label_singular: "Etkinlik"
+    folder: "src/content/events"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: title
+    summary: "{{title}} — {{date}}"
+    sortable_fields: ["date", "title"]
+    fields:
+      - { label: "Başlık", name: "title", widget: "string" }
+      - { label: "Tarih", name: "date", widget: "datetime" }
+      - {
+          label: "Yer",
+          name: "location",
+          widget: "string",
+          required: false,
+          hint: "Örn: İstanbul, Büyükada, Online",
+        }
+      - {
+          label: "Detay/Bilet Linki",
+          name: "link",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "Görsel",
+          name: "image",
+          widget: "image",
+          required: false,
+        }
+      - {
+          label: "Taslak (yayınlanmasın)",
+          name: "draft",
+          widget: "boolean",
+          default: true,
+          hint: "İşaretliyse etkinlik sitede görünmez.",
+        }
+      - {
+          label: "Açıklama (opsiyonel)",
+          name: "body",
+          widget: "markdown",
+          required: false,
+        }
+
+  - name: "meetups"
+    label: "Buluşmalar"
+    label_singular: "Buluşma Türü"
+    folder: "src/content/meetups"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: title
+    summary: "{{title}}"
+    sortable_fields: ["order", "title"]
+    fields:
+      - { label: "Başlık", name: "title", widget: "string" }
+      - {
+          label: "İkon",
+          name: "icon",
+          widget: "select",
+          default: "kitap",
+          options:
+            [
+              { label: "Kitap", value: "kitap" },
+              { label: "Yazı / Kalem", value: "yazi" },
+              { label: "Sohbet", value: "sohbet" },
+              { label: "Sanat", value: "sanat" },
+              { label: "Ada / Yürüyüş", value: "ada" },
+              { label: "Mikrofon (Konuk)", value: "mikrofon" },
+            ],
+        }
+      - {
+          label: "Sıra",
+          name: "order",
+          widget: "number",
+          default: 0,
+          hint: "Küçük sayı önce gösterilir (1, 2, 3...)",
+        }
+      - {
+          label: "Taslak (yayınlanmasın)",
+          name: "draft",
+          widget: "boolean",
+          default: false,
+        }
+      - {
+          label: "Açıklama",
+          name: "body",
+          widget: "markdown",
+        }
