@@ -2,10 +2,22 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import EventTicker from "../components/EventTicker.astro";
 import { getCollection } from "astro:content";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 const posts = (await getCollection("blog", ({ data }) => !data.draft))
   .sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
 const latest = posts.slice(0, 3);
 const base = import.meta.env.BASE_URL;
+
+// scripts/fetch-youtube.mjs tarafından build öncesi üretilir (varsa).
+// Dosya yoksa (ör. YOUTUBE_CHANNEL_ID henüz tanımlı değilse) sabit banner'a düşer.
+let latestVideo = null;
+try {
+  const p = join(process.cwd(), "src/data/youtube-latest.json");
+  latestVideo = JSON.parse(readFileSync(p, "utf-8"));
+} catch {
+  latestVideo = null;
+}
 ---
 <BaseLayout>
 
@@ -103,10 +115,16 @@ const base = import.meta.env.BASE_URL;
         <a class="txtlink" href={`${base}bonservisler/`} style="color:#F4E7D9">Tüm Yorumlar →</a>
       </div>
       <div class="mid-card banner-frame">
-        <p class="banner-title">Youtube Sayfam</p>
-        <a class="banner-media" href="https://www.youtube.com/c/zararsizyasam" target="_blank" rel="noopener" aria-label="Zararsız Yaşam YouTube kanalı">
-          <img src={`${base}assets/img/youtube-banner.jpg`} alt="Zararsız Yaşam YouTube kanalı">
-        </a>
+        <p class="banner-title">Son Videom</p>
+        {latestVideo ? (
+          <a class="banner-media" href={latestVideo.url} target="_blank" rel="noopener" aria-label={latestVideo.title || "Zararsız Yaşam YouTube kanalı"}>
+            <img src={latestVideo.thumbnail} alt={latestVideo.title || "Zararsız Yaşam son video"} loading="lazy">
+          </a>
+        ) : (
+          <a class="banner-media" href="https://www.youtube.com/c/zararsizyasam" target="_blank" rel="noopener" aria-label="Zararsız Yaşam YouTube kanalı">
+            <img src={`${base}assets/img/youtube-banner.jpg`} alt="Zararsız Yaşam YouTube kanalı">
+          </a>
+        )}
       </div>
       <div class="mid-card banner-frame">
         <p class="banner-title">Son Podcast Yayınım</p>
