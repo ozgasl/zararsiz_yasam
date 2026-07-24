@@ -1,8 +1,8 @@
 ---
-title: "Büyükada Buluşmaları"
-icon: "ada"
-order: 6
-draft: false
+title: Kitap Kulübü
+icon: kitap
+order: 1
+draft: true
 ---
 
-Yürüyüşler, kahvaltı buluşmaları, meditasyon çalışmaları ve küçük grup etkinlikleri. Büyükada'nın yavaş ritminden ilham alan buluşmalar.
+![](/images/blog/20260724-191235.png)
