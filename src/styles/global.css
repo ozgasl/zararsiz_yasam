@@ -121,7 +121,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,238,226,.86);backdro
 .mid-card.testi-teaser{background:var(--olive);color:#F1EAD9}
 .mid-card.testi-teaser .eyebrow{color:#D8D3BE;margin-bottom:10px}
 .mid-card.testi-teaser p{color:#E6E1D0}
-.mid-card.banner-frame{background:var(--cream2);border:1px solid var(--line);padding:18px 20px;gap:12px}
+.mid-card.banner-frame{background:var(--cream2);border:1px solid var(--line);padding:18px 20px;gap:12px;justify-content:flex-start}
 .banner-title{font-family:"Cormorant Garamond",serif;font-size:1.15rem;color:var(--wine);font-weight:500;margin:0}
 .banner-media{display:block;border-radius:14px;overflow:hidden;flex:1;background:linear-gradient(135deg,var(--cream2),var(--sand))}
 .banner-media img{width:100%;height:100%;min-height:152px;object-fit:contain;display:block;transition:transform .3s}
