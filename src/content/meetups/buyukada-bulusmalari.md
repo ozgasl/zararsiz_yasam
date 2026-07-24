@@ -5,4 +5,4 @@ order: 1
 draft: true
 ---
 
-![](/images/blog/20260724-191235.png)
+![](/images/blog/kitap_kulubu_duo.webp)
