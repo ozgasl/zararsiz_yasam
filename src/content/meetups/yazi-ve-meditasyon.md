@@ -1,7 +1,7 @@
 ---
 title: Yazı ve Meditasyon
 icon: yazi
-order: 2
+order: 6
 draft: false
 ---
 
