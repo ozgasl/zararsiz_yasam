@@ -5,8 +5,6 @@ order: 1
 draft: false
 ---
 
-Kitap Kulübü
-
 Zararsız Yaşam Kitap Kulübü'nde her ay bir kitap seçiyor, belirlediğimiz bir mekânda buluşuyor ve kitap üzerine sohbet ediyoruz.
 
 Seçtiğimiz kitaplar öncelikle iyi yaşam, esenlik, mindfulness, meditasyon, nefes, psikoloji ve insanın kendini tanıma yolculuğu gibi temalara odaklanıyor. Zaman zaman bu çerçeveyi besleyecek romanlara, denemelere ya da farklı disiplinlerden eserlere de yer verebiliriz.
