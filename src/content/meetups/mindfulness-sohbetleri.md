@@ -1,7 +1,7 @@
 ---
 title: Mindfulness Sohbetleri
 icon: sohbet
-order: 3
+order: 4
 draft: false
 ---
 
