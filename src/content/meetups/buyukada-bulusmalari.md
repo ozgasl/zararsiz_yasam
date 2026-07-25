@@ -5,8 +5,6 @@ order: 1
 draft: false
 ---
 
-![](/images/blog/kitap_kulubu_duo.webp)
-
 Kitap Kulübü
 
 Zararsız Yaşam Kitap Kulübü'nde her ay bir kitap seçiyor, belirlediğimiz bir mekânda buluşuyor ve kitap üzerine sohbet ediyoruz.
