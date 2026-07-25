@@ -2,7 +2,7 @@
 title: Kahvaltı - Yürüyüş - Meditasyon
 icon: kitap
 order: 3
-draft: true
+draft: false
 ---
 
 Bu buluşmalarda Büyükada'da biraraya geliyor,  güne sağlıklı bir kahvaltı ile başlıyoruz. Kahvaltı sırasında iyi yaşam,  esenlik, mindfulness ve gündelik hayatta kendimize nasıl daha fazla alan açabileceğimiz üzerine sohbet ediyoruz.
