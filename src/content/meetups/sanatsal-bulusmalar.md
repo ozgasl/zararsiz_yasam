@@ -1,6 +1,7 @@
 ---
 title: Sanatsal Buluşmalar
 icon: sanat
+category: Sanatsal Buluşmalar
 order: 5
 draft: false
 ---

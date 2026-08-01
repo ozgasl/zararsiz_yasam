@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import EventTicker from "../components/EventTicker.astro";
+import Duyurular from "../components/Duyurular.astro";
+import { slugify } from "../utils.js";
 import { getCollection } from "astro:content";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -20,14 +21,29 @@ const MEETUP_IMAGES: Record<string, string> = {
   ada: "kahvalti-yuruyus.png",
   mikrofon: "konuk-konusmacilar.png",
 };
+const categoryCounts = new Map<string, number>();
+for (const post of posts) {
+  for (const cat of post.data.categories ?? []) {
+    const key = slugify(cat);
+    categoryCounts.set(key, (categoryCounts.get(key) ?? 0) + 1);
+  }
+}
+
 const meetups = (await getCollection("meetups", ({ data }) => !data.draft))
   .sort((a, b) => a.data.order - b.data.order)
-  .map((m, i) => ({
-    slug: m.slug,
-    title: m.data.title,
-    image: MEETUP_IMAGES[m.data.icon] ?? "kitap-kulubu.png",
-    alt: i % 2 === 1,
-  }));
+  .map((m, i) => {
+    // Yazısı olan buluşmalar doğrudan kendi kategori arşivine, henüz yazısı
+    // olmayanlar Buluşmalar sayfasındaki açıklamasına gider.
+    const catSlug = m.data.category ? slugify(m.data.category) : null;
+    const hasPosts = catSlug ? (categoryCounts.get(catSlug) ?? 0) > 0 : false;
+    return {
+      slug: m.slug,
+      title: m.data.title,
+      image: MEETUP_IMAGES[m.data.icon] ?? "kitap-kulubu.png",
+      alt: i % 2 === 1,
+      href: hasPosts ? `${base}kategori/${catSlug}/` : `${base}bulusmalar/#${m.slug}`,
+    };
+  });
 
 // scripts/fetch-youtube.mjs tarafından build öncesi üretilir (varsa).
 // Dosya yoksa (ör. YOUTUBE_CHANNEL_ID henüz tanımlı değilse) sabit banner'a düşer.
@@ -46,16 +62,32 @@ try {
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="reveal">
-      <h1>Farkındalıkla kendine dönüş yolculuğuna hoş geldin</h1>
+      <h1>Farkındalıkla kendinize dönüş yolculuğuna hoş geldiniz</h1>
       <p class="lead">Mindfulness, meditasyon ve yin yoga ekseninde bilinçli bir yaşam için profesyonel çalışmalar, makaleler ve buluşmalar.</p>
       <div class="hero-actions">
-        <a class="btn btn-outline" href={`${base}hakkimda/`}>Hikayemi Oku →</a>
+        <a class="btn btn-outline" href={`${base}hakkimda/`}>Ben Kimim →</a>
+        <a class="btn btn-outline" href={`${base}kitap/`}>İlk Kitabım →</a>
         <a class="btn btn-primary" href={`${base}birlikte-calisalim/`}>Birlikte Çalışalım →</a>
-        <a class="btn btn-outline" href={`${base}kitap/`}>Kabuk'u Keşfet →</a>
       </div>
     </div>
     <div class="hero-media reveal">
-      <div class="hero-photo"><img src={`${base}assets/img/buyukada-melis.jpg`} alt="Melis Zararsız, Büyükada"></div>
+      <div class="hero-photo">
+        <picture>
+          <source
+            type="image/webp"
+            srcset={`${base}assets/img/buyukada-melis.webp 396w, ${base}assets/img/buyukada-melis@2x.webp 792w`}
+            sizes="(max-width: 900px) 360px, 420px"
+          />
+          <img
+            src={`${base}assets/img/buyukada-melis.jpg`}
+            srcset={`${base}assets/img/buyukada-melis.jpg 396w, ${base}assets/img/buyukada-melis@2x.jpg 792w`}
+            sizes="(max-width: 900px) 360px, 420px"
+            width="396"
+            height="607"
+            alt="Melis Zararsız, Büyükada"
+          />
+        </picture>
+      </div>
       <div class="pullquote">
         <span class="q">&ldquo;</span>
         <p>Yavaşlamak, esenlikli bir yaşam için insanın kendine vereceği en güzel hediye…</p>
@@ -79,23 +111,15 @@ try {
         <div class="book-actions">
           <span class="badge-soon">Yakında</span>
           <a class="txtlink" href={`${base}kitap/`}>Kitap Hakkında →</a>
-          <a class="txtlink" href={`${base}bulusmalar/`}>Söyleşiler →</a>
+          <a class="txtlink" href={`${base}bulusmalar/#konuk-konusmacilar`}>İmza Günleri →</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SÖYLEŞİLER ÖZET -->
-<section class="soylesi-ozet reveal">
-  <div class="wrap">
-    <div class="soylesi-head">
-      <p class="eyebrow">Söyleşiler ve İmza Günleri</p>
-      <a class="txtlink" href={`${base}kitap/`}>Tümünü Gör →</a>
-    </div>
-    <EventTicker variant="compact" limit={3} />
-  </div>
-</section>
+<!-- DUYURULAR (kayan bant — duyuru yoksa hiç görünmez) -->
+<Duyurular variant="band" />
 
 <!-- WHY -->
 <section class="why">
@@ -158,7 +182,7 @@ try {
       </div>
       <div class="meet-grid">
         {meetups.map((m) => (
-          <a class="meet-card" href={`${base}bulusmalar/#${m.slug}`}>
+          <a class="meet-card" href={m.href}>
             <div class={`ph${m.alt ? " alt" : ""}`}><img src={`${base}assets/img/bulusmalar/${m.image}`} alt={m.title} loading="lazy"></div>
             <div class="label">{m.title}</div>
           </a>

@@ -1,6 +1,7 @@
 ---
 title: Yazı ve Meditasyon
 icon: yazi
+category: Yazı ve Meditasyon
 order: 6
 draft: false
 ---

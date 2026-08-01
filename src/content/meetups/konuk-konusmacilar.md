@@ -1,6 +1,7 @@
 ---
 title: Konuk Konuşmacılarla Sohbetler
 icon: mikrofon
+category: Konuk Konuşmacılar
 order: 2
 draft: false
 ---

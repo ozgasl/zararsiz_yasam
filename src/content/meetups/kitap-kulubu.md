@@ -1,14 +1,21 @@
 ---
-title: Kahvaltı - Yürüyüş - Meditasyon
+title: Kitap Kulübü
 icon: kitap
-order: 3
+category: Kitap Kulübü
+order: 1
 draft: false
 ---
 
-Bu buluşmalarda Büyükada'da biraraya geliyor,  güne sağlıklı bir kahvaltı ile başlıyoruz. Kahvaltı sırasında iyi yaşam,  esenlik, mindfulness ve gündelik hayatta kendimize nasıl daha fazla alan açabileceğimiz üzerine sohbet ediyoruz.
+Zararsız Yaşam Kitap Kulübü'nde her ay bir kitap seçiyor, belirlediğimiz bir mekânda buluşuyor ve kitap üzerine sohbet ediyoruz.
 
-Ardından adanın sakin sokaklarında kısa ama keyifli bir yürüyüşe çıkıyor, yürüyüş sonrası ise rehberli bir meditasyon ile programı tamamlıyoruz.
+Seçtiğimiz kitaplar öncelikle iyi yaşam, esenlik, mindfulness, meditasyon, nefes, psikoloji ve insanın kendini tanıma yolculuğu gibi temalara odaklanıyor. Zaman zaman bu çerçeveyi besleyecek romanlara, denemelere ya da farklı disiplinlerden eserlere de yer verebiliriz.
 
-Amacımız bir şey başarmak,  ya da yoğun bir programı tamamlamak değil, birkaç saatliğine şehirden uzaklaşmak,  bedenimizi ve zihnimizi dinlemek, birlikte nefes alabileceğimiz sade bir alan yaratmak.
+Amacımız bir kitabı analiz etmekten çok, onun bizde bıraktığı izleri birlikte keşfetmek. Her buluşma, farklı bakış açılarıyla zenginleşen samimi bir sohbet alanı sunuyor.
 
-**Kahvaltı ücretlidir. İlk buluşmanın tarihi, buluşma noktası ve kahvaltı ücreti yakında burada duyurulacak.**
+İster ilk kez katılıyor olun ister uzun zamandır bizimle olun, merak eden, dinlemeyi ve paylaşmayı seven herkese kapımız açık.
+
+\*Katılım ücretsizdir. Dilerseniz etkinlik sırasında bulunacak bağış kutusuna katkıda bulunarak bu buluşmaların devamına destek olabilirsiniz.
+
+\*Buluşmayı ağırlayan mekânı desteklemek adına etkinlik boyunca en az bir içecek sipariş etmenizi rica ediyoruz.
+
+\*İlk buluşmanın tarihi, mekân ve seçilecek kitap yakında burada duyurulacak.

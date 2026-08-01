@@ -57,52 +57,59 @@ collections:
           label: "İçerik",
           name: "body",
           widget: "markdown",
-          hint: "Fotoğraf eklemek için araç çubuğundaki resim simgesine tıklayıp bilgisayarınızdan veya telefonunuzdan seçebilirsiniz.",
+          # Sveltia'nın zengin metin editörü panoya kopyalanan RESMİ de kabul
+          # ediyor. Word'den kopyalarken Word metnin bir de görüntüsünü panoya
+          # koyduğu için editör metin yerine o görüntüyü ekliyordu. Düz metin
+          # editörünü öne alıyoruz; yapıştırma artık metin olarak geliyor.
+          modes: ["raw", "rich_text"],
+          hint: "Word'den yapıştırmak için bu sade metin kutusunu kullanın. Kalın yazı **iki yıldız** arasına, ara başlık ## ile yazılır. Fotoğraf eklemek isterseniz sağ üstteki editör seçicisinden zengin metin görünümüne geçip resim simgesini kullanabilirsiniz.",
         }
 
+  # Duyurular yalnızca anasayfadaki ve Kitap sayfasındaki kayan bandı besler.
+  # Kendi sayfası yoktur; etkinliğin fotoğrafları ve ayrıntıları blog yazısı
+  # olarak yazılır. Tarihi geçen duyurular bantta kendiliğinden kaybolur.
   - name: "events"
-    label: "Söyleşiler / İmza Günleri"
-    label_singular: "Etkinlik"
+    label: "Duyurular"
+    label_singular: "Duyuru"
     folder: "src/content/events"
     create: true
     slug: "{{slug}}"
     identifier_field: title
-    summary: "{{title}} — {{date}}"
+    summary: "{{date}} — {{title}}"
     sortable_fields: ["date", "title"]
+    description: >-
+      Buraya girdiğiniz duyurular anasayfada, kitap tanıtımının altındaki kayan
+      bantta ve Kitap sayfasında görünür. Ayrı bir sayfası yoktur. Hiç duyuru
+      yoksa bant sitede hiç görünmez. Tarihi geçen duyurular bantta otomatik
+      olarak görünmez olur, silmeniz gerekmez.
     fields:
-      - { label: "Başlık", name: "title", widget: "string" }
+      - {
+          label: "Başlık",
+          name: "title",
+          widget: "string",
+          hint: "Örn: Melis Zararsız İmza Günü, Kitap Kulübü Buluşması",
+        }
       - { label: "Tarih", name: "date", widget: "datetime" }
       - {
           label: "Yer",
           name: "location",
           widget: "string",
           required: false,
-          hint: "Örn: İstanbul, Büyükada, Online",
+          hint: "Örn: Adalar Müzesi, Büyükada / Kadıköy / Online",
         }
       - {
-          label: "Detay/Bilet Linki",
+          label: "Detay Linki (opsiyonel)",
           name: "link",
           widget: "string",
           required: false,
-        }
-      - {
-          label: "Görsel",
-          name: "image",
-          widget: "image",
-          required: false,
+          hint: "Etkinliği anlattığınız blog yazısının adresini buraya koyabilirsiniz. Örn: /blog/kabuk-imza-gunu/",
         }
       - {
           label: "Taslak (yayınlanmasın)",
           name: "draft",
           widget: "boolean",
           default: true,
-          hint: "İşaretliyse etkinlik sitede görünmez.",
-        }
-      - {
-          label: "Açıklama (opsiyonel)",
-          name: "body",
-          widget: "markdown",
-          required: false,
+          hint: "İşaretliyse duyuru bantta görünmez.",
         }
 
   - name: "meetups"
@@ -114,6 +121,10 @@ collections:
     identifier_field: title
     summary: "{{title}}"
     sortable_fields: ["order", "title"]
+    description: >-
+      Buluşmalar sayfasındaki tanıtım kutuları. Gerçekleşen bir buluşmanın
+      fotoğrafları ve ayrıntıları için buraya değil, Blog Yazıları'na yazın ve
+      yazıya aşağıdaki "Blog Kategorisi" alanındaki adı verin.
     fields:
       - { label: "Başlık", name: "title", widget: "string" }
       - {
@@ -132,6 +143,13 @@ collections:
             ],
         }
       - {
+          label: "Blog Kategorisi",
+          name: "category",
+          widget: "string",
+          required: false,
+          hint: "Bu buluşmadan yazdığınız blog yazılarına verdiğiniz kategori adı. Aynı kategoride en az bir yazı olduğunda kutunun altında \"Gerçekleşen buluşmalar\" linki çıkar. Örn: Kitap Kulübü",
+        }
+      - {
           label: "Sıra",
           name: "order",
           widget: "number",
@@ -148,4 +166,6 @@ collections:
           label: "Açıklama",
           name: "body",
           widget: "markdown",
+          modes: ["raw", "rich_text"],
+          hint: "Word'den yapıştırmak için bu sade metin kutusunu kullanın. Kalın yazı **iki yıldız** arasına yazılır.",
         }

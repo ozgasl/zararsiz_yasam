@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import EventTicker from "../components/EventTicker.astro";
+import Duyurular from "../components/Duyurular.astro";
 const base = import.meta.env.BASE_URL;
 ---
 <BaseLayout title="Kabuk — Bir Dönüşüm Hikâyesi — Zararsız Yaşam">
@@ -96,24 +96,21 @@ const base = import.meta.env.BASE_URL;
   </div>
 </section>
 
-<section style="padding:0 0 60px">
-  <div class="wrap">
-    <p class="eyebrow reveal" style="text-align:center">Söyleşiler ve İmza Günleri</p>
-    <div class="reveal">
-      <EventTicker variant="full" />
-    </div>
-    <div style="text-align:center;margin-top:20px">
-      <a class="txtlink" href={`${base}bulusmalar/`}>Tüm Buluşmalar →</a>
-    </div>
+<!-- DUYURULAR (kayan bant — duyuru yoksa hiç görünmez) -->
+<Duyurular variant="page" />
+
+<section style="padding:40px 0 60px">
+  <div class="wrap" style="text-align:center">
+    <a class="txtlink" href={`${base}bulusmalar/#konuk-konusmacilar`}>Söyleşiler ve İmza Günleri →</a>
   </div>
 </section>
 
 <section style="padding:0 0 80px">
   <div class="wrap" style="text-align:center">
     <div class="reveal" style="background:var(--sand);border-radius:28px;padding:50px 30px;max-width:640px;margin:0 auto">
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;margin-bottom:16px">Haberdar Ol</h2>
-      <p style="color:var(--muted);max-width:34em;margin:0 auto 28px;font-size:1.1rem">Satış tarihi, söyleşiler ve imza günleri için bültene katıl.</p>
-      <a class="btn btn-outline" href="mailto:ben@meliszararsiz.com">Bültene Kaydol</a>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;margin-bottom:16px">Haberdar Olun</h2>
+      <p style="color:var(--muted);max-width:34em;margin:0 auto 28px;font-size:1.1rem">Satış tarihi, söyleşiler ve imza günleri için bültene katılın.</p>
+      <a class="btn btn-outline" href="mailto:ben@meliszararsiz.com">Bültene Kaydolun</a>
     </div>
   </div>
 </section>

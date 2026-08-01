@@ -1,0 +1,154 @@
+---
+// Kayan duyuru bandı — anasayfa (kitap tanıtımının altı) ve Kitap sayfası.
+// Admin panelindeki "Duyurular" koleksiyonundan besleniyor (public/admin/config.yml).
+// Yaklaşan duyuru yoksa bant hiç basılmaz, boş bir alan görünmez.
+import { getCollection } from "astro:content";
+
+interface Props {
+  variant?: "band" | "page";
+}
+const { variant = "band" } = Astro.props as Props;
+
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
+const items = (await getCollection("events", ({ data }) => !data.draft))
+  .filter((e) => new Date(e.data.date) >= today)
+  .sort((a, b) => new Date(a.data.date).valueOf() - new Date(b.data.date).valueOf())
+  .map((e) => ({
+    date: new Date(e.data.date).toLocaleDateString("tr-TR", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    }),
+    location: e.data.location,
+    title: e.data.title,
+    link: e.data.link,
+  }));
+
+// Kesintisiz akış için liste iki kez basılıyor (ikinci kopya ekran
+// okuyuculardan gizli). Tek duyuru varsa bant sabit durur.
+const scroll = items.length > 1;
+---
+
+{items.length > 0 && (
+  <section class={`duyuru ${variant === "band" ? "duyuru-band" : "duyuru-page"}`}>
+    <div class="wrap duyuru-wrap">
+      <p class="eyebrow duyuru-label">Duyurular</p>
+      <div class="duyuru-marquee">
+        <div class="duyuru-track" class:list={[{ "is-scrolling": scroll }]}>
+          <span class="duyuru-group">
+            {items.map((it) => (
+              <span class="duyuru-item">
+                {it.link ? (
+                  <a href={it.link} target="_blank" rel="noopener">
+                    <span class="d-date">{it.date}</span>
+                    {it.location && <span class="d-sep">·</span>}
+                    {it.location && <span class="d-loc">{it.location}</span>}
+                    <span class="d-sep">·</span>
+                    <span class="d-title">{it.title}</span>
+                  </a>
+                ) : (
+                  <>
+                    <span class="d-date">{it.date}</span>
+                    {it.location && <span class="d-sep">·</span>}
+                    {it.location && <span class="d-loc">{it.location}</span>}
+                    <span class="d-sep">·</span>
+                    <span class="d-title">{it.title}</span>
+                  </>
+                )}
+              </span>
+            ))}
+          </span>
+          {scroll && (
+            <span class="duyuru-group" aria-hidden="true">
+              {items.map((it) => (
+                <span class="duyuru-item">
+                  <span class="d-date">{it.date}</span>
+                  {it.location && <span class="d-sep">·</span>}
+                  {it.location && <span class="d-loc">{it.location}</span>}
+                  <span class="d-sep">·</span>
+                  <span class="d-title">{it.title}</span>
+                </span>
+              ))}
+            </span>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+<script is:inline>
+  (function () {
+    var bands = document.querySelectorAll(".duyuru-marquee");
+    if (!bands.length) return;
+    function measure() {
+      bands.forEach(function (band) {
+        var track = band.querySelector(".duyuru-track");
+        var group = band.querySelector(".duyuru-group");
+        if (!track || !group) return;
+        // İçerik banda sığıyorsa akıtmıyoruz: kayan metnin arkasında boşluk kalmasın.
+        var fits = group.scrollWidth <= band.clientWidth;
+        track.classList.toggle("no-scroll", fits);
+      });
+    }
+    measure();
+    window.addEventListener("load", measure);
+    var t;
+    window.addEventListener("resize", function () {
+      clearTimeout(t);
+      t = setTimeout(measure, 150);
+    });
+  })();
+</script>
+
+<style>
+.duyuru { padding: 26px 0; }
+.duyuru-wrap { display: flex; align-items: center; gap: 26px; }
+.duyuru-label { flex: none; }
+.duyuru-marquee { flex: 1 1 auto; overflow: hidden; position: relative; min-width: 0; }
+/* kenarlarda yumuşak geçiş, yazı bandın içine giriyormuş gibi dursun */
+.duyuru-marquee::before,
+.duyuru-marquee::after { content: ""; position: absolute; top: 0; bottom: 0; width: 40px; z-index: 2; pointer-events: none; }
+.duyuru-track { display: flex; align-items: center; white-space: nowrap; }
+.duyuru-group { display: inline-flex; align-items: center; }
+.duyuru-track.is-scrolling { width: max-content; animation: duyuru-akis 34s linear infinite; }
+.duyuru:hover .duyuru-track.is-scrolling { animation-play-state: paused; }
+.duyuru-track.no-scroll { animation: none; width: auto; }
+.duyuru-track.no-scroll .duyuru-group + .duyuru-group { display: none; }
+.duyuru-item { display: inline-flex; align-items: center; gap: .5em; padding-right: 3.4em; }
+.duyuru-item a { display: inline-flex; align-items: center; gap: .5em; border-bottom: 1px solid transparent; }
+.duyuru-item a:hover { border-bottom-color: currentColor; }
+.d-date { font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; }
+.d-title { font-family: "Cormorant Garamond", serif; font-size: 1.3rem; }
+.d-sep { opacity: .5; }
+
+/* anasayfa: bordo bant */
+.duyuru-band { color: #F4E7D9; }
+.duyuru-band .d-date { color: #E9C9B8; }
+.duyuru-band .d-loc { color: #DCC3B4; }
+.duyuru-band .duyuru-marquee::before { left: 0; background: linear-gradient(90deg, var(--wine), rgba(92,31,42,0)); }
+.duyuru-band .duyuru-marquee::after { right: 0; background: linear-gradient(270deg, var(--wine), rgba(92,31,42,0)); }
+
+/* Kitap sayfası: krem zemin */
+.duyuru-page { background: var(--cream2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.duyuru-page .d-date { color: var(--wine); }
+.duyuru-page .d-loc { color: var(--muted); }
+.duyuru-page .duyuru-marquee::before { left: 0; background: linear-gradient(90deg, var(--cream2), rgba(239,230,214,0)); }
+.duyuru-page .duyuru-marquee::after { right: 0; background: linear-gradient(270deg, var(--cream2), rgba(239,230,214,0)); }
+
+@keyframes duyuru-akis {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .duyuru-track.is-scrolling { animation: none; }
+}
+@media (max-width: 700px) {
+  .duyuru-wrap { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .duyuru-marquee { width: 100%; }
+  .duyuru-item { padding-right: 2.6em; }
+  .d-title { font-size: 1.15rem; }
+}
+</style>

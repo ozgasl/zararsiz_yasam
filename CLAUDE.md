@@ -11,7 +11,7 @@ meditation; author of *Kabuk*; podcast & blog. Built by Özgür (developer frien
 ## Conventions
 - **Site content is Turkish.** UI strings, page copy, slugs — all Turkish. Keep it that way.
 - Design palette: cream `#F4EEE2`, deep wine/burgundy, olive. Fonts: Cormorant Garamond (display) + EB Garamond (body). Tone: calm, bookish, slow, anti-corporate. No AI-generated images of people.
-- Logo lives at `public/assets/img/logo.jpeg` (vertical lockup, near-white bg removed via `mix-blend-mode`). Used in header + footer via `BaseLayout.astro`.
+- Logo: `public/assets/img/logo.png` — transparent-background version of `logo.jpeg`, used in header + footer via `BaseLayout.astro`. (No `mix-blend-mode` any more; it broke under browser-forced dark mode.) If the logo changes, regenerate both files.
 
 ## Structure
 ```
@@ -42,3 +42,41 @@ docs/prototype.html  original single-file design prototype (reference)
 
 ## Hosting facts
 - Alastyr cPanel, domain meliszararsiz.com, SSL active. One DB (old WordPress, prefix `wps6_`) — content already rescued. Live site currently shows a "Site yenileniyor" placeholder only.
+
+
+## Content model & conventions (Aug 2026)
+
+Three CMS collections, and only three. Melis maintains all of them at `/admin/`.
+
+- **`blog`** — everything with photos, video, a story: articles *and* write-ups of
+  meetups/signings that already happened. A meetup write-up gets the meetup's
+  category (see below).
+- **`meetups`** — the six descriptive boxes on `/bulusmalar/`. Text only, line
+  icons, **no photos**, no sub-pages. Each entry carries a `category` field; when
+  at least one blog post uses that category, the box grows a
+  "Gerçekleşen buluşmalar (n) →" link to `/kategori/<slug>/`. That archive *is*
+  the meetup's sub-page — there is no separate meetup detail route.
+- **`events`** — labelled **"Duyurular"** in the panel. Feeds the scrolling band
+  on the homepage (under the book panel) and on `/kitap/` via
+  `src/components/Duyurular.astro`. Date + title + place + optional link, no
+  body, **no page of its own**. Past-dated entries drop out automatically. With
+  zero upcoming announcements the band renders nothing at all.
+
+Other conventions:
+
+- **Address the visitor with formal "siz"** in all page copy. The 100 migrated
+  blog posts are Melis's own voice and are deliberately left untouched.
+- Meetup content-file names must match their titles — they become the
+  `/bulusmalar/#slug` anchors that the homepage cards link to.
+- `icon` values must be unique across meetups: the homepage card photos in
+  `public/assets/img/bulusmalar/` are mapped by icon key, so two entries sharing
+  an icon means a duplicated photo.
+- Markdown body fields are configured `modes: ["raw", "rich_text"]`. The plain
+  editor is deliberately the default: Sveltia's rich text editor accepts pasted
+  *images*, and Word puts a picture of the selection on the clipboard, so
+  pasting from Word inserted a screenshot instead of text.
+- `color-scheme: light` (meta tag + CSS) opts out of Chrome/Android auto-dark,
+  which was inverting the cream palette on phones.
+- `buyukada-melis.jpg` is a low-resolution source (396×607). It ships with a
+  sharpened 2× companion via `srcset`; a genuine high-res original from Melis
+  would still be a real improvement.

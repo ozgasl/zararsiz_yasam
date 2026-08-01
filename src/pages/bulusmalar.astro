@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import { slugify } from "../utils.js";
 const base = import.meta.env.BASE_URL;
 
 const ICONS: Record<string, string> = {
@@ -15,10 +16,30 @@ const ICONS: Record<string, string> = {
 const meetupEntries = (await getCollection("meetups", ({ data }) => !data.draft))
   .sort((a, b) => a.data.order - b.data.order);
 
+// Gerçekleşen buluşmalar blog yazısı olarak yazılıyor. Bir buluşmanın
+// kategorisinde en az bir yazı varsa kutunun altında o yazılara link çıkar.
+const posts = await getCollection("blog", ({ data }) => !data.draft);
+const postCountByCategory = new Map<string, number>();
+for (const post of posts) {
+  for (const cat of post.data.categories ?? []) {
+    const key = slugify(cat);
+    postCountByCategory.set(key, (postCountByCategory.get(key) ?? 0) + 1);
+  }
+}
+
 const meetups = await Promise.all(
   meetupEntries.map(async (m) => {
     const { Content } = await m.render();
-    return { slug: m.slug, title: m.data.title, icon: ICONS[m.data.icon] ?? ICONS.kitap, Content };
+    const catSlug = m.data.category ? slugify(m.data.category) : null;
+    const postCount = catSlug ? postCountByCategory.get(catSlug) ?? 0 : 0;
+    return {
+      slug: m.slug,
+      title: m.data.title,
+      icon: ICONS[m.data.icon] ?? ICONS.kitap,
+      archiveUrl: postCount > 0 ? `${base}kategori/${catSlug}/` : null,
+      postCount,
+      Content,
+    };
   })
 );
 ---
@@ -48,11 +69,16 @@ const meetups = await Promise.all(
     <p class="eyebrow reveal" style="text-align:center">Etkinlikler</p>
     <h2 class="reveal">Neler Yapıyoruz?</h2>
     <div class="services">
-      {meetups.map(({ slug, title, icon, Content }) => (
+      {meetups.map(({ slug, title, icon, archiveUrl, postCount, Content }) => (
         <div class="service reveal" id={slug}>
           <div class="svc-ico" set:html={`<svg viewBox="0 0 24 24">${icon}</svg>`} />
           <h3>{title}</h3>
           <div class="svc-text"><Content /></div>
+          {archiveUrl && (
+            <a class="txtlink meet-archive" href={archiveUrl}>
+              Gerçekleşen buluşmalar ({postCount}) →
+            </a>
+          )}
         </div>
       ))}
     </div>
@@ -73,9 +99,9 @@ const meetups = await Promise.all(
 <section style="padding:0 0 80px">
   <div class="wrap" style="text-align:center">
     <div class="reveal" style="background:var(--sand);border-radius:28px;padding:50px 30px;max-width:640px;margin:0 auto">
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;margin-bottom:16px">Duyurulardan Haberdar Ol</h2>
-      <p style="color:var(--muted);max-width:34em;margin:0 auto 28px;font-size:1.1rem">Yeni buluşmalar için bültene katıl ya da doğrudan yaz.</p>
-      <a class="btn btn-primary" href="mailto:ben@meliszararsiz.com">İletişime geç →</a>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;margin-bottom:16px">Duyurulardan Haberdar Olun</h2>
+      <p style="color:var(--muted);max-width:34em;margin:0 auto 28px;font-size:1.1rem">Yeni buluşmalar için bültene katılın ya da doğrudan yazın.</p>
+      <a class="btn btn-primary" href="mailto:ben@meliszararsiz.com">İletişime geçin →</a>
     </div>
   </div>
 </section>
@@ -94,4 +120,5 @@ const meetups = await Promise.all(
 .bio-body p:last-child { margin-bottom: 0; }
 .why h2 { font-family: "Cormorant Garamond", serif; font-size: clamp(1.8rem,3vw,2.4rem); text-align: center; margin-bottom: 40px; }
 .service { scroll-margin-top: 150px; }
+.meet-archive { margin-top: 14px; }
 </style>

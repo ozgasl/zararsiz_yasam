@@ -10,6 +10,8 @@
   --line:#DACDB6;
   --max:1200px;
   --r:18px;
+  /* Chrome/Android "auto dark theme" cream paletini ters çeviriyordu; kapatıyoruz. */
+  color-scheme:only light;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -43,9 +45,9 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,238,226,.86);backdro
 .nav{display:flex;align-items:center;justify-content:space-between;height:132px}
 .brand{display:flex;align-items:center;gap:11px}
 .brand .mark{width:38px;height:38px;flex:none}
-.brand-logo{height:116px;width:auto;display:block;mix-blend-mode:multiply}
-.logo-chip{background:#F4EEE2;padding:8px 14px;border-radius:14px;width:fit-content}
-.logo-chip .brand-logo{mix-blend-mode:normal;height:64px}
+.brand-logo{height:116px;width:auto;display:block}
+.logo-chip{background:#F4EEE2;padding:12px 20px;border-radius:18px;width:fit-content}
+.logo-chip .brand-logo{height:108px}
 .brand .name{font-family:"Cormorant Garamond",serif;font-size:1.5rem;font-weight:600;letter-spacing:.02em;line-height:.9}
 .brand .name small{display:block;font-size:.62rem;letter-spacing:.42em;text-transform:uppercase;color:var(--muted);font-family:"EB Garamond",serif;font-weight:600;margin-top:2px;padding-left:2px}
 .menu{display:flex;gap:18px;list-style:none;align-items:center}
@@ -104,10 +106,9 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,238,226,.86);backdro
 .service p{color:var(--muted);margin-bottom:16px;font-size:1.02rem}
 
 /* ---------- testimonial + meetups ---------- */
-.soylesi-ozet{background:var(--wine);color:#E9D9CB;padding:44px 0}
-.soylesi-ozet .eyebrow{color:#D8B9A4}
-.soylesi-ozet .txtlink{color:#F4E7D9}
-.soylesi-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:20px}
+.duyuru-band{background:var(--wine);color:#F4E7D9}
+.duyuru-band .eyebrow{color:#D8B9A4}
+.duyuru-band .txtlink{color:#F4E7D9}
 .mid{padding:60px 0}
 .mid-row{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:24px;align-items:stretch;margin-bottom:48px}
 .testi{background:var(--olive);color:#F1EAD9;border-radius:26px;padding:40px 38px;display:flex;flex-direction:column;justify-content:center}
@@ -167,14 +168,15 @@ footer{background:var(--wine);color:#E9D9CB}
 .news p{color:#F4E7D9;font-size:1.4rem;font-family:"Cormorant Garamond",serif}
 .news .btn-primary{background:#F4E7D9;color:var(--wine);white-space:nowrap;justify-self:start}
 .news .btn-primary:hover{background:#fff}
-.foot{padding:48px 0 30px;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+.foot{padding:48px 0 30px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:30px;align-items:start}
+.foot-col{text-align:center}
 .foot .brand .name,.foot .brand .name small{color:#F4E7D9}
 .foot-col h4{font-family:"EB Garamond",serif;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:#C9B2A4;margin-bottom:16px;font-weight:600}
 .foot-col ul{list-style:none}
 .foot-col li{margin-bottom:9px}
 .foot-col a:hover{color:#fff}
 .tagline{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.45rem;color:#F0DECE;margin-top:14px}
-.social{display:flex;gap:14px;margin-top:6px}
+.social{display:flex;gap:14px;margin-top:14px;justify-content:center}
 .social a{width:38px;height:38px;border-radius:50%;border:1px solid rgba(233,217,203,.35);display:flex;align-items:center;justify-content:center;transition:.25s}
 .social a:hover{background:#F4E7D9;color:var(--wine);border-color:#F4E7D9}
 .social svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5}
@@ -187,7 +189,9 @@ footer{background:var(--wine);color:#E9D9CB}
 
 /* ---------- responsive ---------- */
 @media(max-width:900px){
-  .menu{position:fixed;inset:74px 0 auto 0;background:var(--cream);flex-direction:column;gap:0;padding:8px 0;border-bottom:1px solid var(--line);transform:translateY(-130%);transition:transform .35s ease}
+  .nav{height:92px}
+  .brand-logo{height:76px}
+  .menu{position:fixed;inset:92px 0 auto 0;background:var(--cream);flex-direction:column;gap:0;padding:8px 0;border-bottom:1px solid var(--line);transform:translateY(-130%);transition:transform .35s ease}
   .menu.open{transform:none}
   .menu li{width:100%;text-align:center}
   .menu a{display:block;padding:14px}
@@ -205,14 +209,15 @@ footer{background:var(--wine);color:#E9D9CB}
   .mid-row{grid-template-columns:1fr;margin-bottom:32px}
   .lower-grid{grid-template-columns:1fr}
   .posts-3{grid-template-columns:repeat(2,1fr)}
-  .soylesi-head{flex-direction:column;align-items:flex-start;gap:8px}
   .news-grid{grid-template-columns:1fr;gap:18px}
   .foot{grid-template-columns:1fr;gap:34px}
 }
 @media(max-width:560px){
   body{font-size:17px}
-  .brand-logo{height:84px}
-  .nav{height:100px}
+  .brand-logo{height:60px}
+  .nav{height:76px}
+  .menu{inset:76px 0 auto 0}
+  .logo-chip .brand-logo{height:88px}
   .wrap{padding:0 20px}
   .meet-grid{grid-template-columns:repeat(2,1fr)}
   .posts{grid-template-columns:1fr}
