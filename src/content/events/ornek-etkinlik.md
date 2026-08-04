@@ -1,8 +1,9 @@
 ---
-title: 'Örnek: Kabuk İmza Günü'
+title: ümit ünal söyleşi
 date: 2026-09-15
 location: İstanbul
-link: ''
+link: adalar
+image: /images/blog/covers/buyukadada-bir-gun-ice-donus-ve-bir-metnin-derinlikleri.png
 draft: true
 ---
 
