@@ -10,3 +10,6 @@ dist/
 Thumbs.db
 # build-time üretilen veri (scripts/fetch-youtube.mjs)
 src/data/youtube-latest.json
+
+# görsel kurtarma raporu (yerelde üretilir)
+migration/image-recovery-report.csv
