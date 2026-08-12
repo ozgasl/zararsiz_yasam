@@ -12,6 +12,14 @@ const { variant = "band" } = Astro.props as Props;
 const today = new Date();
 today.setHours(0, 0, 0, 0);
 
+/** Sadece gerçek bir adres link olsun: "adalar müzesi" gibi düz metinler değil. */
+function safeLink(value?: string): string | undefined {
+  if (!value) return undefined;
+  const v = value.trim();
+  if (!v) return undefined;
+  return /^(https?:\/\/|\/)/.test(v) ? v : undefined;
+}
+
 const items = (await getCollection("events", ({ data }) => !data.draft))
   .filter((e) => new Date(e.data.date) >= today)
   .sort((a, b) => new Date(a.data.date).valueOf() - new Date(b.data.date).valueOf())
@@ -23,7 +31,7 @@ const items = (await getCollection("events", ({ data }) => !data.draft))
     }),
     location: e.data.location,
     title: e.data.title,
-    link: e.data.link,
+    link: safeLink(e.data.link),
   }));
 
 // Kesintisiz akış için liste iki kez basılıyor (ikinci kopya ekran
@@ -41,7 +49,11 @@ const scroll = items.length > 1;
             {items.map((it) => (
               <span class="duyuru-item">
                 {it.link ? (
-                  <a href={it.link} target="_blank" rel="noopener">
+                  <a
+                    href={it.link}
+                    target={it.link.startsWith("http") ? "_blank" : undefined}
+                    rel={it.link.startsWith("http") ? "noopener" : undefined}
+                  >
                     <span class="d-date">{it.date}</span>
                     {it.location && <span class="d-sep">·</span>}
                     {it.location && <span class="d-loc">{it.location}</span>}

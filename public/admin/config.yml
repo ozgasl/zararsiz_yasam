@@ -102,7 +102,8 @@ collections:
           name: "link",
           widget: "string",
           required: false,
-          hint: "Etkinliği anlattığınız blog yazısının adresini buraya koyabilirsiniz. Örn: /blog/kabuk-imza-gunu/",
+          hint: "Buraya SADECE adres yazın, yer adı değil. Örn: /blog/kabuk-imza-gunu/ veya https://... Boş bırakabilirsiniz; yer adı yukarıdaki \"Yer\" alanına yazılır.",
+          pattern: ["^$|^(https?://|/)", "Adres / ile veya https:// ile başlamalı. Yer adı yazmak için üstteki \"Yer\" alanını kullanın."],
         }
       - {
           label: "Taslak (yayınlanmasın)",

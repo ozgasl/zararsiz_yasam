@@ -10,6 +10,25 @@ const base = import.meta.env.BASE_URL;
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="color-scheme" content="light" />
+
+<!-- Google Analytics (GA4). Sadece canlı sitede yüklenir: önizleme
+     (ozgasl.github.io) ve localhost ölçüme dahil olmasın. -->
+<script is:inline>
+  (function () {
+    var live = ["meliszararsiz.com", "www.meliszararsiz.com"];
+    if (live.indexOf(location.hostname) === -1) return;
+    var id = "G-VX69C5SQB8";
+    var s = document.createElement("script");
+    s.async = true;
+    s.src = "https://www.googletagmanager.com/gtag/js?id=" + id;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag("js", new Date());
+    gtag("config", id);
+  })();
+</script>
 <title>{title}</title>
 <meta name="description" content={description} />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -41,9 +60,9 @@ const base = import.meta.env.BASE_URL;
 </main>
 <footer>
   <div class="wrap foot">
-    <div>
-      <a class="brand logo-chip" href={base} aria-label="Zararsız Yaşam">
-        <img class="brand-logo" src={`${base}assets/img/logo.png`} alt="Zararsız Yaşam">
+    <div class="foot-col foot-brand">
+      <a class="brand" href={base} aria-label="Zararsız Yaşam">
+        <img class="brand-logo foot-logo" src={`${base}assets/img/logo-light.png`} alt="Zararsız Yaşam">
       </a>
     </div>
     <div class="foot-col">

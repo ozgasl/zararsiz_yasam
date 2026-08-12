@@ -46,8 +46,6 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,238,226,.86);backdro
 .brand{display:flex;align-items:center;gap:11px}
 .brand .mark{width:38px;height:38px;flex:none}
 .brand-logo{height:116px;width:auto;display:block}
-.logo-chip{background:#F4EEE2;padding:12px 20px;border-radius:18px;width:fit-content}
-.logo-chip .brand-logo{height:108px}
 .brand .name{font-family:"Cormorant Garamond",serif;font-size:1.5rem;font-weight:600;letter-spacing:.02em;line-height:.9}
 .brand .name small{display:block;font-size:.62rem;letter-spacing:.42em;text-transform:uppercase;color:var(--muted);font-family:"EB Garamond",serif;font-weight:600;margin-top:2px;padding-left:2px}
 .menu{display:flex;gap:18px;list-style:none;align-items:center}
@@ -168,8 +166,10 @@ footer{background:var(--wine);color:#E9D9CB}
 .news p{color:#F4E7D9;font-size:1.4rem;font-family:"Cormorant Garamond",serif}
 .news .btn-primary{background:#F4E7D9;color:var(--wine);white-space:nowrap;justify-self:start}
 .news .btn-primary:hover{background:#fff}
-.foot{padding:48px 0 30px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:30px;align-items:start}
+.foot{padding:48px 0 34px;display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:28px;align-items:center;justify-items:center}
 .foot-col{text-align:center}
+.foot-brand{display:flex;align-items:center;justify-content:center}
+.foot-logo{height:150px}
 .foot .brand .name,.foot .brand .name small{color:#F4E7D9}
 .foot-col h4{font-family:"EB Garamond",serif;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:#C9B2A4;margin-bottom:16px;font-weight:600}
 .foot-col ul{list-style:none}
@@ -217,7 +217,7 @@ footer{background:var(--wine);color:#E9D9CB}
   .brand-logo{height:60px}
   .nav{height:76px}
   .menu{inset:76px 0 auto 0}
-  .logo-chip .brand-logo{height:88px}
+  .foot-logo{height:118px}
   .wrap{padding:0 20px}
   .meet-grid{grid-template-columns:repeat(2,1fr)}
   .posts{grid-template-columns:1fr}
