@@ -1,82 +1,181 @@
 # CLAUDE.md — Zararsız Yaşam (meliszararsiz.com)
 
-Personal-brand website for **Melis Zararsız** — mindfulness coaching, yin yoga,
-meditation; author of *Kabuk*; podcast & blog. Built by Özgür (developer friend).
+Melis Zararsız'ın kişisel marka sitesi — mindfulness koçluğu, yin yoga,
+meditasyon; *Kabuk* kitabının yazarı; podcast ve blog. Büyükada'da yaşıyor.
+Geliştiren: Özgür Aslan (`ozgasl`, ozgur@akillifabrikalar.com.tr).
 
-## Stack
-- **Astro** static site (no SSR). `npm run dev` → localhost:4321, `npm run build` → `dist/`.
-- Blog uses Astro **content collections** (`src/content/blog/*.md`, schema in `src/content/config.ts`).
-- Plain CSS design system in `src/styles/global.css` (no Tailwind).
+Akış: Melis geri bildirimini Özgür'e yazar → Özgür uygular → önizlemede
+birlikte gözden geçirilir → canlıya alınır.
 
-## Conventions
-- **Site content is Turkish.** UI strings, page copy, slugs — all Turkish. Keep it that way.
-- Design palette: cream `#F4EEE2`, deep wine/burgundy, olive. Fonts: Cormorant Garamond (display) + EB Garamond (body). Tone: calm, bookish, slow, anti-corporate. No AI-generated images of people.
-- Logo: `public/assets/img/logo.png` — transparent-background version of `logo.jpeg`, used in header + footer via `BaseLayout.astro`. (No `mix-blend-mode` any more; it broke under browser-forced dark mode.) If the logo changes, regenerate both files.
+## Dil
 
-## Structure
+- **Site içeriğinin tamamı Türkçe ve Türkçe kalacak.**
+- Sayfa metinlerinde ziyaretçiye **resmî "siz"** diliyle hitap edilir.
+- `src/content/blog/` altındaki 100 yazı **Melis'in kendi sesi — dokunulmaz**
+  (dil/yazım düzeltmesi dahil).
+- Özgür ile iletişim Türkçe. Melis'e yazılan notlarda samimi "sen" kullanılır.
+
+## Tasarım dili
+
+Sakin, kitabî, yavaş, anti-kurumsal. Krem `#F4EEE2`, bordo `#5C1F2A`, zeytin
+`#5E5E44` (tam palet `src/styles/global.css` başındaki değişkenlerde).
+Cormorant Garamond (başlık) + EB Garamond (metin). **Tailwind yok**, tek bir
+düz CSS dosyası. **İnsan içeren yapay zekâ görseli kullanılmaz.**
+
+## Teknik
+
+- **Astro 4** statik site, SSR yok. `npm run dev` → 4321, `npm run build` →
+  `dist/`. Temiz build **123 sayfa**.
+- Astro 4 tuzağı: içerik koleksiyonlarında `entry.render()` kullanılır;
+  `astro:content`'ten `render()` **import edilmez**.
+- `prebuild` adımı `scripts/fetch-youtube.mjs` çalıştırır; dosya üretilemezse
+  anasayfa sabit banner'a düşer, build kırılmaz.
+- Bağımlılıklar: `astro`, `marked` (site metinlerindeki markdown için).
+  `sharp` doğrudan bağımlı değil ama Astro'nun görsel motoruyla birlikte
+  `node_modules`'te bulunur — tek seferlik görsel işleri için kullanılabilir.
+
+### İçerik nerede duruyor
+
+| Ne | Nerede | Melis panelden düzenler mi |
+|---|---|---|
+| Blog yazıları | `src/content/blog/*.md` | ✅ |
+| Buluşma kutuları | `src/content/meetups/*.md` | ✅ |
+| Duyurular (kayan bant) | `src/content/events/*.md` | ✅ |
+| Sayfa metinleri | `src/data/site-metinleri.json` | ✅ |
+| Kitap satış ayarları | `src/data/kitap-ayarlari.json` | ✅ |
+
+Koleksiyon şemaları `src/content/config.ts`. JSON'lar `src/site.js` üzerinden
+okunur; orada `md()` / `mdSatir()` (markdown → HTML) ve `gorsel()` yardımcıları
+var. `gorsel()` `public/` içinde `<ad>@2x.<uzantı>` ve `.webp` varyantlarını
+kendiliğinden bulup srcset üretir, piksel boyutunu dosya başlığından okur —
+Melis panelden başka bir fotoğraf yüklerse varyant olmadan da çalışır.
+
+**JSON alan adları `public/admin/config.yml` ile birebir aynı olmak zorunda.**
+Birini değiştirirsen diğerini de değiştir.
+
+### CMS
+
+Sveltia CMS, `public/admin/config.yml`. OAuth relay bir Cloudflare Worker'da:
+`zararsizyasam.ozgasl.workers.dev`. Melis'in GitHub hesabı: `blossomel`.
+
+Panel bölümleri: Site Metinleri · Kitap Ayarları · Blog Yazıları · Duyurular ·
+Buluşmalar.
+
+- Sveltia **`editorial_workflow` desteklemiyor** (o Decap özelliği).
+  `config.yml`'a eklemeye çalışma. Sonuç: **Melis'in kaydettiği her şey
+  doğrudan `main`'e commit oluyor ve otomatik canlıya çıkıyor** — araya
+  inceleme adımı girmiyor.
+- Metin alanlarında `modes: ["raw", "rich_text"]` kullanılıyor. Sebep:
+  Sveltia'nın zengin editörü Word'den yapıştırırken panodaki **görüntüyü**
+  alıyordu; sade editör öntanımlı olunca metin olarak geliyor. Bunu geri alma.
+
+### Yayın
+
+- **Canlı:** Alastyr cPanel statik hosting, `deploy-production.yml` ile FTPS.
+  Astro `base` = `/`. Domain meliszararsiz.com, SSL aktif.
+  Eski WordPress URL'leri için `migration/redirects.htaccess` kuralları
+  `public_html/.htaccess` içine eklenmiş olmalı.
+- **Önizleme:** GitHub Pages, `deploy.yml`,
+  `https://ozgasl.github.io/zararsiz_yasam/` (base `/zararsiz_yasam`).
+  `claude/**` dallarından da deploy edebiliyor. Pages tek hedefe sahip, yani
+  önizleme dalı main'in derlemesinin üstüne yazar — canlı Alastyr'da olduğu
+  için sorun değil.
+- **GA4:** `G-VX69C5SQB8`, sadece `meliszararsiz.com` / `www.meliszararsiz.com`
+  hostname'inde yükleniyor; önizleme ve localhost ölçüme girmiyor.
+- Repo: `ozgasl/zararsiz_yasam` (public).
+
+## Dizin yapısı
+
 ```
-src/pages/        index.astro, blog/index.astro, blog/[...slug].astro,
-                  kategori/[category].astro, hakkimda/birlikte-calisalim/
-                  bulusmalar/kitap/iletisim .astro (stubs)
-src/layouts/      BaseLayout.astro  (header+logo, footer, fonts — all pages)
-src/content/blog/ 100 Markdown posts (recovered from old WordPress DB)
-src/styles/       global.css
-public/assets/img/ logo + 3 photos
-public/images/blog/ post images (MOSTLY MISSING — see below)
-migration/        redirects.htaccess, image-manifest.csv, posts-index.csv, MIGRATION-REPORT.md
-docs/prototype.html  original single-file design prototype (reference)
+src/pages/          index, blog/[...slug], blog/index, kategori/[category],
+                    hakkimda, birlikte-calisalim (+3 alt sayfa), bulusmalar,
+                    kitap, bonservisler, iletisim
+src/layouts/        BaseLayout.astro (başlık+logo, alt bilgi, fontlar, GA4)
+src/components/     Duyurular.astro (kayan bant)
+src/content/        blog/ (100 yazı) · meetups/ · events/ · config.ts
+src/data/           site-metinleri.json · kitap-ayarlari.json
+                    (youtube-latest.json build'de üretilir, gitignore'da)
+src/site.js         JSON okuma + markdown + görsel yardımcıları
+src/utils.js        slugify (Türkçe karakter eşlemeli)
+src/styles/         global.css
+public/admin/       Sveltia config.yml + index.html
+public/assets/img/  logo.png, ana sayfa portresi, buluşma ikonları, kapak
+public/images/blog/ yazı görselleri (çoğu eksik — aşağı bak)
+assets-kaynak/      yüksek çözünürlüklü kaynaklar, YAYINA GİRMEZ
+migration/          redirects.htaccess, image-manifest.csv, posts-index.csv
+scripts/            fetch-youtube.mjs, recover-images.mjs
+docs/prototype.html ilk tek dosyalık tasarım prototipi (referans)
+HANDOVER.md         Melis'e yönelik devir teslim dokümanı
 ```
 
-## State (done)
-- Astro scaffold builds clean (~119 pages: 100 posts + 12 category pages + blog index + homepage + 5 stubs).
-- 100 blog posts migrated from old WordPress DB to Markdown with front-matter
-  (title, date, categories, tags, legacyUrl). Slugs preserved from old `/%postname%/` URLs.
-- Kabuk (book) shows a **"Yakında"** pill — NOT on sale yet, no purchase button.
-- Logo wired into header/footer.
+## Çalışma şekli
 
-## TODO / pending
-1. **Deploy** — currently local-only by choice. Production target is **Alastyr (cPanel) static hosting at the domain root**, so Astro `base` stays `/`. GitHub Pages was abandoned (it can't build Astro, and it serves at a `/zararsiz_yasam/` subpath which conflicts with the root-absolute links). When deploying: upload `dist/` to `public_html`, and append `migration/redirects.htaccess` rules to `public_html/.htaccess` so old `/slug/` URLs 301 to `/blog/slug/`.
-2. **Post images** — ~221 unique images referenced in posts are GONE from the old server (uploads folder was deleted). Markdown points them at `/images/blog/<file>`. Recover the important ones from the **Wayback Machine** using `migration/image-manifest.csv` (curate, don't restore all). Text-only posts read fine without images.
-3. **Section pages** — Hakkımda, Birlikte Çalışalım, Buluşmalar, Kitap, İletişim are stubs; fill with real content (Birlikte Çalışalım / Buluşmalar / Kitap carry "Yakında").
-4. Some older posts are personal weight-loss/diet essays — Melis's own historical writing; migrated as-is. Editorial call (feature vs. archive) is hers.
+1. **`main`'e Özgür'ün açık onayı olmadan push YAPMA.** Her iş
+   `claude/site-updates-YYYY-MM` dalında yürür, onay gelince fast-forward.
+2. Koda dokunmadan önce yapılandırılmış plan sun: *hemen yapılabilir /
+   karar gerekiyor / Melis'ten bilgi bekleniyor*. Belirsiz maddede varsayım
+   yapma, sor.
+3. Her turda `npm run build` ile doğrula.
+4. **Merge'e basmadan hemen önce `git fetch` yap.** Melis'in CMS kayıtları
+   doğrudan `main`'e gidiyor; oturum başındaki senkron kontrolü merge anında
+   eskimiş olabilir.
+5. İşin sonunda Melis'e gönderilmek üzere Türkçe bir özet notu hazırla.
 
-## Hosting facts
-- Alastyr cPanel, domain meliszararsiz.com, SSL active. One DB (old WordPress, prefix `wps6_`) — content already rescued. Live site currently shows a "Site yenileniyor" placeholder only.
+## Tuzaklar (önceki oturumlarda öğrenildi)
 
+- Melis'in oluşturduğu duyuru dosya adlarında Türkçe karakter var
+  (`melis-imza-günü.md`, `yürüyüş.md`). Duyuruların sayfası olmadığı için
+  zararsız. Blog URL'leri front-matter'daki `slug` alanından geliyor, orada da
+  risk yok. **`config.yml`'a `clean_accents`/`ascii` ekleme** — "ı" harfini
+  düşürebilir.
+- Kaydırmalı animasyonlar (IntersectionObserver) çapa hedeflerinin kaçmasına
+  yol açıyordu; `window load` üzerinde `scrollIntoView` yeniden tetikleme +
+  `setTimeout` yedeği ile çözüldü (`BaseLayout.astro`). Bozma.
+- Playwright/tarayıcı ile ekran görüntüsü alacaksan animasyonların tetiklenmesi
+  için sayfayı ~300px'lik adımlarla ~4500px'e kadar kaydırmak gerekiyor.
+- Alt bilgi logosu: bir dönem açıltılmış `logo-light.png` kullanıldı, bordo
+  zeminde ağaç dalları ve gradyan solduğu için `logo.png`'ye dönüldü.
 
-## Content model & conventions (Aug 2026)
+## Durum (Ağustos 2026)
 
-Three CMS collections, and only three. Melis maintains all of them at `/admin/`.
+- 100 blog yazısı eski WordPress veritabanından Markdown'a taşındı; slug'lar
+  eski `/%postname%/` URL'lerinden korundu.
+- Bölüm sayfalarının hepsi dolu (Hakkımda, Birlikte Çalışalım + 3 alt sayfa,
+  Buluşmalar, Kitap, Bonservisler, İletişim).
+- Sayfa metinleri ve kitap satış ayarları CMS'e taşındı — Melis hero cümlesini,
+  alt bilgiyi ve bölüm girişlerini kendi değiştirebiliyor.
+- **Kabuk henüz satışta değil.** `kitap-ayarlari.json` içindeki `satista_mi`
+  kapalı; sitedeki tüm satın alma yerlerinde "Yakında" yazıyor. Melis anahtarı
+  açıp mağaza linklerini girdiğinde kod değişikliği gerekmeden satışa geçer.
 
-- **`blog`** — everything with photos, video, a story: articles *and* write-ups of
-  meetups/signings that already happened. A meetup write-up gets the meetup's
-  category (see below).
-- **`meetups`** — the six descriptive boxes on `/bulusmalar/`. Text only, line
-  icons, **no photos**, no sub-pages. Each entry carries a `category` field; when
-  at least one blog post uses that category, the box grows a
-  "Gerçekleşen buluşmalar (n) →" link to `/kategori/<slug>/`. That archive *is*
-  the meetup's sub-page — there is no separate meetup detail route.
-- **`events`** — labelled **"Duyurular"** in the panel. Feeds the scrolling band
-  on the homepage (under the book panel) and on `/kitap/` via
-  `src/components/Duyurular.astro`. Date + title + place + optional link, no
-  body, **no page of its own**. Past-dated entries drop out automatically. With
-  zero upcoming announcements the band renders nothing at all.
+## Açık işler
 
-Other conventions:
+1. **Blog görselleri** — yazılarda geçen ~222 görsel eski sunucudan silindi
+   (`uploads` klasörü gitti). Markdown `/images/blog/<dosya>` gösteriyor.
+   `node scripts/recover-images.mjs --check` Wayback'te arıyor; Wayback hız
+   sınırı (HTTP 429) veriyor, `--delay=2600` ile çalıştır. Sonra `--download`,
+   gerekirse `--top=10` / `--slug=x`. 90 yazıda 222 görsel var ama ilk 5 yazı
+   bunların 63'ünü tutuyor — hepsini kurtarma, küratörlük yap. Alastyr
+   cPanel'de JetBackup varsa oradan da bakılacak (Restore'a basılmayacak;
+   indirip içinden sadece `wp-content/uploads` çıkarılacak).
+2. **Bülten** — Melis'in kararı bekleniyor. Yazacaksa Kit/MailerLite hosted
+   kayıt sayfası açacak, URL verilecek, sitedeki butonlar oraya bağlanacak
+   (çift onay + KVKK rıza metni). Yazmayacaksa bülten dili siteden
+   kaldırılacak. Geçtiği yerler: `kitap.astro`, `bulusmalar.astro`,
+   `iletisim.astro` (SSS).
+3. **Eski kişisel diyet/kilo yazıları** — Melis'in kendi tarihsel yazıları,
+   olduğu gibi taşındı. Öne çıkarma vs. arşivleme **editoryal kararı onun**.
 
-- **Address the visitor with formal "siz"** in all page copy. The 100 migrated
-  blog posts are Melis's own voice and are deliberately left untouched.
-- Meetup content-file names must match their titles — they become the
-  `/bulusmalar/#slug` anchors that the homepage cards link to.
-- `icon` values must be unique across meetups: the homepage card photos in
-  `public/assets/img/bulusmalar/` are mapped by icon key, so two entries sharing
-  an icon means a duplicated photo.
-- Markdown body fields are configured `modes: ["raw", "rich_text"]`. The plain
-  editor is deliberately the default: Sveltia's rich text editor accepts pasted
-  *images*, and Word puts a picture of the selection on the clipboard, so
-  pasting from Word inserted a screenshot instead of text.
-- `color-scheme: light` (meta tag + CSS) opts out of Chrome/Android auto-dark,
-  which was inverting the cream palette on phones.
-- `buyukada-melis.jpg` is a low-resolution source (396×607). It ships with a
-  sharpened 2× companion via `srcset`; a genuine high-res original from Melis
-  would still be a real improvement.
+## Yapay zekâya repo yazma yetkisi
+
+Melis "bana ve ChatGPT'ye tam yetki ver" diyor. Ayrıştırma:
+
+- **Metin yazdırma:** ChatGPT bunu zaten yapıyor; Melis metni panele yapıştırır.
+  Kurulum gerekmez.
+- **Düzenlenebilir alanlar:** Gerçek engel buydu — Site Metinleri ve Kitap
+  Ayarları ile çözüldü.
+- **Repoya doğrudan yazma yetkisi:** şimdilik önerilmiyor. Melis'in kayıtları
+  araya inceleme girmeden canlıya çıkıyor. Bozuk bir `.astro` düzenlemesi
+  build'i düşürür — o durumda FTP deploy hiç çalışmadığı için canlı site son
+  iyi hâlinde kalır (kazara oluşmuş bir güvenlik ağı), ama "geçerli ama yanlış"
+  düzenlemeye karşı korumaz.
