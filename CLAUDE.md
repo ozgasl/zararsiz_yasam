@@ -134,8 +134,15 @@ HANDOVER.md         Melis'e yönelik devir teslim dokümanı
   `setTimeout` yedeği ile çözüldü (`BaseLayout.astro`). Bozma.
 - Playwright/tarayıcı ile ekran görüntüsü alacaksan animasyonların tetiklenmesi
   için sayfayı ~300px'lik adımlarla ~4500px'e kadar kaydırmak gerekiyor.
-- Alt bilgi logosu: bir dönem açıltılmış `logo-light.png` kullanıldı, bordo
-  zeminde ağaç dalları ve gradyan solduğu için `logo.png`'ye dönüldü.
+- **Logo iki dosya, ikisi de gerekli:** `logo.png` başlıkta (krem zemin),
+  `logo-altbilgi.png` alt bilgide (bordo zemin). Sebebi: kaynak logonun beyaz
+  zemini dışarıdan taşma-doldurma ile silinmiş, kapalı harf içleri opak beyaz
+  kalmıştı — krem zeminde görünmüyor, bordoda beyaz leke oluyordu. Sadece
+  şeffaflaştırmak yetmiyor, çünkü `ZARARSIZ`'ın koyu çizgileri bordoda 2,74:1'e
+  düşüyor. Alt bilgi sürümünde o çizgilerin HSL açıklığı ters çevrildi →
+  5,31:1. Ayrıntı ve ölçümler `assets-kaynak/README.txt` içinde.
+  Tek dosyaya indirmeye çalışma; daha önce denenen `logo-light.png` her şeyi
+  açtığı için daire ve ağaç soluyordu.
 
 ## Durum (Ağustos 2026)
 
