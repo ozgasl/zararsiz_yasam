@@ -1,4 +1,7 @@
-LOGO: Bu klasördeki `logo.png` hem başlıkta hem alt bilgide kullanılır.
+Bu not `public/assets/img/` içindeki görselleri anlatır. Kendisi bilerek
+`public/` dışında durur — orada olsaydı canlı sitede herkese açık olurdu.
+
+LOGO: `public/assets/img/logo.png` hem başlıkta hem alt bilgide kullanılır.
 Kaynak: Google Drive > görseller > logo.jpeg (Melis'in logosu).
 `logo.png`, o dosyanın arka planı şeffaflaştırılmış halidir. Logo
 değişirse ikisini birlikte güncellemek gerekir.

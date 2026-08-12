@@ -101,7 +101,8 @@ src/styles/         global.css
 public/admin/       Sveltia config.yml + index.html
 public/assets/img/  logo.png, ana sayfa portresi, buluşma ikonları, kapak
 public/images/blog/ yazı görselleri (çoğu eksik — aşağı bak)
-assets-kaynak/      yüksek çözünürlüklü kaynaklar, YAYINA GİRMEZ
+assets-kaynak/      yüksek çözünürlüklü kaynaklar + görsel notları (README.txt),
+                    YAYINA GİRMEZ
 migration/          redirects.htaccess, image-manifest.csv, posts-index.csv
 scripts/            fetch-youtube.mjs, recover-images.mjs
 docs/prototype.html ilk tek dosyalık tasarım prototipi (referans)
