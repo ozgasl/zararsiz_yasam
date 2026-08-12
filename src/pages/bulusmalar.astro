@@ -2,7 +2,9 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import { slugify } from "../utils.js";
+import { metinler, md, mdSatir } from "../site.js";
 const base = import.meta.env.BASE_URL;
+const b = metinler.bulusmalar;
 
 const ICONS: Record<string, string> = {
   kitap: '<path d="M4 5h16v14H4zM4 9h16"/>',
@@ -47,20 +49,16 @@ const meetups = await Promise.all(
 
 <section class="bls-hero">
   <div class="wrap bls-hero-wrap">
-    <p class="eyebrow reveal">Buluşmalar</p>
-    <h1 class="reveal">Birlikte Düşünmek, Hissetmek ve Paylaşmak İçin</h1>
-    <p class="lead reveal">Bazen bir kitap, bazen bir film, bazen bir soru etrafında bir araya geliyoruz. Yavaşlamak, düşünmek, paylaşmak ve ilham almak için.</p>
+    <p class="eyebrow reveal">{b.ustbaslik}</p>
+    <h1 class="reveal">{b.baslik}</h1>
+    <p class="lead reveal" set:html={mdSatir(b.lead)}></p>
   </div>
 </section>
 
 <section class="bls-origin">
   <div class="wrap bio-wrap">
-    <h2 class="reveal">Buluşmalar Nasıl Doğdu?</h2>
-    <div class="reveal bio-body">
-      <p>Uzun yıllardır sinema, psikoloji, kültür sanat, mindfulness ve iyi yaşam alanlarında üretiyor, öğreniyor ve paylaşıyorum.</p>
-      <p>Bir süre sonra bunların yalnızca okumakla ya da anlatmakla kalmayıp birlikte deneyimlendiğinde daha anlamlı olduğunu fark ettim.</p>
-      <p>Amacım merak eden, düşünen, hisseden insanların bir araya gelebileceği samimi alanlar yaratmak.</p>
-    </div>
+    <h2 class="reveal">{b.dogus_baslik}</h2>
+    <div class="reveal bio-body" set:html={md(b.dogus_metin)}></div>
   </div>
 </section>
 
@@ -88,10 +86,10 @@ const meetups = await Promise.all(
 <section style="padding:0 0 70px">
   <div class="wrap" style="max-width:720px">
     <div class="testi reveal">
-      <p class="eyebrow">Kimler Katılabilir?</p>
+      <p class="eyebrow">{b.kimler_ustbaslik}</p>
       <span class="q">&ldquo;</span>
-      <blockquote>Bu buluşmalar belirli bir bilgi seviyesine sahip kişiler için değil. Merak eden, paylaşmak isteyen ve yeni bakış açılarına açık herkes katılabilir.</blockquote>
-      <p style="color:#D8D3BE;font-size:1.05rem;margin-top:16px">Bazı etkinlikler ücretsiz, bazıları bağış usulü, bazıları ise ücretli olarak düzenlenebilir. Detaylar her etkinlik duyurusunda ayrıca paylaşılır.</p>
+      <blockquote set:html={mdSatir(b.kimler_alinti)}></blockquote>
+      <p style="color:#D8D3BE;font-size:1.05rem;margin-top:16px" set:html={mdSatir(b.kimler_not)}></p>
     </div>
   </div>
 </section>

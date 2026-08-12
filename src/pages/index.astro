@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Duyurular from "../components/Duyurular.astro";
 import { slugify } from "../utils.js";
+import { metinler, kitapAyarlari, md, mdSatir, gorsel } from "../site.js";
 import { getCollection } from "astro:content";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -54,6 +55,23 @@ try {
 } catch {
   latestVideo = null;
 }
+
+const ana = metinler.anasayfa;
+const kitap = metinler.kitap;
+const heroFoto = gorsel(ana.hero_foto, base);
+
+// İkon ve link kodda kalıyor; panelden yalnızca başlık ve açıklama değişir.
+// Sabit listeyi geziyoruz: Melis panelde bir kutuyu silse de sayfa bozulmaz.
+const HIZMET_YUVALARI = [
+  { ikon: '<path d="M12 3v18M5 8c3 0 5 2 7 4M19 8c-3 0-5 2-7 4"/>', href: `${base}birlikte-calisalim/mindfulness-koclugu/` },
+  { ikon: '<circle cx="12" cy="8" r="3"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/>', href: `${base}birlikte-calisalim/yin-yoga/` },
+  { ikon: '<path d="M12 4c4 3 4 9 0 16C8 13 8 7 12 4Z"/><path d="M12 12h0"/>', href: `${base}birlikte-calisalim/meditasyon/` },
+];
+const hizmetler = HIZMET_YUVALARI.map((yuva, i) => ({ ...yuva, ...(ana.hizmetler?.[i] ?? {}) }))
+  .filter((h) => h.baslik);
+
+// Kitap satışa çıktığında "Yakında" pili yerini Satın Al butonuna bırakır.
+const satista = kitapAyarlari.satista_mi === true;
 ---
 <BaseLayout>
 
@@ -62,8 +80,8 @@ try {
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="reveal">
-      <h1>Farkındalıkla öze dönüş yolculuğuna hoş geldiniz</h1>
-      <p class="lead">Mindfulness, meditasyon ve yin yoga ekseninde bilinçli bir yaşam için profesyonel çalışmalar, makaleler ve buluşmalar.</p>
+      <h1 set:html={mdSatir(ana.hero_baslik)}></h1>
+      <p class="lead" set:html={mdSatir(ana.hero_paragraf)}></p>
       <div class="hero-actions">
         <a class="btn btn-outline" href={`${base}hakkimda/`}>Ben Kimim →</a>
         <a class="btn btn-outline" href={`${base}kitap/`}>İlk Kitabım →</a>
@@ -73,24 +91,19 @@ try {
     <div class="hero-media reveal">
       <div class="hero-photo">
         <picture>
-          <source
-            type="image/webp"
-            srcset={`${base}assets/img/buyukada-melis.webp 396w, ${base}assets/img/buyukada-melis@2x.webp 792w`}
-            sizes="(max-width: 900px) 360px, 420px"
-          />
+          {heroFoto.webpSrcset && <source type="image/webp" srcset={heroFoto.webpSrcset} />}
           <img
-            src={`${base}assets/img/buyukada-melis.jpg`}
-            srcset={`${base}assets/img/buyukada-melis.jpg 396w, ${base}assets/img/buyukada-melis@2x.jpg 792w`}
-            sizes="(max-width: 900px) 360px, 420px"
-            width="396"
-            height="607"
-            alt="Melis Zararsız, Büyükada"
+            src={heroFoto.src}
+            srcset={heroFoto.srcset}
+            width={heroFoto.width}
+            height={heroFoto.height}
+            alt={ana.hero_foto_alt}
           />
         </picture>
       </div>
       <div class="pullquote">
         <span class="q">&ldquo;</span>
-        <p>Yavaşlamak, esenlikli bir yaşam için insanın kendine vereceği en güzel hediye…</p>
+        <p set:html={mdSatir(ana.hero_alinti)}></p>
       </div>
     </div>
   </div>
@@ -105,11 +118,13 @@ try {
         <img src={`${base}assets/img/kabuk-kapak.jpg`} alt="Kabuk kitabı kapağı">
       </div>
       <div class="book-body">
-        <p class="eyebrow">Bir Dönüşüm Hikayesi</p>
-        <h2>Kabuk</h2>
-        <p>Geçmişinin yüklerinin altında kaldığını hisseden, kabuğunu yerinden oynatmaya cesaret eden bir kadının şeffaf ve dönüşmeye devam eden yolculuğu.</p>
+        <p class="eyebrow">{kitap.ustbaslik}</p>
+        <h2>{kitap.baslik}</h2>
+        <p set:html={mdSatir(kitap.tanitim)}></p>
         <div class="book-actions">
-          <span class="badge-soon">Yakında</span>
+          {satista
+            ? <a class="btn btn-primary" href={`${base}kitap/`}>{kitapAyarlari.satin_al_etiketi}</a>
+            : <span class="badge-soon">{kitapAyarlari.yakinda_etiketi}</span>}
           <a class="txtlink" href={`${base}kitap/`}>Kitap Hakkında →</a>
           <a class="txtlink" href={`${base}bulusmalar/#konuk-konusmacilar`}>İmza Günleri →</a>
         </div>
@@ -124,27 +139,17 @@ try {
 <!-- WHY -->
 <section class="why">
   <div class="wrap">
-    <h2 class="reveal">Neden Zararsız Yaşam?</h2>
-    <p class="intro reveal">Soyadım Zararsız ve yıllarca bu kelimeyle pek de barışık yaşadığım söylenemez. İyi yaşama dair merakım ve aldığım eğitimler arttıkça kadim bilgilerde bile bu kelimeyle karşılaştım. Kendimize ve çevremize zarar vermeden; bilinçle, farkındalıkla, zarafetle yaşamanın önemini anladım. Bu alanı açarak kendimizle ve hayatla sahici bir ilişki kurmak için bir araya geliyoruz.</p>
+    <h2 class="reveal">{ana.neden_baslik}</h2>
+    <p class="intro reveal" set:html={mdSatir(ana.neden_metin)}></p>
     <div class="services">
-      <div class="service reveal">
-        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 8c3 0 5 2 7 4M19 8c-3 0-5 2-7 4"/></svg></div>
-        <h3>Mindfulness Temelli Koçluk</h3>
-        <p>Profesyonel koçluk seanslarında birebir çalışmalar ile hayatının tüm alanlarına daha bilinçli bir yaklaşımla bakmak isteyenler için açılan bir alan.</p>
-        <a class="txtlink" href={`${base}birlikte-calisalim/mindfulness-koclugu/`}>Detaylar →</a>
-      </div>
-      <div class="service reveal">
-        <div class="svc-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/></svg></div>
-        <h3>Yin Yoga</h3>
-        <p>Profesyonel yin yoga derslerinde birebir ya da grup halinde bağ dokularımız üzerine çalışmalar; yavaşlamak, beden, zihin ve ruhu yeniden hizalamak için.</p>
-        <a class="txtlink" href={`${base}birlikte-calisalim/yin-yoga/`}>Detaylar →</a>
-      </div>
-      <div class="service reveal">
-        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M12 4c4 3 4 9 0 16C8 13 8 7 12 4Z"/><path d="M12 12h0"/></svg></div>
-        <h3>Meditasyon</h3>
-        <p>Düzenli pratikler, grup ve bireysel seanslar, yönlendirmeler. Zihni sakinleştirmek ve ana dönmek için sürdürülebilir bir alan.</p>
-        <a class="txtlink" href={`${base}birlikte-calisalim/meditasyon/`}>Detaylar →</a>
-      </div>
+      {hizmetler.map((h) => (
+        <div class="service reveal">
+          <div class="svc-ico" set:html={`<svg viewBox="0 0 24 24">${h.ikon}</svg>`} />
+          <h3>{h.baslik}</h3>
+          <p set:html={mdSatir(h.aciklama)}></p>
+          <a class="txtlink" href={h.href}>Detaylar →</a>
+        </div>
+      ))}
     </div>
   </div>
 </section>
@@ -154,8 +159,8 @@ try {
   <div class="wrap">
     <div class="mid-row reveal">
       <div class="mid-card testi-teaser">
-        <p class="eyebrow">Katılımcılardan Gelenler</p>
-        <p>&ldquo;Büyükada'ya olan sevgim sayesinde yollarımız kesişti... Kendi gelişim yolculuğumda bana ilham veren, bakış açımı genişleten ve destekleyen biri.&rdquo; — Yeliz</p>
+        <p class="eyebrow">{ana.katilimci_ustbaslik}</p>
+        <p set:html={mdSatir(ana.katilimci_alintisi)}></p>
         <a class="txtlink" href={`${base}bonservisler/`} style="color:#F4E7D9">Tüm Yorumlar →</a>
       </div>
       <div class="mid-card banner-frame">

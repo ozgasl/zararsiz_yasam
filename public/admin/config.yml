@@ -14,6 +14,235 @@ media_folder: "public/images/blog"
 public_folder: "/images/blog"
 
 collections:
+  # Sayfaların içindeki sabit metinler. Eskiden bu cümleler kodun içinde
+  # gömülüydü ve değiştirmek için Özgür gerekiyordu; artık buradan düzenleniyor.
+  # ÖNEMLİ: Buradaki alan adları src/data/site-metinleri.json ve src/site.js
+  # ile birebir aynı olmak zorunda. Ad değiştirirsen kodda da değiştir.
+  - name: "site_metinleri"
+    label: "Site Metinleri"
+    files:
+      - name: "metinler"
+        label: "Site Metinleri"
+        file: "src/data/site-metinleri.json"
+        description: >-
+          Sayfalardaki başlıklar ve tanıtım cümleleri. Blog yazıları burada
+          değil, "Blog Yazıları" bölümünde. Kaydettiğinizde site birkaç dakika
+          içinde kendini günceller.
+        fields:
+          - label: "Anasayfa"
+            name: "anasayfa"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Üstteki büyük başlık", name: "hero_baslik", widget: "string" }
+              - { label: "Başlığın altındaki cümle", name: "hero_paragraf", widget: "text" }
+              - {
+                  label: "Üstteki fotoğraf",
+                  name: "hero_foto",
+                  widget: "image",
+                  media_folder: "/public/assets/img",
+                  public_folder: "/assets/img",
+                  hint: "Dikey (portre) bir fotoğraf en iyi durur. Mümkünse 800 piksel genişliğinden büyük yükleyin.",
+                }
+              - {
+                  label: "Fotoğraf açıklaması",
+                  name: "hero_foto_alt",
+                  widget: "string",
+                  hint: "Görme engelli okuyucular ve arama motorları için. Örn: Melis Zararsız, Büyükada",
+                }
+              - { label: "Fotoğrafın üzerindeki alıntı", name: "hero_alinti", widget: "text" }
+              - { label: "\"Neden Zararsız Yaşam?\" başlığı", name: "neden_baslik", widget: "string" }
+              - { label: "\"Neden Zararsız Yaşam?\" metni", name: "neden_metin", widget: "text" }
+              - label: "Üç hizmet kutusu"
+                name: "hizmetler"
+                widget: "list"
+                collapsed: false
+                label_singular: "Hizmet kutusu"
+                summary: "{{fields.baslik}}"
+                hint: "Sırası ve sayısı sabittir: 1. kutu Mindfulness Koçluğu, 2. Yin Yoga, 3. Meditasyon sayfasına gider. Kutu eklemeyin, sadece yazıları değiştirin."
+                fields:
+                  - { label: "Başlık", name: "baslik", widget: "string" }
+                  - { label: "Açıklama", name: "aciklama", widget: "text" }
+              - { label: "Yorum kutusunun üst başlığı", name: "katilimci_ustbaslik", widget: "string" }
+              - { label: "Yorum", name: "katilimci_alintisi", widget: "text" }
+
+          - label: "Alt Bilgi (sayfa sonu)"
+            name: "altbilgi"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "E-posta adresi", name: "eposta", widget: "string" }
+              - { label: "Instagram yazısı", name: "instagram_etiket", widget: "string" }
+              - { label: "Instagram adresi", name: "instagram_link", widget: "string" }
+              - { label: "Spotify yazısı", name: "spotify_etiket", widget: "string" }
+              - { label: "Spotify adresi", name: "spotify_link", widget: "string" }
+              - { label: "YouTube yazısı", name: "youtube_etiket", widget: "string" }
+              - { label: "YouTube adresi", name: "youtube_link", widget: "string" }
+              - { label: "En alttaki telif satırı", name: "telif", widget: "string" }
+
+          - label: "Hakkımda sayfası"
+            name: "hakkimda"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Üst başlık", name: "ustbaslik", widget: "string" }
+              - { label: "Büyük başlık", name: "baslik", widget: "string" }
+              - { label: "Giriş cümlesi", name: "lead", widget: "text" }
+              - { label: "Hikâye bölümünün başlığı", name: "hikaye_baslik", widget: "string" }
+              - {
+                  label: "Hikâye metni",
+                  name: "hikaye_metin",
+                  widget: "markdown",
+                  modes: ["raw", "rich_text"],
+                  hint: "Word'den yapıştırmak için bu sade metin kutusunu kullanın. Paragraflar arasında bir boş satır bırakın. Kalın yazı **iki yıldız**, eğik yazı *tek yıldız* arasına yazılır.",
+                }
+              - { label: "\"Neden Zararsız Yaşam?\" üst başlığı", name: "neden_ustbaslik", widget: "string" }
+              - { label: "\"Neden Zararsız Yaşam?\" başlığı", name: "neden_baslik", widget: "string" }
+              - {
+                  label: "\"Neden Zararsız Yaşam?\" metni",
+                  name: "neden_metin",
+                  widget: "markdown",
+                  modes: ["raw", "rich_text"],
+                }
+              - { label: "Sertifikalar üst başlığı", name: "sertifika_ustbaslik", widget: "string" }
+              - { label: "Sertifikalar başlığı", name: "sertifika_baslik", widget: "string" }
+              - label: "Üç sertifika kutusu"
+                name: "sertifikalar"
+                widget: "list"
+                label_singular: "Sertifika kutusu"
+                summary: "{{fields.baslik}}"
+                hint: "Sayısı sabittir (üç kutu). Kutu eklemeyin, sadece yazıları değiştirin."
+                fields:
+                  - { label: "Başlık", name: "baslik", widget: "string" }
+                  - { label: "Açıklama", name: "aciklama", widget: "text" }
+
+          - label: "Birlikte Çalışalım sayfası"
+            name: "birlikte_calisalim"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Üst başlık", name: "ustbaslik", widget: "string" }
+              - { label: "Büyük başlık", name: "baslik", widget: "string" }
+              - { label: "Giriş cümlesi", name: "lead", widget: "text" }
+              - { label: "İkinci paragraf", name: "giris", widget: "text" }
+
+          - label: "Buluşmalar sayfası"
+            name: "bulusmalar"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Üst başlık", name: "ustbaslik", widget: "string" }
+              - { label: "Büyük başlık", name: "baslik", widget: "string" }
+              - { label: "Giriş cümlesi", name: "lead", widget: "text" }
+              - { label: "\"Nasıl Doğdu?\" başlığı", name: "dogus_baslik", widget: "string" }
+              - {
+                  label: "\"Nasıl Doğdu?\" metni",
+                  name: "dogus_metin",
+                  widget: "markdown",
+                  modes: ["raw", "rich_text"],
+                }
+              - { label: "\"Kimler Katılabilir?\" başlığı", name: "kimler_ustbaslik", widget: "string" }
+              - { label: "\"Kimler Katılabilir?\" alıntısı", name: "kimler_alinti", widget: "text" }
+              - { label: "Ücret notu", name: "kimler_not", widget: "text" }
+
+          - label: "İletişim sayfası"
+            name: "iletisim"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Üst başlık", name: "ustbaslik", widget: "string" }
+              - { label: "Büyük başlık", name: "baslik", widget: "string" }
+              - { label: "Giriş cümlesi", name: "lead", widget: "text" }
+              - { label: "Sayfa sonundaki alıntı", name: "kapanis_alinti", widget: "text" }
+              - { label: "Alıntının altındaki satır", name: "kapanis_not", widget: "text" }
+
+          - label: "Kitap sayfası"
+            name: "kitap"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Üst başlık", name: "ustbaslik", widget: "string" }
+              - { label: "Kitap adı", name: "baslik", widget: "string" }
+              - {
+                  label: "Kısa tanıtım",
+                  name: "tanitim",
+                  widget: "text",
+                  hint: "Bu cümle hem anasayfada hem Kitap sayfasında görünür.",
+                }
+              - { label: "\"Arka Plan\" üst başlığı", name: "arka_plan_ustbaslik", widget: "string" }
+              - { label: "\"Arka Plan\" başlığı", name: "arka_plan_baslik", widget: "string" }
+              - {
+                  label: "\"Arka Plan\" metni",
+                  name: "arka_plan_metin",
+                  widget: "markdown",
+                  modes: ["raw", "rich_text"],
+                }
+              - { label: "\"Kitap Hakkında\" üst başlığı", name: "hakkinda_ustbaslik", widget: "string" }
+              - { label: "\"Kitap Hakkında\" başlığı", name: "hakkinda_baslik", widget: "string" }
+              - {
+                  label: "\"Kitap Hakkında\" metni",
+                  name: "hakkinda_metin",
+                  widget: "markdown",
+                  modes: ["raw", "rich_text"],
+                }
+              - { label: "\"Kimin İçin?\" üst başlığı", name: "kimin_ustbaslik", widget: "string" }
+              - { label: "\"Kimin İçin?\" başlığı", name: "kimin_baslik", widget: "string" }
+              - {
+                  label: "\"Kimin İçin?\" maddeleri",
+                  name: "kimin_liste",
+                  widget: "list",
+                  label_singular: "Madde",
+                }
+
+  # Kitap satışa çıktığı gün Melis'in Özgür'ü beklememesi için.
+  - name: "kitap_ayarlari"
+    label: "Kitap Ayarları"
+    files:
+      - name: "ayarlar"
+        label: "Kitap Satış Ayarları"
+        file: "src/data/kitap-ayarlari.json"
+        description: >-
+          Kabuk satışa çıktığında "Satışta mı?" anahtarını açın ve mağaza
+          adreslerini girin. Anahtar kapalıyken sitedeki tüm satın alma
+          yerlerinde "Yakında" yazar. Adresi girilmemiş mağaza, anahtar açık
+          olsa bile "Yakında" olarak kalır.
+        fields:
+          - {
+              label: "Satışta mı?",
+              name: "satista_mi",
+              widget: "boolean",
+              default: false,
+              hint: "Açtığınızda anasayfadaki \"Yakında\" etiketi \"Satın Al\" butonuna dönüşür ve mağaza kutuları tıklanabilir olur.",
+            }
+          - label: "Mağazalar"
+            name: "magazalar"
+            widget: "list"
+            label_singular: "Mağaza"
+            summary: "{{fields.ad}}"
+            fields:
+              - { label: "Mağaza adı", name: "ad", widget: "string", hint: "Örn: DR, idefix, Kitapyurdu" }
+              - {
+                  label: "Satın alma adresi",
+                  name: "link",
+                  widget: "string",
+                  required: false,
+                  hint: "https:// ile başlayan tam adres. Boşsa bu mağaza \"Yakında\" görünür.",
+                  pattern: ["^$|^https?://", "Adres https:// ile başlamalı."],
+                }
+          - { label: "Satın alma penceresinin başlığı", name: "popup_baslik", widget: "string" }
+          - {
+              label: "Pencere metni — henüz satışta DEĞİLKEN",
+              name: "popup_metin_satista_degil",
+              widget: "text",
+            }
+          - {
+              label: "Pencere metni — SATIŞTAYKEN",
+              name: "popup_metin_satista",
+              widget: "text",
+            }
+          - { label: "\"Yakında\" etiketi", name: "yakinda_etiketi", widget: "string" }
+          - { label: "\"Satın Al\" buton yazısı", name: "satin_al_etiketi", widget: "string" }
+
   - name: "blog"
     label: "Blog Yazıları"
     label_singular: "Blog Yazısı"

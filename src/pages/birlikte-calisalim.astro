@@ -1,15 +1,17 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { metinler, mdSatir } from "../site.js";
 const base = import.meta.env.BASE_URL;
+const bc = metinler.birlikte_calisalim;
 ---
 <BaseLayout title="Birlikte Çalışalım — Zararsız Yaşam">
 
 <section class="svc-hero">
   <div class="wrap svc-hero-wrap">
-    <p class="eyebrow reveal">Birlikte Çalışalım</p>
-    <h1 class="reveal">Yavaşla</h1>
-    <p class="lead reveal">Mindfulness temelli koçluk, yin yoga ve meditasyon çalışmalarıyla sizi hayatın içinde biraz daha yavaşlamaya, fark etmeye ve kendinize alan açmaya davet ediyorum.</p>
-    <p class="reveal svc-intro">Çalışmalarımın merkezinde farkındalık yer alıyor. Yin yoga, meditasyon ve mindfulness temelli koçluk farklı disiplinler gibi görünse de hepsi aynı yere çıkıyor: insanın bedenen, ruhen ve zihnen kendisiyle daha sağlıklı, daha şefkatli ve daha bilinçli bir ilişki kurabilmesine.</p>
+    <p class="eyebrow reveal">{bc.ustbaslik}</p>
+    <h1 class="reveal">{bc.baslik}</h1>
+    <p class="lead reveal" set:html={mdSatir(bc.lead)}></p>
+    <p class="reveal svc-intro" set:html={mdSatir(bc.giris)}></p>
   </div>
 </section>
 

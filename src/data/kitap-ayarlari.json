@@ -1,0 +1,12 @@
+{
+  "satista_mi": false,
+  "yakinda_etiketi": "Yakında",
+  "satin_al_etiketi": "Satın Al",
+  "popup_baslik": "Kabuk'u Nereden Alabilirim?",
+  "popup_metin_satista_degil": "Kabuk şu an satışta değil. Satışa çıktığında aşağıdaki kitapçılardan edinebileceksiniz.",
+  "popup_metin_satista": "Kabuk aşağıdaki kitapçılardan temin edilebilir.",
+  "magazalar": [
+    { "ad": "DR", "link": "" },
+    { "ad": "idefix", "link": "" }
+  ]
+}

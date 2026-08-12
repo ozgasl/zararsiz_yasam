@@ -13,3 +13,6 @@ src/data/youtube-latest.json
 
 # görsel kurtarma raporu (yerelde üretilir)
 migration/image-recovery-report.csv
+
+# Melis'in gönderdiği ekran görüntüleri için geçici klasör (repoya girmez)
+/img/

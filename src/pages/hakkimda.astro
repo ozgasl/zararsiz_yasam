@@ -1,67 +1,68 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { metinler, md, mdSatir, gorsel } from "../site.js";
 const base = import.meta.env.BASE_URL;
+
+const h = metinler.hakkimda;
+const foto = gorsel(metinler.anasayfa.hero_foto, base);
+
+// İkonlar kodda; panelden yalnızca başlık ve açıklama değişir.
+const SERTIFIKA_IKONLARI = [
+  '<path d="M12 3v18M5 8c3 0 5 2 7 4M19 8c-3 0-5 2-7 4"/>',
+  '<circle cx="12" cy="8" r="3"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/>',
+  '<path d="M12 4c4 3 4 9 0 16C8 13 8 7 12 4Z"/>',
+];
+const sertifikalar = SERTIFIKA_IKONLARI.map((ikon, i) => ({ ikon, ...(h.sertifikalar?.[i] ?? {}) }))
+  .filter((s) => s.baslik);
 ---
 <BaseLayout title="Merhaba, ben Melis — Zararsız Yaşam">
 
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="reveal">
-      <p class="eyebrow">Hakkımda</p>
-      <h1>Merhaba, ben Melis.</h1>
-      <p class="lead">Mindfulness temelli koçluk yapıyor, yin yoga ve meditasyon dersleri veriyorum. İnsanların kendileriyle, çevresiyle ve hayatla daha sahici ilişkiler kurabilmelerine alan açan çalışmalar yürütüyorum.</p>
+      <p class="eyebrow">{h.ustbaslik}</p>
+      <h1>{h.baslik}</h1>
+      <p class="lead" set:html={mdSatir(h.lead)}></p>
       <a class="btn btn-primary" href={`${base}birlikte-calisalim/`}>Birlikte Çalışalım →</a>
     </div>
     <div class="hero-media reveal">
-      <div class="hero-photo"><img src={`${base}assets/img/buyukada-melis.jpg`} alt="Melis Zararsız, Büyükada"></div>
+      <div class="hero-photo">
+        <picture>
+          {foto.webpSrcset && <source type="image/webp" srcset={foto.webpSrcset} />}
+          <img src={foto.src} srcset={foto.srcset} width={foto.width} height={foto.height} alt={metinler.anasayfa.hero_foto_alt}>
+        </picture>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="bio-sec">
   <div class="wrap bio-wrap">
-    <h2 class="reveal">Benim Hikâyem</h2>
-    <div class="reveal bio-body">
-      <p>3 yaşımda okuma yazma öğrenmişim, 5 yaşımda ilkokula başlamışım. 6 yaşımda piyano çalmayı öğrenmiş ve kendimce besteler düzenleyip resitaller vermişim. Böyle hızlı bir başlangıca rağmen zor bir çocukluk geçirerek kendimi bulmakta zorlandım ve savruldum.</p>
-      <p>İki yüksek lisans yaptıktan sonra uzun yıllar kültür sanat alanında profesyonel olarak çalıştım. Sinema dünyasında gazetecilik yaptım, Cannes Film Festivali ve Türkiye'deki hemen hemen tüm film festivallerinde görev aldım. Kültür sanat alanında freelance gazetecilik yapmaya devam ediyorum ve yazılarımı <a href="https://melisinema.com" target="_blank" rel="noopener">melisinema.com</a> adresinde paylaşıyorum. Ayrıca profesyonel olarak altyazı ve metin/kitapçık çeviri çalışmalarım da devam ediyor.</p>
-      <p>2010'lu yılların başlarında boşandım, istifa ettim ve Büyükada'ya taşındım. Yeni meslekler için eğitimlerimi aldım: yin yoga eğitmenliği, mindfulness temelli koçluk, meditasyon uygulayıcılığı. Pandemi dönemi itibariyle kitap yazmaya başladım ve bu sene kitabım <em>Kabuk</em> basıldı.</p>
-      <p>Bana iyi gelen disiplinleri iyice öğrenerek aynı yolun yolcularına alan tutmak için Zararsız Yaşam'ı kurdum. Yolculuk benim için de devam ediyor.</p>
-    </div>
+    <h2 class="reveal">{h.hikaye_baslik}</h2>
+    <div class="reveal bio-body" set:html={md(h.hikaye_metin)}></div>
   </div>
 </section>
 
 <section class="neden-sec">
   <div class="wrap bio-wrap">
-    <p class="eyebrow reveal">Zararsız Yaşam</p>
-    <h2 class="reveal">Neden Zararsız Yaşam?</h2>
-    <div class="reveal bio-body">
-      <p>Soyadım Zararsız ve bu soyadla çok barışık yıllar geçirdiğimi söyleyemem. Akran zorbalığına uğradığım yıllarda kararsız, yararsız, arsız gibi şakalarla cebelleştim; genç kızlığımda ise "gerçekten zararsız mısın" gibi saçma sorulara boğuldum.</p>
-      <p>Ne zaman ki iyi yaşam ilgimi çekmeye başladı — meditasyon, yoga, sağlıklı yaşam, esenlik — ve Budist metinlerde Ahimsa erdemiyle karşılaştım, soyadımla barıştım.</p>
-      <p>Kendime ve başkalarına zarar vermeden, zarafetle, şefkatle yaşamak. İyi yaşamak. Zararsız Yaşam başlığı altında yin yoga, meditasyon, mindfulness, bilinçli beslenme ve hareketli yaşam konuşabiliyoruz.</p>
-    </div>
+    <p class="eyebrow reveal">{h.neden_ustbaslik}</p>
+    <h2 class="reveal">{h.neden_baslik}</h2>
+    <div class="reveal bio-body" set:html={md(h.neden_metin)}></div>
   </div>
 </section>
 
 <section class="why" style="padding:50px 0 40px">
   <div class="wrap">
-    <p class="eyebrow reveal" style="text-align:center">Uzmanlık</p>
-    <h2 class="reveal">Eğitimler ve Sertifikalar</h2>
+    <p class="eyebrow reveal" style="text-align:center">{h.sertifika_ustbaslik}</p>
+    <h2 class="reveal">{h.sertifika_baslik}</h2>
     <div class="services">
-      <div class="service reveal">
-        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 8c3 0 5 2 7 4M19 8c-3 0-5 2-7 4"/></svg></div>
-        <h3>Mindfulness Temelli Koçluk</h3>
-        <p>Sertifikalı mindfulness temelli koçluk uygulayıcısı.</p>
-      </div>
-      <div class="service reveal">
-        <div class="svc-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/></svg></div>
-        <h3>Yin Yoga Eğitmenliği</h3>
-        <p>Sertifikalı yin yoga eğitmeni ve uygulayıcısı. Herkes İçin Spor Yoga Eğitmenliği sertifikası da dahil olmak üzere çoklu sertifika sahibi.</p>
-      </div>
-      <div class="service reveal">
-        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M12 4c4 3 4 9 0 16C8 13 8 7 12 4Z"/></svg></div>
-        <h3>Meditasyon Uygulayıcılığı</h3>
-        <p>Sertifikalı meditasyon eğitmeni.</p>
-      </div>
+      {sertifikalar.map((s) => (
+        <div class="service reveal">
+          <div class="svc-ico" set:html={`<svg viewBox="0 0 24 24">${s.ikon}</svg>`} />
+          <h3>{s.baslik}</h3>
+          <p set:html={mdSatir(s.aciklama)}></p>
+        </div>
+      ))}
     </div>
   </div>
 </section>

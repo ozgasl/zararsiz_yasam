@@ -1,0 +1,111 @@
+{
+  "anasayfa": {
+    "hero_baslik": "Farkındalıkla öze dönüş yolculuğuna hoş geldiniz",
+    "hero_paragraf": "Mindfulness, meditasyon ve yin yoga ekseninde bilinçli bir yaşam için profesyonel çalışmalar, makaleler ve buluşmalar.",
+    "hero_foto": "/assets/img/buyukada-melis.jpg",
+    "hero_foto_alt": "Melis Zararsız, Büyükada",
+    "hero_alinti": "Yavaşlamak, esenlikli bir yaşam için insanın kendine vereceği en güzel hediye…",
+    "neden_baslik": "Neden Zararsız Yaşam?",
+    "neden_metin": "Soyadım Zararsız ve yıllarca bu kelimeyle pek de barışık yaşadığım söylenemez. İyi yaşama dair merakım ve aldığım eğitimler arttıkça kadim bilgilerde bile bu kelimeyle karşılaştım. Kendimize ve çevremize zarar vermeden; bilinçle, farkındalıkla, zarafetle yaşamanın önemini anladım. Bu alanı açarak kendimizle ve hayatla sahici bir ilişki kurmak için bir araya geliyoruz.",
+    "hizmetler": [
+      {
+        "baslik": "Mindfulness Temelli Koçluk",
+        "aciklama": "Profesyonel koçluk seanslarında birebir çalışmalar ile hayatının tüm alanlarına daha bilinçli bir yaklaşımla bakmak isteyenler için açılan bir alan."
+      },
+      {
+        "baslik": "Yin Yoga",
+        "aciklama": "Profesyonel yin yoga derslerinde birebir ya da grup halinde bağ dokularımız üzerine çalışmalar; yavaşlamak, beden, zihin ve ruhu yeniden hizalamak için."
+      },
+      {
+        "baslik": "Meditasyon",
+        "aciklama": "Düzenli pratikler, grup ve bireysel seanslar, yönlendirmeler. Zihni sakinleştirmek ve ana dönmek için sürdürülebilir bir alan."
+      }
+    ],
+    "katilimci_ustbaslik": "Katılımcılardan Gelenler",
+    "katilimci_alintisi": "“Büyükada'ya olan sevgim sayesinde yollarımız kesişti... Kendi gelişim yolculuğumda bana ilham veren, bakış açımı genişleten ve destekleyen biri.” — Yeliz"
+  },
+
+  "altbilgi": {
+    "eposta": "ben@meliszararsiz.com",
+    "instagram_etiket": "Instagram · @zararsiz_yasam",
+    "instagram_link": "https://www.instagram.com/zararsiz_yasam/",
+    "spotify_etiket": "Spotify · Zararsız Yaşam",
+    "spotify_link": "https://open.spotify.com/show/3nRY5vcYONoctjQOAs4J9J",
+    "youtube_etiket": "YouTube · Zararsız Yaşam",
+    "youtube_link": "https://www.youtube.com/c/zararsizyasam",
+    "telif": "© 2026 Zararsız Yaşam · Melis Zararsız"
+  },
+
+  "hakkimda": {
+    "ustbaslik": "Hakkımda",
+    "baslik": "Merhaba, ben Melis.",
+    "lead": "Mindfulness temelli koçluk yapıyor, yin yoga ve meditasyon dersleri veriyorum. İnsanların kendileriyle, çevresiyle ve hayatla daha sahici ilişkiler kurabilmelerine alan açan çalışmalar yürütüyorum.",
+    "hikaye_baslik": "Benim Hikâyem",
+    "hikaye_metin": "3 yaşımda okuma yazma öğrenmişim, 5 yaşımda ilkokula başlamışım. 6 yaşımda piyano çalmayı öğrenmiş ve kendimce besteler düzenleyip resitaller vermişim. Böyle hızlı bir başlangıca rağmen zor bir çocukluk geçirerek kendimi bulmakta zorlandım ve savruldum.\n\nİki yüksek lisans yaptıktan sonra uzun yıllar kültür sanat alanında profesyonel olarak çalıştım. Sinema dünyasında gazetecilik yaptım, Cannes Film Festivali ve Türkiye'deki hemen hemen tüm film festivallerinde görev aldım. Kültür sanat alanında freelance gazetecilik yapmaya devam ediyorum ve yazılarımı [melisinema.com](https://melisinema.com) adresinde paylaşıyorum. Ayrıca profesyonel olarak altyazı ve metin/kitapçık çeviri çalışmalarım da devam ediyor.\n\n2010'lu yılların başlarında boşandım, istifa ettim ve Büyükada'ya taşındım. Yeni meslekler için eğitimlerimi aldım: yin yoga eğitmenliği, mindfulness temelli koçluk, meditasyon uygulayıcılığı. Pandemi dönemi itibariyle kitap yazmaya başladım ve bu sene kitabım *Kabuk* basıldı.\n\nBana iyi gelen disiplinleri iyice öğrenerek aynı yolun yolcularına alan tutmak için Zararsız Yaşam'ı kurdum. Yolculuk benim için de devam ediyor.",
+    "neden_ustbaslik": "Zararsız Yaşam",
+    "neden_baslik": "Neden Zararsız Yaşam?",
+    "neden_metin": "Soyadım Zararsız ve bu soyadla çok barışık yıllar geçirdiğimi söyleyemem. Akran zorbalığına uğradığım yıllarda kararsız, yararsız, arsız gibi şakalarla cebelleştim; genç kızlığımda ise \"gerçekten zararsız mısın\" gibi saçma sorulara boğuldum.\n\nNe zaman ki iyi yaşam ilgimi çekmeye başladı — meditasyon, yoga, sağlıklı yaşam, esenlik — ve Budist metinlerde Ahimsa erdemiyle karşılaştım, soyadımla barıştım.\n\nKendime ve başkalarına zarar vermeden, zarafetle, şefkatle yaşamak. İyi yaşamak. Zararsız Yaşam başlığı altında yin yoga, meditasyon, mindfulness, bilinçli beslenme ve hareketli yaşam konuşabiliyoruz.",
+    "sertifika_ustbaslik": "Uzmanlık",
+    "sertifika_baslik": "Eğitimler ve Sertifikalar",
+    "sertifikalar": [
+      {
+        "baslik": "Mindfulness Temelli Koçluk",
+        "aciklama": "Sertifikalı mindfulness temelli koçluk uygulayıcısı."
+      },
+      {
+        "baslik": "Yin Yoga Eğitmenliği",
+        "aciklama": "Sertifikalı yin yoga eğitmeni ve uygulayıcısı. Herkes İçin Spor Yoga Eğitmenliği sertifikası da dahil olmak üzere çoklu sertifika sahibi."
+      },
+      {
+        "baslik": "Meditasyon Uygulayıcılığı",
+        "aciklama": "Sertifikalı meditasyon eğitmeni."
+      }
+    ]
+  },
+
+  "birlikte_calisalim": {
+    "ustbaslik": "Birlikte Çalışalım",
+    "baslik": "Yavaşla",
+    "lead": "Mindfulness temelli koçluk, yin yoga ve meditasyon çalışmalarıyla sizi hayatın içinde biraz daha yavaşlamaya, fark etmeye ve kendinize alan açmaya davet ediyorum.",
+    "giris": "Çalışmalarımın merkezinde farkındalık yer alıyor. Yin yoga, meditasyon ve mindfulness temelli koçluk farklı disiplinler gibi görünse de hepsi aynı yere çıkıyor: insanın bedenen, ruhen ve zihnen kendisiyle daha sağlıklı, daha şefkatli ve daha bilinçli bir ilişki kurabilmesine."
+  },
+
+  "bulusmalar": {
+    "ustbaslik": "Buluşmalar",
+    "baslik": "Birlikte Düşünmek, Hissetmek ve Paylaşmak İçin",
+    "lead": "Bazen bir kitap, bazen bir film, bazen bir soru etrafında bir araya geliyoruz. Yavaşlamak, düşünmek, paylaşmak ve ilham almak için.",
+    "dogus_baslik": "Buluşmalar Nasıl Doğdu?",
+    "dogus_metin": "Uzun yıllardır sinema, psikoloji, kültür sanat, mindfulness ve iyi yaşam alanlarında üretiyor, öğreniyor ve paylaşıyorum.\n\nBir süre sonra bunların yalnızca okumakla ya da anlatmakla kalmayıp birlikte deneyimlendiğinde daha anlamlı olduğunu fark ettim.\n\nAmacım merak eden, düşünen, hisseden insanların bir araya gelebileceği samimi alanlar yaratmak.",
+    "kimler_ustbaslik": "Kimler Katılabilir?",
+    "kimler_alinti": "Bu buluşmalar belirli bir bilgi seviyesine sahip kişiler için değil. Merak eden, paylaşmak isteyen ve yeni bakış açılarına açık herkes katılabilir.",
+    "kimler_not": "Bazı etkinlikler ücretsiz, bazıları bağış usulü, bazıları ise ücretli olarak düzenlenebilir. Detaylar her etkinlik duyurusunda ayrıca paylaşılır."
+  },
+
+  "iletisim": {
+    "ustbaslik": "İletişim",
+    "baslik": "Yollarımız Kesişebilir",
+    "lead": "Birlikte çalışmak, bir etkinlik hakkında bilgi almak ya da sadece merhaba demek için bana ulaşabilirsiniz.",
+    "kapanis_alinti": "Bazen bir e-posta, bazen bir kitap, bazen de bir sohbet yeni bir yolculuğun başlangıcı olabilir.",
+    "kapanis_not": "Yolunuz buraya düştüyse, merhaba."
+  },
+
+  "kitap": {
+    "ustbaslik": "Bir Dönüşüm Hikâyesi",
+    "baslik": "Kabuk",
+    "tanitim": "Geçmişinin yüklerinin altında kaldığını hisseden, kabuğunu yerinden oynatmaya cesaret eden bir kadının şeffaf ve dönüşmeye devam eden yolculuğu.",
+    "arka_plan_ustbaslik": "Arka Plan",
+    "arka_plan_baslik": "Kabuk Neden Yazıldı?",
+    "arka_plan_metin": "Kabuk uzun yıllara yayılan bir içsel yolculuğun sonucu. Çocukluk, aile, ilişkiler, kayıplar, korkular, dönüşüm, mindfulness, yoga ve yeniden başlama cesareti üzerine kişisel bir anlatı.\n\nBu kitap bir insanın kendini anlamaya çalışırken tuttuğu samimi bir kayıt. Paylaşmak ve belki bir ışık yakar umuduyla…",
+    "hakkinda_ustbaslik": "Kitap Hakkında",
+    "hakkinda_baslik": "Kabuk",
+    "hakkinda_metin": "Kabuk, insanın kendini korumak için zamanla oluşturduğu katmanları fark etme ve yavaş yavaş onları bırakma yolculuğunu anlatan bir içsel keşif hikâyesi.\n\nMeditasyon, mindfulness ve yin yoga pratikleriyle şekillenen bu anlatı; geçmişin yükleri, ilişkiler, korkular ve kontrol ihtiyacıyla örülmüş kabukların nasıl da çatladığını, yerini daha yumuşak, daha gerçek bir varoluşa nasıl da bırakabildiğini samimi, şeffaf ve gerçek bir yaşam deneyimiyle ele alıyor.\n\nKendi yaşadıklarımdan yola çıkarak okuru da kendi kabuğunu fark etmeye ve dönüşümüne alan açmaya davet ediyorum.",
+    "kimin_ustbaslik": "Kimin İçin?",
+    "kimin_baslik": "Bu kitabı yazdım;",
+    "kimin_liste": [
+      "Dönüşüm süreçlerinden geçenler için",
+      "Kişisel gelişim kitaplarından çok gerçek hikâyeleri sevenler için",
+      "Farkındalıkla ilgilenenler için",
+      "Yalnız olmadığını hissetmek isteyenler için"
+    ]
+  }
+}

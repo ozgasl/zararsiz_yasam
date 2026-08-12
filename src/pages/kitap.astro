@@ -1,7 +1,19 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Duyurular from "../components/Duyurular.astro";
+import { metinler, kitapAyarlari, md, mdSatir } from "../site.js";
 const base = import.meta.env.BASE_URL;
+
+const k = metinler.kitap;
+
+// Kitap satışa çıkınca panelden "Satışta mı?" açılır; buradaki tüm "Yakında"lar
+// tıklanabilir mağaza linklerine döner. Linki girilmemiş mağaza yine "Yakında"
+// kalır, yani anahtarı erken açmak sayfayı bozmaz.
+const satista = kitapAyarlari.satista_mi === true;
+const magazalar = (kitapAyarlari.magazalar ?? []).map((m) => ({
+  ad: m.ad,
+  link: satista && m.link ? m.link : null,
+}));
 ---
 <BaseLayout title="Kabuk — Bir Dönüşüm Hikâyesi — Zararsız Yaşam">
 
@@ -13,11 +25,11 @@ const base = import.meta.env.BASE_URL;
         <img src={`${base}assets/img/kabuk-kapak.jpg`} alt="Kabuk kitabı kapağı">
       </div>
       <div class="book-body">
-        <p class="eyebrow">Bir Dönüşüm Hikâyesi</p>
-        <h1 class="kitap-h1">Kabuk</h1>
-        <p>Geçmişinin yüklerinin altında kaldığını hisseden, kabuğunu yerinden oynatmaya cesaret eden bir kadının şeffaf ve dönüşmeye devam eden yolculuğu.</p>
+        <p class="eyebrow">{k.ustbaslik}</p>
+        <h1 class="kitap-h1">{k.baslik}</h1>
+        <p set:html={mdSatir(k.tanitim)}></p>
         <div class="book-actions">
-          <button type="button" class="btn btn-primary" id="satin-al-btn" aria-haspopup="dialog" aria-controls="satin-al-modal">Satın Al</button>
+          <button type="button" class="btn btn-primary" id="satin-al-btn" aria-haspopup="dialog" aria-controls="satin-al-modal">{kitapAyarlari.satin_al_etiketi}</button>
         </div>
       </div>
     </div>
@@ -28,17 +40,22 @@ const base = import.meta.env.BASE_URL;
 <div class="sa-overlay" id="satin-al-modal" role="dialog" aria-modal="true" aria-labelledby="sa-title" hidden>
   <div class="sa-modal">
     <button type="button" class="sa-close" id="satin-al-close" aria-label="Kapat">✕</button>
-    <p class="eyebrow" id="sa-title">Kabuk'u Nereden Alabilirim?</p>
-    <p class="sa-lead">Kabuk şu an satışta değil. Satışa çıktığında aşağıdaki kitapçılardan edinebileceksiniz.</p>
+    <p class="eyebrow" id="sa-title">{kitapAyarlari.popup_baslik}</p>
+    <p class="sa-lead">{satista ? kitapAyarlari.popup_metin_satista : kitapAyarlari.popup_metin_satista_degil}</p>
     <div class="sa-stores">
-      <span class="sa-store" aria-disabled="true">
-        <span class="sa-store-name">DR</span>
-        <span class="sa-soon">Yakında</span>
-      </span>
-      <span class="sa-store" aria-disabled="true">
-        <span class="sa-store-name">idefix</span>
-        <span class="sa-soon">Yakında</span>
-      </span>
+      {magazalar.map((m) => (
+        m.link ? (
+          <a class="sa-store sa-store-link" href={m.link} target="_blank" rel="noopener">
+            <span class="sa-store-name">{m.ad}</span>
+            <span class="sa-buy">Satın Al →</span>
+          </a>
+        ) : (
+          <span class="sa-store" aria-disabled="true">
+            <span class="sa-store-name">{m.ad}</span>
+            <span class="sa-soon">{kitapAyarlari.yakinda_etiketi}</span>
+          </span>
+        )
+      ))}
     </div>
   </div>
 </div>
@@ -60,37 +77,27 @@ const base = import.meta.env.BASE_URL;
 
 <section class="kitap-sec">
   <div class="wrap kitap-wrap">
-    <p class="eyebrow reveal">Arka Plan</p>
-    <h2 class="reveal">Kabuk Neden Yazıldı?</h2>
-    <div class="reveal bio-body">
-      <p>Kabuk uzun yıllara yayılan bir içsel yolculuğun sonucu. Çocukluk, aile, ilişkiler, kayıplar, korkular, dönüşüm, mindfulness, yoga ve yeniden başlama cesareti üzerine kişisel bir anlatı.</p>
-      <p>Bu kitap bir insanın kendini anlamaya çalışırken tuttuğu samimi bir kayıt. Paylaşmak ve belki bir ışık yakar umuduyla…</p>
-    </div>
+    <p class="eyebrow reveal">{k.arka_plan_ustbaslik}</p>
+    <h2 class="reveal">{k.arka_plan_baslik}</h2>
+    <div class="reveal bio-body" set:html={md(k.arka_plan_metin)}></div>
   </div>
 </section>
 
 <section class="kitap-sec" style="background:var(--cream2)">
   <div class="wrap kitap-wrap">
-    <p class="eyebrow reveal">Kitap Hakkında</p>
-    <h2 class="reveal">Kabuk</h2>
-    <div class="reveal bio-body">
-      <p>Kabuk, insanın kendini korumak için zamanla oluşturduğu katmanları fark etme ve yavaş yavaş onları bırakma yolculuğunu anlatan bir içsel keşif hikâyesi.</p>
-      <p>Meditasyon, mindfulness ve yin yoga pratikleriyle şekillenen bu anlatı; geçmişin yükleri, ilişkiler, korkular ve kontrol ihtiyacıyla örülmüş kabukların nasıl da çatladığını, yerini daha yumuşak, daha gerçek bir varoluşa nasıl da bırakabildiğini samimi, şeffaf ve gerçek bir yaşam deneyimiyle ele alıyor.</p>
-      <p>Kendi yaşadıklarımdan yola çıkarak okuru da kendi kabuğunu fark etmeye ve dönüşümüne alan açmaya davet ediyorum.</p>
-    </div>
+    <p class="eyebrow reveal">{k.hakkinda_ustbaslik}</p>
+    <h2 class="reveal">{k.hakkinda_baslik}</h2>
+    <div class="reveal bio-body" set:html={md(k.hakkinda_metin)}></div>
   </div>
 </section>
 
 <section class="kitap-sec">
   <div class="wrap kitap-wrap">
-    <p class="eyebrow reveal">Kimin İçin?</p>
-    <h2 class="reveal">Bu kitabı yazdım;</h2>
+    <p class="eyebrow reveal">{k.kimin_ustbaslik}</p>
+    <h2 class="reveal">{k.kimin_baslik}</h2>
     <div class="reveal">
       <ul class="kitap-list">
-        <li>Dönüşüm süreçlerinden geçenler için</li>
-        <li>Kişisel gelişim kitaplarından çok gerçek hikâyeleri sevenler için</li>
-        <li>Farkındalıkla ilgilenenler için</li>
-        <li>Yalnız olmadığını hissetmek isteyenler için</li>
+        {(k.kimin_liste ?? []).map((madde) => <li set:html={mdSatir(madde)}></li>)}
       </ul>
     </div>
   </div>

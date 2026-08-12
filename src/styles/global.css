@@ -91,6 +91,10 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,238,226,.86);backdro
 .sa-store{display:flex;flex-direction:column;align-items:center;gap:8px;padding:18px 24px;border:1px solid var(--line);border-radius:16px;opacity:.55;min-width:110px}
 .sa-store-name{font-family:"Cormorant Garamond",serif;font-size:1.3rem;font-weight:600;color:var(--wine)}
 .sa-soon{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+/* Kitap satışa çıkınca (panelden "Satışta mı?") mağaza kutusu tıklanabilir olur. */
+.sa-store-link{opacity:1;text-decoration:none;background:var(--cream2);transition:transform .2s,border-color .2s}
+.sa-store-link:hover{transform:translateY(-2px);border-color:var(--wine)}
+.sa-buy{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--wine)}
 
 /* ---------- why ---------- */
 .why{padding:64px 0 30px;text-align:center}
