@@ -8,8 +8,12 @@ dist/
 .env.*
 .DS_Store
 Thumbs.db
-# build-time üretilen veri (scripts/fetch-youtube.mjs)
-src/data/youtube-latest.json
+# NOT: src/data/youtube-latest.json bilerek gitignore'da DEĞİL.
+# YouTube RSS akışı GitHub Actions IP'lerine HTTP 404 dönüyor (yerelden 200),
+# yani prebuild adımı canlı derlemede hep başarısız oluyordu ve anasayfa sabit
+# banner'a düşüyordu. Dosya repoda durduğu için derleme onu buluyor; çekim
+# başarılı olursa üzerine yazılır, başarısız olursa dokunulmaz.
+# Tazelemek için: node scripts/fetch-youtube.mjs  (yerelde) sonra commit.
 
 # görsel kurtarma raporu (yerelde üretilir)
 migration/image-recovery-report.csv

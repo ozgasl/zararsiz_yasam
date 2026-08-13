@@ -1,12 +1,26 @@
 # 301 redirects: eski WordPress URL'leri -> yeni site
 # Apache .htaccess (Alastyr). RewriteEngine zaten public_html/.htaccess'te aktif olmalı.
 
+# --- Kanonik hostname: www -> www'suz ---
+# Kanonik adres meliszararsiz.com. Bu kural olmadan iki hostname de siteyi
+# bağımsız olarak sunuyor: arama motorunda yinelenen içerik, Analytics'te
+# oturumların ikiye bölünmesi. mod_rewrite mod_alias'tan önce çalıştığı için
+# bu blok dosyanın başında duruyor.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^www\.meliszararsiz\.com$ [NC]
+  RewriteRule ^(.*)$ https://meliszararsiz.com/$1 [R=301,L]
+</IfModule>
+
 # --- Sayfalar / Pages ---
 Redirect 301 /benkimim/ /hakkimda/
 Redirect 301 /isimgucum/ /hakkimda/
 Redirect 301 /iletisim-contact-me/ /iletisim/
 Redirect 301 /kocluk-paketleri/ /birlikte-calisalim/
-Redirect 301 /blog/ /blog/
+# DİKKAT: burada "Redirect 301 /blog/ /blog/" vardı — kaynak ve hedef aynı
+# olduğu için Apache'de sonsuz yönlendirme döngüsü kuruyordu ve blog listesini
+# tamamen erişilemez hâle getirecekti. Eski /blog/ adresi yeni sitede de /blog/
+# olduğu için kurala hiç gerek yok, kaldırıldı.
 Redirect 301 /ana-sayfa/ /
 
 # --- Blog yazıları / Posts (100) ---

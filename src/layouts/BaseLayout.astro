@@ -4,6 +4,14 @@ import { metinler } from "../site.js";
 const { title = "Zararsız Yaşam — Melis Zararsız", description = "Mindfulness temelli koçluk, yin yoga ve meditasyon ekseninde bilinçli bir yaşam için çalışmalar, yazılar ve buluşmalar." } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const alt = metinler.altbilgi;
+
+// Kanonik adres. Astro.url.pathname base'i zaten içeriyor, o yüzden doğrudan
+// site köküyle birleştiriliyor. Amaç: aynı sayfanın www'lu/www'suz ve önizleme
+// kopyalarının arama motorunda birbiriyle yarışmaması.
+const KANONIK_HOST = "meliszararsiz.com";
+const kanonik = new URL(Astro.url.pathname, Astro.site).href;
+// Önizleme (ozgasl.github.io) ve yerel derlemeler indekslenmesin.
+const canliMi = Astro.site?.hostname === KANONIK_HOST;
 ---
 <!DOCTYPE html>
 <html lang="tr">
@@ -33,6 +41,8 @@ const alt = metinler.altbilgi;
 </script>
 <title>{title}</title>
 <meta name="description" content={description} />
+<link rel="canonical" href={kanonik} />
+{!canliMi && <meta name="robots" content="noindex, nofollow" />}
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />

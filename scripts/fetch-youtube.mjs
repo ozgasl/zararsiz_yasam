@@ -52,8 +52,16 @@ async function main() {
     await writeFile(OUT_FILE, JSON.stringify(data, null, 2) + "\n", "utf-8");
     console.log(`[fetch-youtube] Son video bulundu: ${data.title} (${videoId})`);
   } catch (err) {
-    console.warn(`[fetch-youtube] Çekilemedi, statik banner kullanılacak. Sebep: ${err.message}`);
-    // Dosya yazılmaz -> index.astro import'u try/catch ile fallback yapar.
+    console.warn(`[fetch-youtube] Çekilemedi. Sebep: ${err.message}`);
+    console.warn("[fetch-youtube] Repodaki youtube-latest.json kullanılacak; yoksa sabit banner.");
+    // Dosya yazılmaz ve SİLİNMEZ. src/data/youtube-latest.json repoda tutuluyor,
+    // çünkü YouTube RSS akışı GitHub Actions IP'lerine 404 dönüyor (yerelden
+    // 200 dönüyor — IP tabanlı bir kısıtlama, kanal kimliği ya da User-Agent
+    // ile ilgisi yok, üçü de test edildi). Böylece canlı derleme son bilinen
+    // videoyu basıyor. Dosya hiç yoksa index.astro try/catch ile sabit
+    // banner'a düşer.
+    // Kalıcı çözüm: YouTube Data API v3 anahtarı (GitHub secret) ya da
+    // isteği Cloudflare Worker üzerinden geçirmek.
   }
 }
 

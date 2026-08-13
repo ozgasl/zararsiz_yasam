@@ -28,8 +28,14 @@ düz CSS dosyası. **İnsan içeren yapay zekâ görseli kullanılmaz.**
   `dist/`. Temiz build **123 sayfa**.
 - Astro 4 tuzağı: içerik koleksiyonlarında `entry.render()` kullanılır;
   `astro:content`'ten `render()` **import edilmez**.
-- `prebuild` adımı `scripts/fetch-youtube.mjs` çalıştırır; dosya üretilemezse
-  anasayfa sabit banner'a düşer, build kırılmaz.
+- `prebuild` adımı `scripts/fetch-youtube.mjs` çalıştırır. **YouTube RSS akışı
+  GitHub Actions IP'lerine HTTP 404 dönüyor** (yerelden 200 — IP tabanlı; kanal
+  kimliği ve User-Agent ile ilgisi yok, üçü de test edildi). Bu yüzden
+  `src/data/youtube-latest.json` **repoda tutuluyor, gitignore'da değil**:
+  çekim başarısız olunca betik dosyayı silmediği için derleme son bilinen
+  videoyu basıyor. Tazelemek için yerelde `node scripts/fetch-youtube.mjs`
+  çalıştırıp commit'le. Kalıcı çözüm: YouTube Data API v3 anahtarı (GitHub
+  secret) ya da isteği Cloudflare Worker üzerinden geçirmek.
 - Bağımlılıklar: `astro`, `marked` (site metinlerindeki markdown için).
   `sharp` doğrudan bağımlı değil ama Astro'nun görsel motoruyla birlikte
   `node_modules`'te bulunur — tek seferlik görsel işleri için kullanılabilir.
@@ -73,8 +79,19 @@ Buluşmalar.
 
 - **Canlı:** Alastyr cPanel statik hosting, `deploy-production.yml` ile FTPS.
   Astro `base` = `/`. Domain meliszararsiz.com, SSL aktif.
-  Eski WordPress URL'leri için `migration/redirects.htaccess` kuralları
-  `public_html/.htaccess` içine eklenmiş olmalı.
+- **Kanonik adres www'suz:** `meliszararsiz.com` (karar Ağustos 2026).
+  `astro.config.mjs` içindeki `site` ve `BaseLayout`'taki `<link rel="canonical">`
+  buna göre. www tarafı `redirects.htaccess` başındaki 301 ile yönlenir.
+- **⚠️ `migration/redirects.htaccess` sunucuya HİÇ UYGULANMADI.** 13 Ağustos
+  2026'da test edildi: `/acidan-kacmak/` ve `/benkimim/` gibi eski WordPress
+  URL'leri **404** dönüyor. 100 blog yazısının slug'ları eski URL'lerden
+  korunmuş olmasına rağmen o adreslere gelen her bağlantı ölü. Dosyanın
+  `public_html/.htaccess` içine elle eklenmesi gerekiyor — FTP deploy
+  `.htaccess`'e dokunmuyor. Uygulanmadığı sürece Google'daki eski indeks ve
+  dışarıdan gelen tüm bağlantılar boşa gidiyor (Analytics'in boş görünmesinin
+  muhtemel sebeplerinden biri de bu).
+- Önizleme derlemesi `<meta name="robots" content="noindex, nofollow">` alır
+  (`Astro.site` kanonik host değilse). Canlı derlemede bu etiket basılmaz.
 - **Önizleme:** GitHub Pages, `deploy.yml`,
   `https://ozgasl.github.io/zararsiz_yasam/` (base `/zararsiz_yasam`).
   `claude/**` dallarından da deploy edebiliyor. Pages tek hedefe sahip, yani
@@ -94,7 +111,7 @@ src/layouts/        BaseLayout.astro (başlık+logo, alt bilgi, fontlar, GA4)
 src/components/     Duyurular.astro (kayan bant)
 src/content/        blog/ (100 yazı) · meetups/ · events/ · config.ts
 src/data/           site-metinleri.json · kitap-ayarlari.json
-                    (youtube-latest.json build'de üretilir, gitignore'da)
+                    youtube-latest.json (repoda tutulur — yukarı bak)
 src/site.js         JSON okuma + markdown + görsel yardımcıları
 src/utils.js        slugify (Türkçe karakter eşlemeli)
 src/styles/         global.css
