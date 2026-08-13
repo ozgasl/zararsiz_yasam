@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Sveltia CMS paneli — indekslenmesine gerek yok
+Disallow: /admin/
+
+Sitemap: https://meliszararsiz.com/sitemap-index.xml
