@@ -1,0 +1,31 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const base = import.meta.env.BASE_URL;
+---
+<BaseLayout title="Sayfa bulunamadı — Zararsız Yaşam">
+
+<section class="hata-sec">
+  <div class="wrap hata-wrap">
+    <p class="eyebrow reveal">404</p>
+    <h1 class="reveal">Aradığınız sayfayı bulamadık</h1>
+    <p class="lead reveal">
+      Adres yanlış yazılmış olabilir ya da sayfa taşınmış olabilir.
+      Aşağıdaki bağlantılardan devam edebilirsiniz.
+    </p>
+    <div class="hata-linkler reveal">
+      <a class="btn btn-primary" href={base}>Anasayfa →</a>
+      <a class="btn btn-outline" href={`${base}blog/`}>Blog Yazıları →</a>
+      <a class="btn btn-outline" href={`${base}iletisim/`}>İletişim →</a>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>
+
+<style>
+.hata-sec { padding: 100px 0 120px; }
+.hata-wrap { max-width: 640px; text-align: center; }
+.hata-wrap h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2rem, 4vw, 3rem); margin: 14px 0 22px; }
+.hata-wrap .lead { margin: 0 auto 34px; }
+.hata-linkler { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+</style>

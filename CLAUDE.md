@@ -25,7 +25,7 @@ düz CSS dosyası. **İnsan içeren yapay zekâ görseli kullanılmaz.**
 ## Teknik
 
 - **Astro 4** statik site, SSR yok. `npm run dev` → 4321, `npm run build` →
-  `dist/`. Temiz build **123 sayfa**.
+  `dist/`. Temiz build **124 sayfa** (123 + 404 sayfası).
 - Astro 4 tuzağı: içerik koleksiyonlarında `entry.render()` kullanılır;
   `astro:content`'ten `render()` **import edilmez**.
 - `prebuild` adımı `scripts/fetch-youtube.mjs` çalıştırır. **YouTube RSS akışı
@@ -81,15 +81,22 @@ Buluşmalar.
   Astro `base` = `/`. Domain meliszararsiz.com, SSL aktif.
 - **Kanonik adres www'suz:** `meliszararsiz.com` (karar Ağustos 2026).
   `astro.config.mjs` içindeki `site` ve `BaseLayout`'taki `<link rel="canonical">`
-  buna göre. www tarafı `redirects.htaccess` başındaki 301 ile yönlenir.
-- **⚠️ `migration/redirects.htaccess` sunucuya HİÇ UYGULANMADI.** 13 Ağustos
-  2026'da test edildi: `/acidan-kacmak/` ve `/benkimim/` gibi eski WordPress
-  URL'leri **404** dönüyor. 100 blog yazısının slug'ları eski URL'lerden
-  korunmuş olmasına rağmen o adreslere gelen her bağlantı ölü. Dosyanın
-  `public_html/.htaccess` içine elle eklenmesi gerekiyor — FTP deploy
-  `.htaccess`'e dokunmuyor. Uygulanmadığı sürece Google'daki eski indeks ve
-  dışarıdan gelen tüm bağlantılar boşa gidiyor (Analytics'in boş görünmesinin
-  muhtemel sebeplerinden biri de bu).
+  buna göre. http ve www tarafı `public/.htaccess` başındaki 301'lerle yönlenir.
+- **`.htaccess` artık repodan yönetiliyor: `public/.htaccess`.** Derlemeyle
+  `dist/.htaccess` olarak çıkıyor, FTP deploy `public_html/.htaccess`'e
+  yazıyor. cPanel'den elle düzenlemeyin, sonraki deploy üzerine yazar.
+  İçinde: https + www'suz kanonikleştirme, `ErrorDocument 404 /404.html`,
+  105 adet eski WordPress URL yönlendirmesi.
+  `migration/redirects.htaccess` yalnızca bir işaretçi notudur, kural içermez.
+- Tarihçe: bu kurallar 13 Ağustos 2026'ya kadar sunucuya **hiç uygulanmamıştı**
+  (elle kopyalanması gerekiyordu, yapılmamıştı) — eski adresler aylarca 404
+  döndü. Sunucudaki eski `.htaccess`'te WordPress'ten kalma
+  `RewriteRule . /index.php [L]` bloğu vardı: dosya/dizin olmayan her isteği
+  olmayan bir `index.php`'ye yönlendirdiği için 404'lerin doğrudan sebebiydi.
+  `/hakkimda/` gibi sayfaların çalışmasının sebebi de onların gerçek dizin
+  olması, yani `!-d` koşulunun eşleşmemesiydi. O blok ve artık korunacak
+  dosyası kalmayan "Secure Update" bloğu (Apache 2.2 `order allow,deny`
+  sözdizimi) kaldırıldı.
 - Önizleme derlemesi `<meta name="robots" content="noindex, nofollow">` alır
   (`Astro.site` kanonik host değilse). Canlı derlemede bu etiket basılmaz.
 - **Önizleme:** GitHub Pages, `deploy.yml`,
@@ -106,7 +113,7 @@ Buluşmalar.
 ```
 src/pages/          index, blog/[...slug], blog/index, kategori/[category],
                     hakkimda, birlikte-calisalim (+3 alt sayfa), bulusmalar,
-                    kitap, bonservisler, iletisim
+                    kitap, bonservisler, iletisim, 404, llms.txt
 src/layouts/        BaseLayout.astro (başlık+logo, alt bilgi, fontlar, GA4)
 src/components/     Duyurular.astro (kayan bant)
 src/content/        blog/ (100 yazı) · meetups/ · events/ · config.ts
