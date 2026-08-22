@@ -3,6 +3,7 @@ title: Kahvaltı - Yürüyüş - Meditasyon
 icon: ada
 category: Kahvaltı Yürüyüş Meditasyon
 order: 3
+active: true
 draft: false
 ---
 
