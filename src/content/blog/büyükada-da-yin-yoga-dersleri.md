@@ -9,4 +9,4 @@ tags:
 draft: false
 ---
 
-13 Eylül 2026 Pazar sabahı itibariyle her Pazar saat 08:00'de Büyükada Madam Sofia'da yin yoga derslerinde buluşalım. Başlangıç seviyesine uygundur. Kalın matınızı alın gelin. Ders sonrası Madam Sofia'nın hazırlayacağı sağlıklı sandviç ve juice ikramımızdır. Ücret bilgisi ve etkinlik detayları ile ilgili ben@meliszararsiz.com eposta adresinden veya zararsiz_yasam instagram hesabından bana yazabilirsiniz.
+13 Eylül 2026 Pazar sabahı itibariyle her Pazar saat 08:00'de Büyükada Madam Sofia'da yin yoga derslerinde buluşalım. Başlangıç seviyesine uygundur. Kalın matınızı alın gelin. Ders sonrası Madam Sofia'nın hazırlayacağı sağlıklı sandviç ve juice ikramımızdır. Ücret bilgisi ve etkinlik detayları ile ilgili ben@meliszararsiz.com eposta adresinden veya zararsiz_yasam instagram hesabından bana yazabilirsiniz.![](/images/blog/etkinlik.webp)
