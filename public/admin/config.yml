@@ -254,7 +254,12 @@ collections:
     sortable_fields: ["date", "title"]
     fields:
       - { label: "Başlık", name: "title", widget: "string" }
-      - { label: "Tarih", name: "date", widget: "datetime" }
+      # Tarih artık panelde görünmüyor: kafa karıştırıyordu ("ileri tarih
+      # verirsem yazı o gün mü yayınlanır?" - hayır, "Taslak" kutusu dışında
+      # hiçbir şey yayını geciktirmiyordu). Yazı ilk kaydedildiği an bu alan
+      # otomatik olarak o anki tarih/saat ile dolduruluyor; sıralama ve
+      # yazının altında görünen tarih için kullanılıyor, siz dokunmuyorsunuz.
+      - { name: "date", widget: "hidden", default: "{{now}}" }
       - {
           label: "Slug (URL'de görünecek kısım)",
           name: "slug",
@@ -318,7 +323,12 @@ collections:
           widget: "string",
           hint: "Örn: Melis Zararsız İmza Günü, Kitap Kulübü Buluşması",
         }
-      - { label: "Tarih", name: "date", widget: "datetime" }
+      - {
+          label: "Tarih",
+          name: "date",
+          widget: "datetime",
+          hint: "Etkinliğin gerçekleşeceği tarih (blog yazısının tarihiyle ilgisi yok). Bu tarih geçince duyuru bantta kendiliğinden kaybolur.",
+        }
       - {
           label: "Yer",
           name: "location",
@@ -385,6 +395,13 @@ collections:
           widget: "number",
           default: 0,
           hint: "Küçük sayı önce gösterilir (1, 2, 3...)",
+        }
+      - {
+          label: "Şu An Aktif mi?",
+          name: "active",
+          widget: "boolean",
+          default: false,
+          hint: "Açarsanız anasayfadaki bu kutunun üzerinde ve bu buluşmanın kendi sayfasında \"Aktif\" etiketi görünür. Buluşma dizisi sürerken açık tutun, bittiğinde kapatın.",
         }
       - {
           label: "Taslak (yayınlanmasın)",

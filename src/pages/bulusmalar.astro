@@ -38,7 +38,7 @@ const meetups = await Promise.all(
       slug: m.slug,
       title: m.data.title,
       icon: ICONS[m.data.icon] ?? ICONS.kitap,
-      archiveUrl: postCount > 0 ? `${base}kategori/${catSlug}/` : null,
+      active: m.data.active === true,
       postCount,
       Content,
     };
@@ -67,16 +67,14 @@ const meetups = await Promise.all(
     <p class="eyebrow reveal" style="text-align:center">Etkinlikler</p>
     <h2 class="reveal">Neler Yapıyoruz?</h2>
     <div class="services">
-      {meetups.map(({ slug, title, icon, archiveUrl, postCount, Content }) => (
+      {meetups.map(({ slug, title, icon, active, postCount, Content }) => (
         <div class="service reveal" id={slug}>
           <div class="svc-ico" set:html={`<svg viewBox="0 0 24 24">${icon}</svg>`} />
-          <h3>{title}</h3>
+          <h3>{title} {active && <span class="badge-aktif">Aktif</span>}</h3>
           <div class="svc-text"><Content /></div>
-          {archiveUrl && (
-            <a class="txtlink meet-archive" href={archiveUrl}>
-              Gerçekleşen buluşmalar ({postCount}) →
-            </a>
-          )}
+          <a class="txtlink meet-archive" href={`${base}bulusmalar/${slug}/`}>
+            {postCount > 0 ? `Gerçekleşen buluşmalar (${postCount}) →` : "Buluşma sayfasına git →"}
+          </a>
         </div>
       ))}
     </div>
@@ -119,4 +117,5 @@ const meetups = await Promise.all(
 .why h2 { font-family: "Cormorant Garamond", serif; font-size: clamp(1.8rem,3vw,2.4rem); text-align: center; margin-bottom: 40px; }
 .service { scroll-margin-top: 150px; }
 .meet-archive { margin-top: 14px; }
+.badge-aktif{display:inline-flex;align-items:center;gap:.5em;padding:.35em .9em;border-radius:999px;background:var(--wine);color:#F4E7D9;font-family:"EB Garamond",serif;letter-spacing:.08em;text-transform:uppercase;font-size:.68rem;vertical-align:middle}
 </style>

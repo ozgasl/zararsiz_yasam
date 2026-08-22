@@ -1,0 +1,105 @@
+---
+// Her buluşma türünün kendi kalıcı sayfası (ör. /bulusmalar/kitap-kulubu/).
+// Anasayfadaki kutular ve bulusmalar.astro'daki "Buluşma sayfasına git"
+// linkleri buraya gelir. Melis panelden "Şu An Aktif mi?" kutusunu açarsa
+// üstte bir "Aktif" etiketi çıkar. Gerçekleşen buluşmalar, o buluşmanın
+// "Blog Kategorisi" alanına giren blog yazılarından (fotoğraflarıyla)
+// derlenir.
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { slugify, firstImage } from "../../utils.js";
+
+const ICONS: Record<string, string> = {
+  kitap: '<path d="M4 5h16v14H4zM4 9h16"/>',
+  yazi: '<path d="M6 4h9l3 3v13H6zM9 12h6M9 16h4"/>',
+  sohbet: '<path d="M12 3v18M5 8c3 0 5 2 7 4M19 8c-3 0-5 2-7 4"/>',
+  sanat: '<path d="M4 18l5-7 4 5 3-4 4 6zM4 5h16v13H4z"/>',
+  ada: '<path d="M3 12h18M12 3a9 9 0 010 18M12 3c-2 2-3 5-3 9s1 7 3 9M12 3c2 2 3 5 3 9s-1 7-3 9"/>',
+  mikrofon: '<path d="M12 3a3 3 0 00-3 3v6a3 3 0 006 0V6a3 3 0 00-3-3z"/><path d="M5 11a7 7 0 0014 0M12 18v3"/>',
+};
+
+export async function getStaticPaths() {
+  const meetups = await getCollection("meetups", ({ data }) => !data.draft);
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+
+  return meetups.map((m) => {
+    const catSlug = m.data.category ? slugify(m.data.category) : null;
+    const related = catSlug
+      ? posts
+          .filter((p) => (p.data.categories ?? []).some((c) => slugify(c) === catSlug))
+          .sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf())
+      : [];
+    return { params: { slug: m.slug }, props: { meetup: m, related } };
+  });
+}
+
+const { meetup, related } = Astro.props as { meetup: any; related: any[] };
+const { Content } = await meetup.render();
+const base = import.meta.env.BASE_URL;
+
+const items = related.map((p) => ({
+  slug: p.slug,
+  title: p.data.title,
+  date: new Date(p.data.date).toLocaleDateString("tr-TR", { year: "numeric", month: "long", day: "numeric" }),
+  image: p.data.cover || firstImage(p.body),
+}));
+---
+<BaseLayout title={`${meetup.data.title} — Zararsız Yaşam`}>
+
+<section class="bls-hero">
+  <div class="wrap bls-hero-wrap">
+    <p class="eyebrow reveal">Buluşmalar</p>
+    <h1 class="reveal">
+      {meetup.data.title}
+      {meetup.data.active && <span class="badge-aktif">Aktif</span>}
+    </h1>
+  </div>
+</section>
+
+<section style="padding:0 0 50px">
+  <div class="wrap" style="max-width:720px">
+    <div class="svc-ico" set:html={`<svg viewBox="0 0 24 24">${ICONS[meetup.data.icon] ?? ICONS.kitap}</svg>`} />
+    <div class="bio-body reveal"><Content /></div>
+  </div>
+</section>
+
+{items.length > 0 && (
+  <section class="why" style="padding:0 0 70px">
+    <div class="wrap">
+      <p class="eyebrow reveal" style="text-align:center">Gerçekleşen Buluşmalar</p>
+      <div class="posts posts-3">
+        {items.map((it) => (
+          <article class="post reveal">
+            <div class="ph">
+              {it.image
+                ? <img src={`${base}${it.image.replace(/^\//, "")}`} alt={it.title} loading="lazy">
+                : <svg viewBox="0 0 24 24"><path d="M4 16c4-2 5-7 5-10 3 2 6 6 6 10"/></svg>}
+            </div>
+            <h3>{it.title}</h3>
+            <p class="ex">{it.date}</p>
+            <a class="txtlink" href={`${base}blog/${it.slug}/`}>Devamı →</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<section style="padding:0 0 70px">
+  <div class="wrap" style="max-width:720px">
+    <a class="txtlink" href={`${base}bulusmalar/`}>← Tüm Buluşmalar</a>
+  </div>
+</section>
+
+</BaseLayout>
+
+<style>
+.bls-hero { padding: 80px 0 40px; }
+.bls-hero-wrap { max-width: 800px; }
+.bls-hero h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2.2rem, 4vw, 3.2rem); margin: 14px 0 0; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.bio-body { color: var(--muted); font-size: 1.1rem; line-height: 1.75; margin-top: 18px; }
+.bio-body p { margin-bottom: 1.2em; }
+.bio-body p:last-child { margin-bottom: 0; }
+.why h2, .why p.eyebrow { text-align: center; }
+.badge-aktif{display:inline-flex;align-items:center;gap:.5em;padding:.4em 1em;border-radius:999px;background:var(--wine);color:#F4E7D9;font-family:"EB Garamond",serif;letter-spacing:.08em;text-transform:uppercase;font-size:.72rem;vertical-align:middle}
+</style>

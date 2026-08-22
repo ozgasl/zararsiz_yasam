@@ -1,14 +1,20 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Duyurular from "../components/Duyurular.astro";
-import { slugify } from "../utils.js";
+import { slugify, firstImage } from "../utils.js";
 import { metinler, kitapAyarlari, md, mdSatir, gorsel } from "../site.js";
 import { getCollection } from "astro:content";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 const posts = (await getCollection("blog", ({ data }) => !data.draft))
   .sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
-const latest = posts.slice(0, 3);
+const latest = posts.slice(0, 3).map((p) => ({
+  slug: p.slug,
+  data: p.data,
+  // Kapak Görseli alanı panelde yok: Melis fotoğrafı yazının içine ekliyor,
+  // o yüzden kapak boşsa yazı gövdesindeki ilk görsele düşüyoruz.
+  homeImage: p.data.cover || firstImage(p.body),
+}));
 const base = import.meta.env.BASE_URL;
 
 // Buluşmalar kartları admin panelindeki "Buluşmalar" koleksiyonundan geliyor,
@@ -22,29 +28,20 @@ const MEETUP_IMAGES: Record<string, string> = {
   ada: "kahvalti-yuruyus.png",
   mikrofon: "konuk-konusmacilar.png",
 };
-const categoryCounts = new Map<string, number>();
-for (const post of posts) {
-  for (const cat of post.data.categories ?? []) {
-    const key = slugify(cat);
-    categoryCounts.set(key, (categoryCounts.get(key) ?? 0) + 1);
-  }
-}
-
 const meetups = (await getCollection("meetups", ({ data }) => !data.draft))
   .sort((a, b) => a.data.order - b.data.order)
-  .map((m, i) => {
-    // Yazısı olan buluşmalar doğrudan kendi kategori arşivine, henüz yazısı
-    // olmayanlar Buluşmalar sayfasındaki açıklamasına gider.
-    const catSlug = m.data.category ? slugify(m.data.category) : null;
-    const hasPosts = catSlug ? (categoryCounts.get(catSlug) ?? 0) > 0 : false;
-    return {
-      slug: m.slug,
-      title: m.data.title,
-      image: MEETUP_IMAGES[m.data.icon] ?? "kitap-kulubu.png",
-      alt: i % 2 === 1,
-      href: hasPosts ? `${base}kategori/${catSlug}/` : `${base}bulusmalar/#${m.slug}`,
-    };
-  });
+  .map((m, i) => ({
+    slug: m.slug,
+    title: m.data.title,
+    image: MEETUP_IMAGES[m.data.icon] ?? "kitap-kulubu.png",
+    alt: i % 2 === 1,
+    // Melis panelden "Şu An Aktif mi?" kutusunu işaretlerse kutunun üstünde
+    // bir "Aktif" etiketi çıkar.
+    active: m.data.active === true,
+    // Her buluşma artık kendi ayrı sayfasına gidiyor (fotoğraflı, ilgili
+    // yazılarla birlikte) — bir kategori arşivine ya da sabit bir çapaya değil.
+    href: `${base}bulusmalar/${m.slug}/`,
+  }));
 
 // scripts/fetch-youtube.mjs tarafından build öncesi üretilir (varsa).
 // Dosya yoksa (ör. YOUTUBE_CHANNEL_ID henüz tanımlı değilse) sabit banner'a düşer.
@@ -126,7 +123,7 @@ const satista = kitapAyarlari.satista_mi === true;
             ? <a class="btn btn-primary" href={`${base}kitap/`}>{kitapAyarlari.satin_al_etiketi}</a>
             : <span class="badge-soon">{kitapAyarlari.yakinda_etiketi}</span>}
           <a class="txtlink" href={`${base}kitap/`}>Kitap Hakkında →</a>
-          <a class="txtlink" href={`${base}bulusmalar/#konuk-konusmacilar`}>İmza Günleri →</a>
+          <a class="txtlink" href={`${base}bulusmalar/konuk-konusmacilar/`}>İmza Günleri →</a>
         </div>
       </div>
     </div>
@@ -188,7 +185,10 @@ const satista = kitapAyarlari.satista_mi === true;
       <div class="meet-grid">
         {meetups.map((m) => (
           <a class="meet-card" href={m.href}>
-            <div class={`ph${m.alt ? " alt" : ""}`}><img src={`${base}assets/img/bulusmalar/${m.image}`} alt={m.title} loading="lazy"></div>
+            <div class={`ph${m.alt ? " alt" : ""}`}>
+              {m.active && <span class="meet-badge">Aktif</span>}
+              <img src={`${base}assets/img/bulusmalar/${m.image}`} alt={m.title} loading="lazy">
+            </div>
             <div class="label">{m.title}</div>
           </a>
         ))}
@@ -209,7 +209,7 @@ const satista = kitapAyarlari.satista_mi === true;
 <div class="posts posts-3">
         {latest.map((p) => (
           <article class="post">
-            <div class="ph">{p.data.cover ? <img src={`${base}${p.data.cover.replace(/^\//, "")}`} alt={p.data.title} loading="lazy"> : <svg viewBox="0 0 24 24"><path d="M4 16c4-2 5-7 5-10 3 2 6 6 6 10"/></svg>}</div>
+            <div class="ph">{p.homeImage ? <img src={`${base}${p.homeImage.replace(/^\//, "")}`} alt={p.data.title} loading="lazy"> : <svg viewBox="0 0 24 24"><path d="M4 16c4-2 5-7 5-10 3 2 6 6 6 10"/></svg>}</div>
             <span class="cat">{p.data.categories?.[0] ?? "Yazı"}</span>
             <h3>{p.data.title}</h3>
             <a class="txtlink" href={`${base}blog/${p.slug}/`}>Devamı →</a>
