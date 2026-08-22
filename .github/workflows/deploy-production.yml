@@ -16,6 +16,15 @@ name: Alastyr Canlı Yayın
 # Eğer sunucu FTPS (explicit TLS) desteklemiyorsa ve deploy adımı bağlantı
 # hatasıyla başarısız olursa, aşağıdaki "protocol: ftps" satırını
 # "protocol: ftp" olarak değiştirmek gerekir (şifresiz bağlantıya döner).
+#
+# AĞUSTOS 2026 GÜNCELLEMESİ: Ard arda gelen CMS kayıtlarında FTP adımı bazen
+# (özellikle bir süre sessizlikten sonra gelen ilk denemede) geçici bir
+# bağlantı sorunuyla başarısız oluyordu, bir sonraki push'ta kendiliğinden
+# düzeliyordu. Bunu iki şekilde ele alıyoruz: (1) art arda push'ların
+# birbirini yarıda kesmemesi için "cancel-in-progress" kapatıldı — artık
+# yarım kalan bir yükleme yerine sırayla tamamlanıyorlar; (2) FTP adımı
+# başarısız olursa 30 saniye bekleyip otomatik olarak yeniden deneniyor
+# (en fazla 3 deneme).
 
 on:
   push:
@@ -25,7 +34,7 @@ on:
 
 concurrency:
   group: alastyr-production-deploy
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build-and-deploy:
@@ -45,7 +54,9 @@ jobs:
       # (Alastyr domain kökünde barındığı için bu doğru ayardır.)
       - run: npm run build
 
-      - name: FTP ile Alastyr public_html'e yükle
+      - name: FTP ile Alastyr public_html'e yükle (1. deneme)
+        id: ftp1
+        continue-on-error: true
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -55,8 +66,46 @@ jobs:
           port: 21
           local-dir: ./dist/
           server-dir: ./
-          # migration/redirects.htaccess içeriğini public_html/.htaccess'e
-          # eklemek hâlâ ayrı, manuel bir adım (bkz. CLAUDE.md pending #1).
+          exclude: |
+            **/.git*
+            **/.git*/**
+
+      - name: 1. deneme başarısız oldu, 30 saniye bekle
+        if: steps.ftp1.outcome == 'failure'
+        run: sleep 30
+
+      - name: FTP ile Alastyr public_html'e yükle (2. deneme)
+        id: ftp2
+        if: steps.ftp1.outcome == 'failure'
+        continue-on-error: true
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./dist/
+          server-dir: ./
+          exclude: |
+            **/.git*
+            **/.git*/**
+
+      - name: 2. deneme başarısız oldu, 30 saniye bekle
+        if: steps.ftp1.outcome == 'failure' && steps.ftp2.outcome == 'failure'
+        run: sleep 30
+
+      - name: FTP ile Alastyr public_html'e yükle (3. ve son deneme)
+        if: steps.ftp1.outcome == 'failure' && steps.ftp2.outcome == 'failure'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./dist/
+          server-dir: ./
           exclude: |
             **/.git*
             **/.git*/**
