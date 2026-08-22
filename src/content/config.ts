@@ -35,6 +35,9 @@ const meetups = defineCollection({
     // yazı varsa kutunun altında "yazılar" linki çıkar.
     category: z.string().optional(),
     order: z.number().optional().default(0),
+    // Melis panelden açıp kapatır: açıkken anasayfa kutusunda ve bu
+    // buluşmanın kendi sayfasında "Aktif" etiketi görünür.
+    active: z.boolean().optional().default(false),
     draft: z.boolean().optional().default(false),
   }),
 });
