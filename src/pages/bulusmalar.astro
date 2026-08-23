@@ -34,12 +34,22 @@ const meetups = await Promise.all(
     const { Content } = await m.render();
     const catSlug = m.data.category ? slugify(m.data.category) : null;
     const postCount = catSlug ? postCountByCategory.get(catSlug) ?? 0 : 0;
+    const active = m.data.active === true;
+    const relatedSlug = catSlug
+      ? posts
+          .slice()
+          .sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf())
+          .find((p) => (p.data.categories ?? []).some((c) => slugify(c) === catSlug))?.slug
+      : null;
     return {
       slug: m.slug,
       title: m.data.title,
       icon: ICONS[m.data.icon] ?? ICONS.kitap,
-      active: m.data.active === true,
+      active,
       postCount,
+      // Aktifse doğrudan yazının içine git; değilse bu buluşmanın kendi
+      // sayfasına (genel açıklama + geçmiş buluşmalar).
+      href: active && relatedSlug ? `${base}blog/${relatedSlug}/` : `${base}bulusmalar/${m.slug}/`,
       Content,
     };
   })
@@ -67,13 +77,17 @@ const meetups = await Promise.all(
     <p class="eyebrow reveal" style="text-align:center">Etkinlikler</p>
     <h2 class="reveal">Neler Yapıyoruz?</h2>
     <div class="services">
-      {meetups.map(({ slug, title, icon, active, postCount, Content }) => (
+      {meetups.map(({ slug, title, icon, active, postCount, href, Content }) => (
         <div class="service reveal" id={slug}>
           <div class="svc-ico" set:html={`<svg viewBox="0 0 24 24">${icon}</svg>`} />
           <h3>{title} {active && <span class="badge-aktif">Aktif</span>}</h3>
           <div class="svc-text"><Content /></div>
-          <a class="txtlink meet-archive" href={`${base}bulusmalar/${slug}/`}>
-            {postCount > 0 ? `Gerçekleşen buluşmalar (${postCount}) →` : "Buluşma sayfasına git →"}
+          <a class="txtlink meet-archive" href={href}>
+            {active && href.includes("/blog/")
+              ? "Etkinliğe git →"
+              : postCount > 0
+                ? `Gerçekleşen buluşmalar (${postCount}) →`
+                : "Buluşma sayfasına git →"}
           </a>
         </div>
       ))}

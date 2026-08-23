@@ -30,18 +30,29 @@ const MEETUP_IMAGES: Record<string, string> = {
 };
 const meetups = (await getCollection("meetups", ({ data }) => !data.draft))
   .sort((a, b) => a.data.order - b.data.order)
-  .map((m, i) => ({
-    slug: m.slug,
-    title: m.data.title,
-    image: MEETUP_IMAGES[m.data.icon] ?? "kitap-kulubu.png",
-    alt: i % 2 === 1,
-    // Melis panelden "Şu An Aktif mi?" kutusunu işaretlerse kutunun üstünde
-    // bir "Aktif" etiketi çıkar.
-    active: m.data.active === true,
-    // Her buluşma artık kendi ayrı sayfasına gidiyor (fotoğraflı, ilgili
-    // yazılarla birlikte) — bir kategori arşivine ya da sabit bir çapaya değil.
-    href: `${base}bulusmalar/${m.slug}/`,
-  }));
+  .map((m, i) => {
+    const active = m.data.active === true;
+    const catSlug = m.data.category ? slugify(m.data.category) : null;
+    // Aktif ise ve o kategoride bir yazı varsa, kutu doğrudan o yazının
+    // içine gitsin (Melis: "aktifse anasayfadan basılır basılmaz etkinlik
+    // yazısının içine girmeli"). Değilse genel açıklama sayfasına gider.
+    const relatedSlug = catSlug
+      ? posts.find((p) => (p.data.categories ?? []).some((c) => slugify(c) === catSlug))?.slug
+      : null;
+    return {
+      slug: m.slug,
+      title: m.data.title,
+      image: MEETUP_IMAGES[m.data.icon] ?? "kitap-kulubu.png",
+      alt: i % 2 === 1,
+      // Melis panelden "Şu An Aktif mi?" kutusunu işaretlerse kutunun üstünde
+      // bir "Aktif" etiketi çıkar.
+      active,
+      href:
+        active && relatedSlug
+          ? `${base}blog/${relatedSlug}/`
+          : `${base}bulusmalar/${m.slug}/`,
+    };
+  });
 
 // scripts/fetch-youtube.mjs tarafından build öncesi üretilir (varsa).
 // Dosya yoksa (ör. YOUTUBE_CHANNEL_ID henüz tanımlı değilse) sabit banner'a düşer.

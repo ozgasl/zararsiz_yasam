@@ -1,6 +1,6 @@
 ---
 title: Büyükada'da Sağlıklı Kahvaltı, İyi Yaşam Sohbeti ve Meditasyon
-date: ''
+date: 2026-08-23T01:14
 slug: saglikli-kahvalti
 categories:
   - Kahvaltı Yürüyüş Meditasyon

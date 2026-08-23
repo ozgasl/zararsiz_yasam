@@ -254,12 +254,18 @@ collections:
     sortable_fields: ["date", "title"]
     fields:
       - { label: "Başlık", name: "title", widget: "string" }
-      # Tarih artık panelde görünmüyor: kafa karıştırıyordu ("ileri tarih
-      # verirsem yazı o gün mü yayınlanır?" - hayır, "Taslak" kutusu dışında
-      # hiçbir şey yayını geciktirmiyordu). Yazı ilk kaydedildiği an bu alan
-      # otomatik olarak o anki tarih/saat ile dolduruluyor; sıralama ve
-      # yazının altında görünen tarih için kullanılıyor, siz dokunmuyorsunuz.
-      - { name: "date", widget: "hidden", default: "{{now}}" }
+      # NOT (23 Ağustos): "widget: hidden" + "default: {{now}}" denendi ama
+      # Sveltia bu şablonu gizli alanlarda çözmüyor, alan boş kaydediliyor ve
+      # bu da build'i kırıyordu (bkz. içerik şemasındaki savunma). Bu yüzden
+      # alan tekrar görünür — ama otomatik dolu geliyor, siz elle bir şey
+      # yapmıyorsunuz, olduğu gibi bırakmanız yeterli.
+      - {
+          label: "Tarih",
+          name: "date",
+          widget: "datetime",
+          default: "{{now}}",
+          hint: "Otomatik olarak şu anki tarih/saat gelir. Sıralama için kullanılır, genelde dokunmanıza gerek yok.",
+        }
       - {
           label: "Slug (URL'de görünecek kısım)",
           name: "slug",

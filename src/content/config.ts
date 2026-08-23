@@ -4,7 +4,14 @@ const blog = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
-    date: z.coerce.date(),
+    // CMS'teki "date" alanı otomatik dolduruluyor. Panelde bir aksaklık
+    // olursa (ör. boş kayıt) build'in tamamen çökmemesi için boş/geçersiz
+    // değerde build anına düşüyoruz — sıralama bozulmaz, site yayından
+    // düşmez.
+    date: z.preprocess((v) => {
+      if (v === "" || v === null || v === undefined) return new Date();
+      return v;
+    }, z.coerce.date()),
     categories: z.array(z.string()).optional().default([]),
     tags: z.array(z.string()).optional().default([]),
     legacyUrl: z.string().optional(),
