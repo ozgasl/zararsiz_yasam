@@ -33,6 +33,24 @@ const events = defineCollection({
   }),
 });
 
+// "Birlikte Çalışalım" altındaki 3 hizmet sayfası (mindfulness koçluğu,
+// yin yoga, meditasyon). Dosya adı = URL: /birlikte-calisalim/<dosya-adi>/
+const hizmetler = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    // Sayfanın başlığının altındaki kısa tanıtım metni. Aynı metin
+    // Birlikte Çalışalım ana sayfasındaki kutuda da kullanılır.
+    lead: z.string(),
+    // "Kimler için" etiketleri, ayrı ayrı satırlar halinde girilir.
+    tags: z.array(z.string()).optional().default([]),
+    order: z.number().optional().default(0),
+    draft: z.boolean().optional().default(false),
+    // Gövde (body): tanıtımın altında görünen, seansların/derslerin nasıl
+    // işlediğini anlatan asıl metin.
+  }),
+});
+
 const meetups = defineCollection({
   type: "content",
   schema: z.object({
@@ -49,4 +67,4 @@ const meetups = defineCollection({
   }),
 });
 
-export const collections = { blog, events, meetups };
+export const collections = { blog, events, meetups, hizmetler };

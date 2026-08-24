@@ -1,16 +1,36 @@
 ---
+// Birlikte Çalışalım altındaki 3 hizmet sayfası artık panelden düzenlenen
+// "hizmetler" koleksiyonundan geliyor. URL'ler değişmedi:
+// /birlikte-calisalim/mindfulness-koclugu/, /yin-yoga/, /meditasyon/
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const hizmetler = await getCollection("hizmetler", ({ data }) => !data.draft);
+  return hizmetler.map((h) => ({ params: { slug: h.slug }, props: { hizmet: h } }));
+}
+
+const { hizmet } = Astro.props as { hizmet: any };
+const { Content } = await hizmet.render();
 const base = import.meta.env.BASE_URL;
 ---
-<BaseLayout title="Mindfulness Temelli Koçluk — Zararsız Yaşam">
+<BaseLayout title={`${hizmet.data.title} — Zararsız Yaşam`}>
 
 <section class="svc-hero">
   <div class="wrap svc-hero-wrap">
     <a class="txtlink back-link reveal" href={`${base}birlikte-calisalim/`}>← Birlikte Çalışalım</a>
     <p class="eyebrow reveal">Birlikte Çalışalım</p>
-    <h1 class="reveal">Mindfulness Temelli Koçluk</h1>
-    <p class="lead reveal">Bazen hayatın içinde sıkışmış hissedebilir, aynı döngüleri tekrar tekrar yaşadığınızı fark edebilirsiniz. Mindfulness temelli koçluk çalışmalarında amaç tavsiye vermek ya da sizin yerinize karar almak değil; ihtiyaçlarınızı fark edebilmeniz ve kendi cevaplarınıza yaklaşabilmeniz için alan açmaktır.</p>
-    <p class="svc-tags reveal">Yaşam geçişleri · Karar verme · İlişkiler · Öz şefkat · Stres yönetimi</p>
+    <h1 class="reveal">{hizmet.data.title}</h1>
+    <p class="lead reveal">{hizmet.data.lead}</p>
+    {hizmet.data.tags.length > 0 && (
+      <p class="svc-tags reveal">{hizmet.data.tags.join(" · ")}</p>
+    )}
+  </div>
+</section>
+
+<section style="padding:0 0 50px">
+  <div class="wrap" style="max-width:680px">
+    <div class="svc-body reveal"><Content /></div>
   </div>
 </section>
 
@@ -34,4 +54,7 @@ const base = import.meta.env.BASE_URL;
 .svc-hero h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2.4rem, 5vw, 3.6rem); margin: 14px 0 22px; }
 .svc-hero .lead { font-size: 1.15rem; color: var(--muted); max-width: 36em; margin-bottom: 18px; }
 .svc-tags { color: var(--muted); font-size: .94rem; }
+.svc-body { color: var(--ink); font-size: 1.08rem; line-height: 1.8; }
+.svc-body p { margin-bottom: 1.2em; }
+.svc-body p:last-child { margin-bottom: 0; }
 </style>

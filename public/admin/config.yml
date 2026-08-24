@@ -422,3 +422,53 @@ collections:
           modes: ["raw", "rich_text"],
           hint: "Word'den yapıştırmak için bu sade metin kutusunu kullanın. Kalın yazı **iki yıldız** arasına yazılır.",
         }
+
+  - name: "hizmetler"
+    label: "Birlikte Çalışalım"
+    label_singular: "Hizmet"
+    folder: "src/content/hizmetler"
+    create: false
+    delete: false
+    slug: "{{slug}}"
+    identifier_field: title
+    summary: "{{title}}"
+    sortable_fields: ["order", "title"]
+    description: >-
+      Birlikte Çalışalım sayfasındaki 3 sabit hizmet (Mindfulness Temelli
+      Koçluk, Yin Yoga, Meditasyon). Yeni hizmet ekleyip silemezsiniz, sadece
+      bu üçünün metnini düzenleyebilirsiniz.
+    fields:
+      - { label: "Başlık", name: "title", widget: "string" }
+      - {
+          label: "Kısa Tanıtım",
+          name: "lead",
+          widget: "text",
+          hint: "Başlığın altında ve Birlikte Çalışalım sayfasındaki kutuda görünür.",
+        }
+      - {
+          label: "Kimler İçin (etiketler)",
+          name: "tags",
+          widget: "list",
+          required: false,
+          hint: "Her satıra bir etiket. Örn: Yoğun çalışanlar",
+        }
+      - {
+          label: "Sıra",
+          name: "order",
+          widget: "number",
+          default: 0,
+          hint: "Küçük sayı önce gösterilir (1, 2, 3...)",
+        }
+      - {
+          label: "Taslak (yayınlanmasın)",
+          name: "draft",
+          widget: "boolean",
+          default: false,
+        }
+      - {
+          label: "Ayrıntılı Açıklama",
+          name: "body",
+          widget: "markdown",
+          modes: ["raw", "rich_text"],
+          hint: "Kısa tanıtımın altında görünen asıl metin. Seansların/derslerin nasıl işlediğini, süresini, nelere dikkat edilmesi gerektiğini buraya yazabilirsiniz.",
+        }
