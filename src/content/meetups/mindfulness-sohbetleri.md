@@ -3,7 +3,7 @@ title: Mindfulness Sohbetleri
 icon: sohbet
 category: Mindfulness Sohbetleri
 order: 4
-active: true
+active: false
 draft: false
 ---
 
