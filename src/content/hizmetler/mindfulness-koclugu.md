@@ -11,8 +11,8 @@ order: 1
 draft: false
 ---
 
-Seanslar genellikle çevrimiçi ve birebir yapılır, ortalama 50 dakika sürer. İlk görüşmede acele etmeden sizi dinlemek ve birlikte çalışıp çalışamayacağımızı anlamak isterim; bu ilk seans herhangi bir taahhüt gerektirmez.
+Seanslar çevrimiçi ve birebir yapılır, ortalama 50-55 dakika sürer. İlk görüşmede acele etmeden sizi dinlemek ve birlikte çalışıp çalışamayacağımıza birlikte karar vermemizi isterim; bu ilk seans herhangi bir taahhüt gerektirmez.
 
-Düzenli bir sürece başladığımızda genellikle iki haftada bir görüşürüz, ancak bu sıklığı sizin ihtiyacınıza göre birlikte belirleriz. Seanslarda konuştuklarımız gizli kalır.
+Düzenli bir sürece başladığımızda haftada bir görüşürüz, ödemeler aylık 4 ders için peşin alınır. İlk aydan sonra devam edip etmeyeceğimize birlikte karar veririz. Burada amaç düzenli dört seansı bitirerek seansların etkisini fark etmeyi sağlamaktır. Bu tarz pratiklerin düzenli yapılması etki sağlar. Seanslarda konuştuklarımız gizli kalır.
 
-Mindfulness temelli koçluk; terapi ya da tıbbi bir tedavi yerine geçmez. Bir ruh sağlığı krizi yaşıyorsanız, lütfen önce bir uzmana başvurun.
+Mindfulness temelli koçluk seansları terapi değildir ve tıbbi bir tedavi yerine geçmez. Bugünden yarına birlikte bakabilmek için profesyonel bir yol arkadaşlığıdır. Ruh sağlığı ile ilgili bir ihtiyaç olduğunda farklı alanlara yönlendirme yapılabilir.
