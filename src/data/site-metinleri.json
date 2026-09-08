@@ -24,7 +24,6 @@
     "katilimci_ustbaslik": "Katılımcılardan Gelenler",
     "katilimci_alintisi": "“Büyükada'ya olan sevgim sayesinde yollarımız kesişti... Kendi gelişim yolculuğumda bana ilham veren, bakış açımı genişleten ve destekleyen biri.” — Yeliz"
   },
-
   "altbilgi": {
     "eposta": "ben@meliszararsiz.com",
     "instagram_etiket": "Instagram · @zararsiz_yasam",
@@ -35,7 +34,6 @@
     "youtube_link": "https://www.youtube.com/c/zararsizyasam",
     "telif": "© 2026 Zararsız Yaşam · Melis Zararsız"
   },
-
   "hakkimda": {
     "ustbaslik": "Hakkımda",
     "baslik": "Merhaba, ben Melis.",
@@ -54,7 +52,7 @@
       },
       {
         "baslik": "Yin Yoga Eğitmenliği",
-        "aciklama": "Sertifikalı yin yoga eğitmeni ve uygulayıcısı. Herkes İçin Spor Yoga Eğitmenliği sertifikası da dahil olmak üzere çoklu sertifika sahibi."
+        "aciklama": "Sertifikalı yin yoga eğitmeni ve uygulayıcısı. Herkes İçin Spor Federasyonu Yoga Eğitmenliği sertifikası da dahil olmak üzere çoklu sertifika sahibi."
       },
       {
         "baslik": "Meditasyon Uygulayıcılığı",
@@ -62,14 +60,12 @@
       }
     ]
   },
-
   "birlikte_calisalim": {
     "ustbaslik": "Birlikte Çalışalım",
     "baslik": "Yavaşla",
     "lead": "Mindfulness temelli koçluk, yin yoga ve meditasyon çalışmalarıyla sizi hayatın içinde biraz daha yavaşlamaya, fark etmeye ve kendinize alan açmaya davet ediyorum.",
     "giris": "Çalışmalarımın merkezinde farkındalık yer alıyor. Yin yoga, meditasyon ve mindfulness temelli koçluk farklı disiplinler gibi görünse de hepsi aynı yere çıkıyor: insanın bedenen, ruhen ve zihnen kendisiyle daha sağlıklı, daha şefkatli ve daha bilinçli bir ilişki kurabilmesine."
   },
-
   "bulusmalar": {
     "ustbaslik": "Buluşmalar",
     "baslik": "Birlikte Düşünmek, Hissetmek ve Paylaşmak İçin",
@@ -80,7 +76,6 @@
     "kimler_alinti": "Bu buluşmalar belirli bir bilgi seviyesine sahip kişiler için değil. Merak eden, paylaşmak isteyen ve yeni bakış açılarına açık herkes katılabilir.",
     "kimler_not": "Bazı etkinlikler ücretsiz, bazıları bağış usulü, bazıları ise ücretli olarak düzenlenebilir. Detaylar her etkinlik duyurusunda ayrıca paylaşılır."
   },
-
   "iletisim": {
     "ustbaslik": "İletişim",
     "baslik": "Yollarımız Kesişebilir",
@@ -88,7 +83,6 @@
     "kapanis_alinti": "Bazen bir e-posta, bazen bir kitap, bazen de bir sohbet yeni bir yolculuğun başlangıcı olabilir.",
     "kapanis_not": "Yolunuz buraya düştüyse, merhaba."
   },
-
   "kitap": {
     "ustbaslik": "Bir Dönüşüm Hikâyesi",
     "baslik": "Kabuk",
