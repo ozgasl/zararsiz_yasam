@@ -10,7 +10,7 @@ tags:
   - iyi yaşam
   - spor
   - disiplin
-draft: true
+draft: false
 ---
 
 ![](/images/blog/blog.png)
