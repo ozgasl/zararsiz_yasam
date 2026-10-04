@@ -47,6 +47,23 @@
 # --- Hata sayfası ---
 ErrorDocument 404 /404.html
 
+# --- Önbellek: HTML ve 404 yanıtları her seferinde sorulsun ---
+# Sunucunun öntanımlısı her yanıta (HTML ve 404 dahil) "max-age=3600,
+# must-revalidate" ekliyordu. Sonuçları:
+#  - Yeni yazı/kart, ziyaretçide bir saate kadar eski HTML ile görünüyordu.
+#  - Henüz yüklenmemiş bir dosyanın 404 cevabı (ör. CMS'ten yazı kaydedilir
+#    kaydedilmez istenen görsel) tarayıcıda bir saat saklanıyor, görsel
+#    dosya sunucuya gelince bile kırık görünüyordu (Ekim 2026, blog.png).
+# "no-cache" = saklanabilir ama her kullanımda sunucuya sorulur; değişmediyse
+# sunucu gövdesiz 304 döner, yani maliyeti çok düşük.
+# /404.html ErrorDocument olarak da bu kurala girdiği için 404'ler de kapsanıyor.
+# Resimler, CSS ve JS (_astro/) bilerek dokunulmadı: öntanımlı 1 saat kalır.
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header always set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>
+
 # =====================================================================
 # Eski WordPress URL'leri -> yeni site
 #
