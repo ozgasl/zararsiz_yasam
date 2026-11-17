@@ -43,7 +43,7 @@ const scroll = items.length > 1;
   <section class={`duyuru ${variant === "band" ? "duyuru-band" : "duyuru-page"}`}>
     <div class="wrap duyuru-wrap">
       <p class="eyebrow duyuru-label">Duyurular</p>
-      <div class="duyuru-marquee">
+      <div class:list={["duyuru-marquee", { "is-flowing": scroll }]}>
         <div class="duyuru-track" class:list={[{ "is-scrolling": scroll }]}>
           <span class="duyuru-group">
             {items.map((it) => (
@@ -103,6 +103,9 @@ const scroll = items.length > 1;
         // İçerik banda sığıyorsa akıtmıyoruz: kayan metnin arkasında boşluk kalmasın.
         var fits = group.scrollWidth <= band.clientWidth;
         track.classList.toggle("no-scroll", fits);
+        // Kenar geçişleri yalnızca bant akarken: sabit duran yazının ilk
+        // harflerini (ör. tarihteki gün rakamını) örtmesin.
+        band.classList.toggle("is-flowing", !fits && track.classList.contains("is-scrolling"));
       });
     }
     measure();
@@ -120,9 +123,10 @@ const scroll = items.length > 1;
 .duyuru-wrap { display: flex; align-items: center; gap: 26px; }
 .duyuru-label { flex: none; }
 .duyuru-marquee { flex: 1 1 auto; overflow: hidden; position: relative; min-width: 0; }
-/* kenarlarda yumuşak geçiş, yazı bandın içine giriyormuş gibi dursun */
-.duyuru-marquee::before,
-.duyuru-marquee::after { content: ""; position: absolute; top: 0; bottom: 0; width: 40px; z-index: 2; pointer-events: none; }
+/* kenarlarda yumuşak geçiş, yazı bandın içine giriyormuş gibi dursun.
+   Sadece akan bantta: sabit bantta ilk karakterlerin üstüne biniyordu. */
+.duyuru-marquee.is-flowing::before,
+.duyuru-marquee.is-flowing::after { content: ""; position: absolute; top: 0; bottom: 0; width: 40px; z-index: 2; pointer-events: none; }
 .duyuru-track { display: flex; align-items: center; white-space: nowrap; }
 .duyuru-group { display: inline-flex; align-items: center; }
 .duyuru-track.is-scrolling { width: max-content; animation: duyuru-akis 34s linear infinite; }
@@ -156,6 +160,8 @@ const scroll = items.length > 1;
 }
 @media (prefers-reduced-motion: reduce) {
   .duyuru-track.is-scrolling { animation: none; }
+  .duyuru-marquee.is-flowing::before,
+  .duyuru-marquee.is-flowing::after { display: none; }
 }
 @media (max-width: 700px) {
   .duyuru-wrap { flex-direction: column; align-items: flex-start; gap: 10px; }
