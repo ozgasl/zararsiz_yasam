@@ -14,7 +14,7 @@ tags:
   - sağlıklı yaşam
   - iyi yaşam
   - mindfulness
-draft: true
+draft: false
 ---
 
 ![mindfulness etkinliği](/images/blog/birandur.jpeg "bir an dur")
