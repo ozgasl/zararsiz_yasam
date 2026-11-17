@@ -3,7 +3,7 @@ title: Mindfulness Sohbetleri
 icon: sohbet
 category: Mindfulness Sohbetleri
 order: 4
-active: false
+active: true
 draft: false
 ---
 
@@ -17,4 +17,7 @@ Sunumun ardından merak ettiklerinizi birlikte konuşuyor, sorularınızı yanı
 
 **Etkinlik ücretlidir.**
 
-**İlk buluşmanın tarihi, mekan ve katılım ücreti burada duyurulacak.**
+Tarih: 05.12.2026
+Yer: Depo Coffee Roastery
+Saat: 12:00
+Ücret bilgisi ve kayıt için: ben@meliszararsiz.com
